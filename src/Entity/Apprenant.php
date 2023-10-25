@@ -32,6 +32,19 @@ class Apprenant
     #[ORM\Column]
     private ?bool $consentement = null;
 
+    #[ORM\OneToOne(inversedBy: 'apprenant', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
+    #[ORM\OneToOne(inversedBy: 'apprenant', cascade: ['persist', 'remove'])]
+    private ?DonneesAdministratives $donneesAdministratives = null;
+
+    #[ORM\OneToOne(inversedBy: 'apprenant', cascade: ['persist', 'remove'])]
+    private ?DonneesPedagogiques $donneesPedagogiques = null;
+
+    #[ORM\ManyToOne(inversedBy: 'apprenants')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Promotion $promotion = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +118,54 @@ class Apprenant
     public function setConsentement(bool $consentement): static
     {
         $this->consentement = $consentement;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDonneesAdministratives(): ?DonneesAdministratives
+    {
+        return $this->donneesAdministratives;
+    }
+
+    public function setDonneesAdministratives(?DonneesAdministratives $donneesAdministratives): static
+    {
+        $this->donneesAdministratives = $donneesAdministratives;
+
+        return $this;
+    }
+
+    public function getDonneesPedagogiques(): ?DonneesPedagogiques
+    {
+        return $this->donneesPedagogiques;
+    }
+
+    public function setDonneesPedagogiques(?DonneesPedagogiques $donneesPedagogiques): static
+    {
+        $this->donneesPedagogiques = $donneesPedagogiques;
+
+        return $this;
+    }
+
+    public function getPromotion(): ?Promotion
+    {
+        return $this->promotion;
+    }
+
+    public function setPromotion(?Promotion $promotion): static
+    {
+        $this->promotion = $promotion;
 
         return $this;
     }

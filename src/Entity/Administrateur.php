@@ -19,6 +19,9 @@ class Administrateur
     #[ORM\Column(length: 190)]
     private ?string $prenom = null;
 
+    #[ORM\OneToOne(inversedBy: 'administrateur', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Administrateur
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

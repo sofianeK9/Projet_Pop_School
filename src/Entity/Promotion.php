@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PromotionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,14 @@ class Promotion
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateFin = null;
+
+    #[ORM\OneToMany(mappedBy: 'promotion', targetEntity: Apprenant::class)]
+    private Collection $apprenants;
+
+    public function __construct()
+    {
+        $this->apprenants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,36 @@ class Promotion
     public function setDateFin(\DateTimeInterface $dateFin): static
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Apprenant>
+     */
+    public function getApprenants(): Collection
+    {
+        return $this->apprenants;
+    }
+
+    public function addApprenant(Apprenant $apprenant): static
+    {
+        if (!$this->apprenants->contains($apprenant)) {
+            $this->apprenants->add($apprenant);
+            $apprenant->setPromotion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApprenant(Apprenant $apprenant): static
+    {
+        if ($this->apprenants->removeElement($apprenant)) {
+            // set the owning side to null (unless already changed)
+            if ($apprenant->getPromotion() === $this) {
+                $apprenant->setPromotion(null);
+            }
+        }
 
         return $this;
     }

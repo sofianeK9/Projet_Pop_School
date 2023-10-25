@@ -22,6 +22,9 @@ class DonneesPedagogiques
     #[ORM\Column(length: 190)]
     private ?string $compteLinkedin = null;
 
+    #[ORM\OneToOne(mappedBy: 'donneesPedagogiques', cascade: ['persist', 'remove'])]
+    private ?Apprenant $apprenant = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,28 @@ class DonneesPedagogiques
     public function setCompteLinkedin(string $compteLinkedin): static
     {
         $this->compteLinkedin = $compteLinkedin;
+
+        return $this;
+    }
+
+    public function getApprenant(): ?Apprenant
+    {
+        return $this->apprenant;
+    }
+
+    public function setApprenant(?Apprenant $apprenant): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($apprenant === null && $this->apprenant !== null) {
+            $this->apprenant->setDonneesPedagogiques(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($apprenant !== null && $apprenant->getDonneesPedagogiques() !== $this) {
+            $apprenant->setDonneesPedagogiques($this);
+        }
+
+        $this->apprenant = $apprenant;
 
         return $this;
     }

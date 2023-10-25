@@ -46,6 +46,9 @@ class DonneesAdministratives
     #[ORM\Column(length: 190)]
     private ?string $dernierDiplomeObtenu = null;
 
+    #[ORM\OneToOne(mappedBy: 'donneesAdministratives', cascade: ['persist', 'remove'])]
+    private ?Apprenant $apprenant = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -179,6 +182,28 @@ class DonneesAdministratives
     public function setDernierDiplomeObtenu(string $dernierDiplomeObtenu): static
     {
         $this->dernierDiplomeObtenu = $dernierDiplomeObtenu;
+
+        return $this;
+    }
+
+    public function getApprenant(): ?Apprenant
+    {
+        return $this->apprenant;
+    }
+
+    public function setApprenant(?Apprenant $apprenant): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($apprenant === null && $this->apprenant !== null) {
+            $this->apprenant->setDonneesAdministratives(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($apprenant !== null && $apprenant->getDonneesAdministratives() !== $this) {
+            $apprenant->setDonneesAdministratives($this);
+        }
+
+        $this->apprenant = $apprenant;
 
         return $this;
     }

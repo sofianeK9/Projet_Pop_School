@@ -27,6 +27,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Formateur $formateur = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?ResponsableTerritorial $responsableTerritorial = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Administrateur $administrateur = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Apprenant $apprenant = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,5 +126,93 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFormateur(): ?Formateur
+    {
+        return $this->formateur;
+    }
+
+    public function setFormateur(?Formateur $formateur): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($formateur === null && $this->formateur !== null) {
+            $this->formateur->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($formateur !== null && $formateur->getUser() !== $this) {
+            $formateur->setUser($this);
+        }
+
+        $this->formateur = $formateur;
+
+        return $this;
+    }
+
+    public function getResponsableTerritorial(): ?ResponsableTerritorial
+    {
+        return $this->responsableTerritorial;
+    }
+
+    public function setResponsableTerritorial(?ResponsableTerritorial $responsableTerritorial): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($responsableTerritorial === null && $this->responsableTerritorial !== null) {
+            $this->responsableTerritorial->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($responsableTerritorial !== null && $responsableTerritorial->getUser() !== $this) {
+            $responsableTerritorial->setUser($this);
+        }
+
+        $this->responsableTerritorial = $responsableTerritorial;
+
+        return $this;
+    }
+
+    public function getAdministrateur(): ?Administrateur
+    {
+        return $this->administrateur;
+    }
+
+    public function setAdministrateur(?Administrateur $administrateur): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($administrateur === null && $this->administrateur !== null) {
+            $this->administrateur->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($administrateur !== null && $administrateur->getUser() !== $this) {
+            $administrateur->setUser($this);
+        }
+
+        $this->administrateur = $administrateur;
+
+        return $this;
+    }
+
+    public function getApprenant(): ?Apprenant
+    {
+        return $this->apprenant;
+    }
+
+    public function setApprenant(?Apprenant $apprenant): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($apprenant === null && $this->apprenant !== null) {
+            $this->apprenant->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($apprenant !== null && $apprenant->getUser() !== $this) {
+            $apprenant->setUser($this);
+        }
+
+        $this->apprenant = $apprenant;
+
+        return $this;
     }
 }
