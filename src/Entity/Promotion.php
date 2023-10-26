@@ -7,10 +7,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
+#[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 #[ORM\Entity(repositoryClass: PromotionRepository::class)]
 class Promotion
 {
+    use TimestampableEntity;
+    use SoftDeleteableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -28,9 +35,13 @@ class Promotion
     #[ORM\OneToMany(mappedBy: 'promotion', targetEntity: Apprenant::class)]
     private Collection $apprenants;
 
+    #[ORM\ManyToMany(targetEntity: Formateur::class, inversedBy: 'promotions')]
+    private Collection $formateurs;
+
     public function __construct()
     {
         $this->apprenants = new ArrayCollection();
+        $this->formateurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,6 +111,30 @@ class Promotion
                 $apprenant->setPromotion(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Formateur>
+     */
+    public function getFormateurs(): Collection
+    {
+        return $this->formateurs;
+    }
+
+    public function addFormateur(Formateur $formateur): static
+    {
+        if (!$this->formateurs->contains($formateur)) {
+            $this->formateurs->add($formateur);
+        }
+
+        return $this;
+    }
+
+    public function removeFormateur(Formateur $formateur): static
+    {
+        $this->formateurs->removeElement($formateur);
 
         return $this;
     }
