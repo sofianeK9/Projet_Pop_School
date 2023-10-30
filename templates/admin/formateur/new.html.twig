@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Formateur{% endblock %}
+
+{% block body %}
+    <h1>Create new Formateur</h1>
+
+    {{ include('admin/formateur/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_formateur_index') }}">back to list</a>
+{% endblock %}

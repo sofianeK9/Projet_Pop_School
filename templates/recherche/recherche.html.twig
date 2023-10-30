@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h2>Recherche par mot-clé :</h2>
+
+<form method="GET" action="{{ path('app_recherche') }}">
+    {{ form(form) }}
+    <button type="submit">Rechercher</button>
+</form>
+{% endblock %}

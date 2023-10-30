@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h2>Données administratives et pédagogiques de : {{apprenant.nom}} {{apprenant.prenom}}</h2>
+<p> Date de naissance : {{ apprenant.dateNaissance|date('d-m-Y') }}</p>
+<p> Telephone : {{ apprenant.telephone }}</p>
+<p> consentement au réglement RGPD : {% if apprenant.consentement == 1%}Oui{% else %}non {% endif %} </p>
+<p> Lieu de naissance : {{ apprenant.donneesAdministratives.lieuNaissance }}</p>
+<p> Pays de naissance : {{ apprenant.donneesAdministratives.paysNaissance }}</p>
+<p> Adresse : {{ apprenant.donneesAdministratives.adresse }}</p>
+<p> Code postal : {{ apprenant.donneesAdministratives.codePostal }}</p>
+<p> Commune : {{ apprenant.donneesAdministratives.commune }}</p>
+<p> Nationalite : {{ apprenant.donneesAdministratives.nationalite }}</p>
+<p> Situation professionnelle : {{ apprenant.donneesAdministratives.commune }}</p>
+<p> N° Pole Emploi : {{ apprenant.donneesAdministratives.NumeroPoleEmploi }}</p>
+<p> Derniére classe suivie : {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</p>
+<p> Dernier diplôme obtenu : {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</p>
+<p> Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
+<p> Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
+<p> Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>
+
+
+
+{% endblock %}

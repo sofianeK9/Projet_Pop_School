@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ResponsableTerritorial{% endblock %}
+
+{% block body %}
+    <h1>ResponsableTerritorial</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ responsable_territorial.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ responsable_territorial.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ responsable_territorial.prenom }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ responsable_territorial.createdAt ? responsable_territorial.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ responsable_territorial.updatedAt ? responsable_territorial.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DeletedAt</th>
+                <td>{{ responsable_territorial.deletedAt ? responsable_territorial.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_responsable_territorial_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">edit</a>
+
+    {{ include('admin/responsable_territorial/_delete_form.html.twig') }}
+{% endblock %}

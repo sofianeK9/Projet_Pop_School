@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ResponsableTerritorial{% endblock %}
+
+{% block body %}
+    <h1>Create new ResponsableTerritorial</h1>
+
+    {{ include('admin/responsable_territorial/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_responsable_territorial_index') }}">back to list</a>
+{% endblock %}
