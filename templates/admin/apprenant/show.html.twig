@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Apprenant{% endblock %}
+
+{% block body %}
+    <h1>Apprenant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ apprenant.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ apprenant.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ apprenant.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ apprenant.genre }}</td>
+            </tr>
+            <tr>
+                <th>DateNaissance</th>
+                <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ apprenant.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Consentement</th>
+                <td>{{ apprenant.consentement ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ apprenant.createdAt ? apprenant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ apprenant.updatedAt ? apprenant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DeletedAt</th>
+                <td>{{ apprenant.deletedAt ? apprenant.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_apprenant_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_apprenant_edit', {'id': apprenant.id}) }}">edit</a>
+
+    {{ include('admin/apprenant/_delete_form.html.twig') }}
+{% endblock %}

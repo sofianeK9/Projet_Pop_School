@@ -1,12 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Recherche par nom ou prénom{% endblock %}
 
 {% block body %}
-<h2>Recherche par mot-clé :</h2>
+    <h1>Recherche par nom ou prénom :</h1>
 
-<form method="GET" action="{{ path('app_recherche') }}">
-    {{ form(form) }}
-    <button type="submit">Rechercher</button>
-</form>
+    {{ form_start(form) }}
+    {{ form_row(form.keyword) }}
+    {{ form_row(form.search) }}
+    {{ form_end(form) }}
+
+    {% if keyword is not empty %}
+        <h3>Résultats de la recherche pour "{{ keyword }}"</h3>
+        {% if results is empty %}
+            <p>Aucun résultat trouvé.</p>
+        {% else %}
+            <ul>
+                {% for apprenant in results %}
+                    <li>{{ apprenant.nom }} {{ apprenant.prenom }}</li>
+                    <ul>
+                        <li>Données Administratives:</li>
+                        <li>Lieu de naissance: {{ apprenant.donneesAdministratives.lieuNaissance }}</li>
+                        <li>Email: {{ apprenant.donneesAdministratives.email }}</li>
+                        <li>Pays de naissance: {{ apprenant.donneesAdministratives.paysNaissance }}</li>
+                        <li>Adresse: {{ apprenant.donneesAdministratives.adresse }}</li>
+                        <li>Code Postal: {{ apprenant.donneesAdministratives.codePostal }}</li>
+                        <li>Commune: {{ apprenant.donneesAdministratives.commune }}</li>
+                        <li>Nationalité: {{ apprenant.donneesAdministratives.nationalite }}</li>
+                        <li>Situation Professionnelle: {{ apprenant.donneesAdministratives.situationProfessionnelle }}</li>
+                        <li>Numéro Pôle Emploi: {{ apprenant.donneesAdministratives.numeroPoleEmploi }}</li>
+                        <li>Dernière Classe Suivie: {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</li>
+                        <li>Dernier Diplôme Obtenu: {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</li>
+                    </ul>
+                    <ul>
+                        <li>Données Pédagogiques:</li>
+                        <li>Compte GitHub: {{ apprenant.donneesPedagogiques.compteGithub }}</li>
+                        <li>Compte Discord: {{ apprenant.donneesPedagogiques.compteDiscord }}</li>
+                        <li>Compte LinkedIn: {{ apprenant.donneesPedagogiques.compteLinkedin }}</li>
+                    </ul>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
 {% endblock %}

@@ -20,21 +20,24 @@ class ApprenantRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Apprenant::class);
     }
+/**
+ * @return Apprenant[] Returns an array of Apprenant objects
+ */
+public function RechercheApprenant($keyword, $nom, $prenom): array
+{
+    $query = $this->createQueryBuilder('a')
+        ->leftJoin('a.donneesPedagogiques', 'dp')
+        ->leftJoin('a.donneesAdministratives', 'da');
 
-//    /**
-//     * @return Apprenant[] Returns an array of Apprenant objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    if ($keyword) {
+        $query->andWhere('a.nom LIKE :keyword OR a.prenom LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%');
+    }
+
+    return $query->getQuery()->getResult();
+}
+
+    
 
 //    public function findOneBySomeField($value): ?Apprenant
 //    {
