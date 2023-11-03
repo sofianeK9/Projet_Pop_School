@@ -26,10 +26,13 @@ class ResponsableTerritorialController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $responsableTerritorial = new ResponsableTerritorial();
+
         $form = $this->createForm(ResponsableTerritorialType::class, $responsableTerritorial);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $responsableTerritorial->getUser();
+            $user->setRoles(['ROLE_RESPONSABLE_TERRITORIAL']);
             $entityManager->persist($responsableTerritorial);
             $entityManager->flush();
 

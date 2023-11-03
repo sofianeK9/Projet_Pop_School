@@ -30,6 +30,9 @@ class ApprenantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $apprenant->getUser();
+            $user->setRoles(['ROLE_APPRENANT']);
+            
             $entityManager->persist($apprenant);
             $entityManager->flush();
 

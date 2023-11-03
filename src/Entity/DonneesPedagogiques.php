@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DonneesPedagogiquesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -94,4 +95,9 @@ class DonneesPedagogiques
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getCompteDiscord();
+    }
+  
 }

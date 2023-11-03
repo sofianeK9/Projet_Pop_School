@@ -23,7 +23,7 @@ class ApprenantRepository extends ServiceEntityRepository
 /**
  * @return Apprenant[] Returns an array of Apprenant objects
  */
-public function RechercheApprenant($keyword, $nom, $prenom): array
+public function RechercheApprenant($keyword): array
 {
     $query = $this->createQueryBuilder('a')
         ->leftJoin('a.donneesPedagogiques', 'dp')

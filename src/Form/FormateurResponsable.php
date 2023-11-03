@@ -2,18 +2,19 @@
 
 namespace App\Form;
 
-use App\Entity\Promotion;
 use App\Entity\Formateur;
+use App\Entity\Promotion;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class FormateurType extends AbstractType
+
+class FormateurResponsable extends AbstractType
 {
     private $passwordHasher;
 
@@ -22,6 +23,7 @@ class FormateurType extends AbstractType
         $this->passwordHasher = $passwordHasher;
     }
     public function buildForm(FormBuilderInterface $builder, array $options): void
+
     {
         $builder
             ->add('nom')

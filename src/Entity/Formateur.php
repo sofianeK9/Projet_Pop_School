@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use App\Repository\FormateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+
 
 #[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 #[ORM\Entity(repositoryClass: FormateurRepository::class)]
@@ -16,7 +18,7 @@ class Formateur
 {
     use TimestampableEntity;
     use SoftDeleteableEntity;
-    
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -105,5 +107,16 @@ class Formateur
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        $promotions = $this->getPromotions();
+        $promotionNames = [];
+
+        foreach ($promotions as $promotion) {
+            $promotionNames[] = $promotion->getNom();
+
+            return implode(', ', $promotionNames);
+        }
     }
 }

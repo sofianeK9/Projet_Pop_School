@@ -329,6 +329,10 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
         $datas = [
             [
+                'email' => 'dupont@exemple.com',
+                'password' => '123',
+                'roles' => ['ROLE_FORMATEUR'],
+
                 'nom' => 'Laurent',
                 'prenom' => 'Dupont',
 
@@ -336,6 +340,10 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
             ],
             [
+                'email' => 'sparow@exemple.com',
+                'password' => '123',
+                'roles' => ['ROLE_FORMATEUR'],
+
                 'nom' => 'Jack',
                 'prenom' => 'Sparow',
 
@@ -350,6 +358,14 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
             $formateur->addPromotion($data['promotions'][0]);
 
+            $user = new User();
+            $user->setEmail($data['email']);
+            $password = $this->hasher->hashPassword($user, $data['password']);
+            $user->setPassword($password);
+            $user->setRoles($data['roles']);
+
+            $user->setFormateur($formateur);
+
             $this->manager->persist($formateur);
         }
 
@@ -360,6 +376,14 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
             $nbPromos = random_int(1, 3);
             $shortList = $this->faker->randomElements($promotions, $nbPromos);
+
+            $user = new User();
+            $user->setEmail($this->faker->safeEmail());
+            $password = $this->hasher->hashPassword($user, $data['password']);
+            $user->setPassword($password);
+            $user->setRoles($data['roles']);
+
+            $user->setFormateur($formateur);
 
             foreach ($shortList as $promo) {
                 $formateur->addPromotion($promo);

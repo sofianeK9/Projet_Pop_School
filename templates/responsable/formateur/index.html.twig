@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formateur index{% endblock %}
+
+{% block body %}
+    <h1>Formateur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>DeletedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formateur in formateurs %}
+            <tr>
+                <td>{{ formateur.id }}</td>
+                <td>{{ formateur.nom }}</td>
+                <td>{{ formateur.prenom }}</td>
+                <td>{{ formateur.createdAt ? formateur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ formateur.updatedAt ? formateur.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ formateur.deletedAt ? formateur.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_responsable_formateur_show', {'id': formateur.id}) }}">show</a>
+                    <a href="{{ path('app_responsable_formateur_edit', {'id': formateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_responsable_formateur_new') }}">Create new</a>
+{% endblock %}

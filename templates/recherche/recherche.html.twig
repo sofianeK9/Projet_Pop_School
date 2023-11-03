@@ -5,13 +5,13 @@
 {% block body %}
     <h1>Recherche par nom ou prénom :</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'method' : 'POST'})}}
     {{ form_row(form.keyword) }}
     {{ form_row(form.search) }}
     {{ form_end(form) }}
 
     {% if keyword is not empty %}
-        <h3>Résultats de la recherche pour "{{ keyword }}"</h3>
+        <h3>Résultats de la recherche pour l'apprenant "{{ keyword }}"</h3>
         {% if results is empty %}
             <p>Aucun résultat trouvé.</p>
         {% else %}
@@ -19,25 +19,39 @@
                 {% for apprenant in results %}
                     <li>{{ apprenant.nom }} {{ apprenant.prenom }}</li>
                     <ul>
-                        <li>Données Administratives:</li>
-                        <li>Lieu de naissance: {{ apprenant.donneesAdministratives.lieuNaissance }}</li>
-                        <li>Email: {{ apprenant.donneesAdministratives.email }}</li>
-                        <li>Pays de naissance: {{ apprenant.donneesAdministratives.paysNaissance }}</li>
-                        <li>Adresse: {{ apprenant.donneesAdministratives.adresse }}</li>
-                        <li>Code Postal: {{ apprenant.donneesAdministratives.codePostal }}</li>
-                        <li>Commune: {{ apprenant.donneesAdministratives.commune }}</li>
-                        <li>Nationalité: {{ apprenant.donneesAdministratives.nationalite }}</li>
-                        <li>Situation Professionnelle: {{ apprenant.donneesAdministratives.situationProfessionnelle }}</li>
-                        <li>Numéro Pôle Emploi: {{ apprenant.donneesAdministratives.numeroPoleEmploi }}</li>
-                        <li>Dernière Classe Suivie: {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</li>
-                        <li>Dernier Diplôme Obtenu: {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</li>
+                        <p>Données communes</p>
+                        <li>Nom : {{ apprenant.nom }}</li>
+                        <li>Prénom : {{ apprenant.prenom }}</li>
+                        <li>Genre : {{ apprenant.genre }}</li>
+                        <li>Date de naissance : {{ apprenant.dateNaissance|date('d-m-Y') }}</li>
+                        <li>Email : {{ apprenant.user.email }}</li>
+                        <li>Télephone : {{ apprenant.telephone }}</li>
                     </ul>
-                    <ul>
-                        <li>Données Pédagogiques:</li>
-                        <li>Compte GitHub: {{ apprenant.donneesPedagogiques.compteGithub }}</li>
-                        <li>Compte Discord: {{ apprenant.donneesPedagogiques.compteDiscord }}</li>
-                        <li>Compte LinkedIn: {{ apprenant.donneesPedagogiques.compteLinkedin }}</li>
-                    </ul>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
+                        <ul>
+                            <p>Données Administratives</p>
+                            <li>Lieu de naissance: {{ apprenant.donneesAdministratives.lieuNaissance }}</li>
+                            <li>Email: {{ apprenant.donneesAdministratives.email }}</li>
+                            <li>Pays de naissance: {{ apprenant.donneesAdministratives.paysNaissance }}</li>
+                            <li>Adresse: {{ apprenant.donneesAdministratives.adresse }}</li>
+                            <li>Code Postal: {{ apprenant.donneesAdministratives.codePostal }}</li>
+                            <li>Commune: {{ apprenant.donneesAdministratives.commune }}</li>
+                            <li>Nationalité: {{ apprenant.donneesAdministratives.nationalite }}</li>
+                            <li>Situation Professionnelle: {{ apprenant.donneesAdministratives.situationProfessionnelle }}</li>
+                            <li>Numéro Pôle Emploi: {{ apprenant.donneesAdministratives.numeroPoleEmploi }}</li>
+                            <li>Dernière Classe Suivie: {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</li>
+                            <li>Dernier Diplôme Obtenu: {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</li>
+                        </ul>
+                    {% endif %}
+                    {% if is_granted('ROLE_FORMATEUR') %}
+                        <ul>
+                            <p>Données Pédagogiques</p>
+                            <li>Compte GitHub: {{ apprenant.donneesPedagogiques.compteGithub }}</li>
+                            <li>Compte Discord: {{ apprenant.donneesPedagogiques.compteDiscord }}</li>
+                            <li>Compte LinkedIn: {{ apprenant.donneesPedagogiques.compteLinkedin }}</li>
+                        </ul>
+                    {% endif %}
+                </ul>
                 {% endfor %}
             </ul>
         {% endif %}
