@@ -40,6 +40,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
 
         $this->loadPromotions();
         $this->loadFormateurs();
+        $this->chargerFormateursEtAssocier();
         $this->loadsApprenants();
         $this->loadResponsableTerritorial();
         $this->loadAdministrateur();
@@ -274,124 +275,128 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
     }
 
     public function loadPromotions(): void
-    {
+{
+    $datas = [
+        [
+            'nom' => 'Promo Foo',
+            'description' => 'lorem ipsum',
+            'dateFin' => new \DateTime('2024-02-08'),
+        ],
+        [
+            'nom' => 'Promo Bar',
+            'description' => 'lorem ipsum',
+            'dateFin' => new \DateTime('2023-12-21'),
+        ],
+        [
+            'nom' => 'Promo Baz',
+            'description' => 'lorem ipsum',
+            'dateFin' => new \DateTime('2024-05-31'),
+        ],
+    ];
 
-        $datas = [
-            [
-                'nom' => 'Promo Foo',
-                'description' => 'lorem ipsum',
-                'dateFin' => new \DateTime('2024-02-08'),
+    foreach ($datas as $data) {
+        $promotion = new Promotion();
+        $promotion->setNom($data['nom']);
+        $promotion->setDescription($data['description']);
+        $promotion->setDateFin($data['dateFin']);
 
-
-            ],
-            [
-                'nom' => 'Promo Bar',
-                'description' => 'lorem ipsum',
-                'dateFin' => new \DateTime('2023-12-21'),
-
-
-            ],
-            [
-                'nom' => 'Promo Baz',
-                'description' => 'lorem ipsum',
-                'dateFin' => new \DateTime('2024-05-31'),
-
-
-            ],
-        ];
-
-        foreach ($datas as $data) {
-            $promotion = new Promotion();
-            $promotion->setNom($data['nom']);
-            $promotion->setDescription($data['description']);
-            $promotion->setDateFin($data['dateFin']);
-
-            $this->manager->persist($promotion);
-        }
-
-        for ($i = 0; $i < 20; $i++) {
-            $promotion = new Promotion();
-            $promotion->setNom($this->faker->word);
-            $promotion->setDescription($this->faker->sentence);
-            $promotion->setDateFin($this->faker->dateTimeBetween('+ 6 months', '+ 8 months'));
-
-            $this->manager->persist($promotion);
-        }
-        $this->manager->flush();
+        $this->manager->persist($promotion);
     }
 
-    public function loadFormateurs(): void
-    {
-        $promotionRepository = $this->manager->getRepository(Promotion::class);
-        $promotions = $promotionRepository->findAll();
-        $promo1 = $promotionRepository->find(1);
-        $promo2 = $promotionRepository->find(2);
+    for ($i = 0; $i < 20; $i++) {
+        $promotion = new Promotion();
+        $promotion->setNom($this->faker->word);
+        $promotion->setDescription($this->faker->sentence);
+        $promotion->setDateFin($this->faker->dateTimeBetween('+6 months', '+8 months'));
 
-        $datas = [
-            [
-                'email' => 'dupont@exemple.com',
-                'password' => '123',
-                'roles' => ['ROLE_FORMATEUR'],
-
-                'nom' => 'Laurent',
-                'prenom' => 'Dupont',
-
-                'promotions' => [$promo1]
-
-            ],
-            [
-                'email' => 'sparow@exemple.com',
-                'password' => '123',
-                'roles' => ['ROLE_FORMATEUR'],
-
-                'nom' => 'Jack',
-                'prenom' => 'Sparow',
-
-                'promotions' => [$promo2]
-
-            ]
-        ];
-        foreach ($datas as $data) {
-            $formateur = new Formateur();
-            $formateur->setNom($data['nom']);
-            $formateur->setPrenom($data['prenom']);
-
-            $formateur->addPromotion($data['promotions'][0]);
-
-            $user = new User();
-            $user->setEmail($data['email']);
-            $password = $this->hasher->hashPassword($user, $data['password']);
-            $user->setPassword($password);
-            $user->setRoles($data['roles']);
-
-            $user->setFormateur($formateur);
-
-            $this->manager->persist($formateur);
-        }
-
-        for ($i = 0; $i < 6; $i++) {
-            $formateur = new Formateur();
-            $formateur->setNom($this->faker->lastName());
-            $formateur->setPrenom($this->faker->firstName());
-
-            $nbPromos = random_int(1, 3);
-            $shortList = $this->faker->randomElements($promotions, $nbPromos);
-
-            $user = new User();
-            $user->setEmail($this->faker->safeEmail());
-            $password = $this->hasher->hashPassword($user, $data['password']);
-            $user->setPassword($password);
-            $user->setRoles($data['roles']);
-
-            $user->setFormateur($formateur);
-
-            foreach ($shortList as $promo) {
-                $formateur->addPromotion($promo);
-            }
-            $this->manager->persist($formateur);
-        }
-        $this->manager->flush();
+        $this->manager->persist($promotion);
     }
+
+    $this->manager->flush();
+}
+
+public function loadFormateurs(): void
+{
+    $promotionRepository = $this->manager->getRepository(Promotion::class);
+    $promotions = $promotionRepository->findAll();
+    
+    $datas = [
+        [
+            'email' => 'dupont@exemple.com',
+            'password' => '123',
+            'roles' => ['ROLE_FORMATEUR'],
+            'nom' => 'Laurent',
+            'prenom' => 'Dupont',
+        ],
+        [
+            'email' => 'sparow@exemple.com',
+            'password' => '123',
+            'roles' => ['ROLE_FORMATEUR'],
+            'nom' => 'Jack',
+            'prenom' => 'Sparow',
+        ]
+    ];
+
+    foreach ($datas as $data) {
+        $formateur = new Formateur();
+        $formateur->setNom($data['nom']);
+        $formateur->setPrenom($data['prenom']);
+
+        $user = new User();
+        $user->setEmail($data['email']);
+        $password = $this->hasher->hashPassword($user, $data['password']);
+        $user->setPassword($password);
+        $user->setRoles($data['roles']);
+
+        $user->setFormateur($formateur);
+
+        $this->manager->persist($formateur);
+    }
+
+    for ($i = 0; $i < 10; $i++) {
+        $formateur = new Formateur();
+        $formateur->setNom($this->faker->lastName());
+        $formateur->setPrenom($this->faker->firstName());
+
+        $user = new User();
+        $user->setEmail($this->faker->safeEmail());
+        $password = $this->hasher->hashPassword($user, '123');
+        $user->setPassword($password);
+        $user->setRoles(['ROLE_FORMATEUR']);
+
+        $user->setFormateur($formateur);
+
+        $nbPromos = random_int(1, 3);
+        $shortList = $this->faker->randomElements($promotions, $nbPromos);
+
+        foreach ($shortList as $promo) {
+            $formateur->addPromotion($promo);
+        }
+
+        $this->manager->persist($formateur);
+    }
+
+    $this->manager->flush();
+}
+
+public function chargerFormateursEtAssocier(): void
+{
+    $promotionRepository = $this->manager->getRepository(Promotion::class);
+    $promotions = $promotionRepository->findAll();
+    $formateurs = $this->manager->getRepository(Formateur::class)->findAll();
+
+    foreach ($promotions as $promotion) {
+        $nbFormateurs = random_int(1, 3);
+        $formateursAleatoires = $this->faker->randomElements($formateurs, $nbFormateurs);
+
+        foreach ($formateursAleatoires as $formateur) {
+            $promotion->addFormateur($formateur);
+        }
+    }
+
+    $this->manager->flush();
+}
+
 
     public function loadResponsableTerritorial(): void
     {

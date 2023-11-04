@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ResponsableTerritorial index{% endblock %}
+{% block title %}Responsable Territorial index{% endblock %}
 
 {% block body %}
-    <h1>ResponsableTerritorial index</h1>
-    <a href="{{ path('app_admin_responsable_territorial_new') }}">Create new</a>
+    <h1>Responsable Territorial index</h1>
+    <a href="{{ path('app_admin_responsable_territorial_new') }}">Créér un nouveau Responsable Territorial</a>
 
     <table class="table">
         <thead>
@@ -28,8 +28,8 @@
                 <td>{{ responsable_territorial.updatedAt ? responsable_territorial.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ responsable_territorial.deletedAt ? responsable_territorial.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_admin_responsable_territorial_show', {'id': responsable_territorial.id}) }}">show</a>
-                    <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_responsable_territorial_show', {'id': responsable_territorial.id}) }}">voir</a>
+                    <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ResponsableTerritorial{% endblock %}
+{% block title %}Responsable Territorial{% endblock %}
 
 {% block body %}
-    <h1>ResponsableTerritorial</h1>
+    <h1>Responsable Territorial</h1>
 
     <table class="table">
         <tbody>
@@ -34,9 +34,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_responsable_territorial_index') }}">back to list</a>
+    <a href="{{ path('app_admin_responsable_territorial_index') }}">retour à la liste</a>
 
-    <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">edit</a>
+    <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">éditer</a>
 
     {{ include('admin/responsable_territorial/_delete_form.html.twig') }}
 {% endblock %}

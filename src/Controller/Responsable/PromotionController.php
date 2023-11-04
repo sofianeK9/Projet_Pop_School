@@ -45,8 +45,11 @@ class PromotionController extends AbstractController
     #[Route('/{id}', name: 'app_responsable_promotion_show', methods: ['GET'])]
     public function show(Promotion $promotion): Response
     {
+        $formateur = $promotion->getFormateurs();
+
         return $this->render('responsable/promotion/show.html.twig', [
             'promotion' => $promotion,
+            'formateurs' => $formateur,
         ]);
     }
 

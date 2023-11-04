@@ -5,6 +5,7 @@ namespace App\Controller\Responsable;
 use App\Entity\Formateur;
 use App\Form\FormateurResponsable;
 use App\Repository\FormateurRepository;
+use App\Repository\PromotionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +17,13 @@ class FormateurController extends AbstractController
 {
     #[Route('/', name: 'app_responsable_formateur_index', methods: ['GET'])]
     public function index(FormateurRepository $formateurRepository): Response
+
     {
+
+
         return $this->render('responsable/formateur/index.html.twig', [
             'formateurs' => $formateurRepository->findAll(),
+
         ]);
     }
 
@@ -32,7 +37,7 @@ class FormateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $formateur->getUser();
             $user->setRoles(['ROLE_FORMATEUR']);
-            
+
             $entityManager->persist($formateur);
             $entityManager->flush();
 
@@ -48,8 +53,11 @@ class FormateurController extends AbstractController
     #[Route('/{id}', name: 'app_responsable_formateur_show', methods: ['GET'])]
     public function show(Formateur $formateur): Response
     {
+        $promotions = $formateur->getPromotions();
+
         return $this->render('responsable/formateur/show.html.twig', [
             'formateur' => $formateur,
+            'promotions' => $promotions,
         ]);
     }
 
@@ -74,7 +82,7 @@ class FormateurController extends AbstractController
     #[Route('/{id}', name: 'app_responsable_formateur_delete', methods: ['POST'])]
     public function delete(Request $request, Formateur $formateur, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$formateur->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $formateur->getId(), $request->request->get('_token'))) {
             $entityManager->remove($formateur);
             $entityManager->flush();
         }

@@ -24,23 +24,19 @@
                 <td>{{ promotion.dateFin ? promotion.dateFin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ promotion.createdAt ? promotion.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ promotion.updatedAt ? promotion.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DeletedAt</th>
-                <td>{{ promotion.deletedAt ? promotion.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Formateur</th>
+                <td>
+                    {% for formateur in formateurs %}
+                    {{ formateur.nom }}   {{ formateur.prenom }}
+                    {% if not loop.last %}, {% endif %} {% endfor %}
+                  </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_responsable_promotion_index') }}">back to list</a>
+    <a href="{{ path('app_responsable_promotion_index') }}">retour à la liste</a>
 
-    <a href="{{ path('app_responsable_promotion_edit', {'id': promotion.id}) }}">edit</a>
+    <a href="{{ path('app_responsable_promotion_edit', {'id': promotion.id}) }}">éditer</a>
 
     {{ include('responsable/promotion/_delete_form.html.twig') }}
 {% endblock %}

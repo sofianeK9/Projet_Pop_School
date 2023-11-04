@@ -15,9 +15,6 @@
                 <th>DateNaissance</th>
                 <th>Telephone</th>
                 <th>Consentement</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>DeletedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -30,13 +27,10 @@
                 <td>{{ apprenant.genre }}</td>
                 <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
                 <td>{{ apprenant.telephone }}</td>
-                <td>{{ apprenant.consentement ? 'Yes' : 'No' }}</td>
-                <td>{{ apprenant.createdAt ? apprenant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ apprenant.updatedAt ? apprenant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ apprenant.deletedAt ? apprenant.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ apprenant.consentement ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('app_admin_apprenant_show', {'id': apprenant.id}) }}">show</a>
-                    <a href="{{ path('app_admin_apprenant_edit', {'id': apprenant.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_apprenant_show', {'id': apprenant.id}) }}">voir</a>
+                    <a href="{{ path('app_admin_apprenant_edit', {'id': apprenant.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}

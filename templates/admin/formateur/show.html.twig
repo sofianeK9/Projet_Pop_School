@@ -19,24 +19,12 @@
                 <th>Prenom</th>
                 <td>{{ formateur.prenom }}</td>
             </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ formateur.createdAt ? formateur.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ formateur.updatedAt ? formateur.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DeletedAt</th>
-                <td>{{ formateur.deletedAt ? formateur.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_formateur_index') }}">back to list</a>
+    <a href="{{ path('app_admin_formateur_index') }}">retour à la liste</a>
 
-    <a href="{{ path('app_admin_formateur_edit', {'id': formateur.id}) }}">edit</a>
+    <a href="{{ path('app_admin_formateur_edit', {'id': formateur.id}) }}">éditer</a>
 
     {{ include('admin/formateur/_delete_form.html.twig') }}
 {% endblock %}
