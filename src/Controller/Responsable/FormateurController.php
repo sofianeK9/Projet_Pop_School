@@ -5,7 +5,6 @@ namespace App\Controller\Responsable;
 use App\Entity\Formateur;
 use App\Form\FormateurResponsable;
 use App\Repository\FormateurRepository;
-use App\Repository\PromotionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
