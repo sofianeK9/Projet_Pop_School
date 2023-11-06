@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\DonneesAdministratives;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,17 @@ class DonneesAdministrativesType extends AbstractType
             ->add('codePostal')
             ->add('commune')
             ->add('nationalite')
-            ->add('situationProfessionnelle')
+            ->add('situationProfessionnelle', ChoiceType::class, [
+                'choices' =>  [
+                    '' => '',
+                    'RSA' => 'RSA',
+                    'ARE' => 'ARE',
+                    'Minima sociaux' => 'Minima sociaux',
+                ]
+
+
+
+            ])
             ->add('numeroPoleEmploi')
             ->add('derniereClasseSuivie')
             ->add('dernierDiplomeObtenu');

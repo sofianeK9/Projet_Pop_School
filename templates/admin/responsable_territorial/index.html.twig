@@ -12,9 +12,6 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>DeletedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,9 +21,6 @@
                 <td>{{ responsable_territorial.id }}</td>
                 <td>{{ responsable_territorial.nom }}</td>
                 <td>{{ responsable_territorial.prenom }}</td>
-                <td>{{ responsable_territorial.createdAt ? responsable_territorial.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ responsable_territorial.updatedAt ? responsable_territorial.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ responsable_territorial.deletedAt ? responsable_territorial.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_admin_responsable_territorial_show', {'id': responsable_territorial.id}) }}">voir</a>
                     <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">éditer</a>

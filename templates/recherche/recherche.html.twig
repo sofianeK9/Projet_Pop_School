@@ -17,41 +17,15 @@
         {% else %}
             <ul>
                 {% for apprenant in results %}
-                    <li>{{ apprenant.nom }} {{ apprenant.prenom }}</li>
-                    <ul>
-                        <p>Données communes</p>
-                        <li>Nom : {{ apprenant.nom }}</li>
-                        <li>Prénom : {{ apprenant.prenom }}</li>
-                        <li>Genre : {{ apprenant.genre }}</li>
-                        <li>Date de naissance : {{ apprenant.dateNaissance|date('d-m-Y') }}</li>
-                        <li>Email : {{ apprenant.user.email }}</li>
-                        <li>Télephone : {{ apprenant.telephone }}</li>
-                    </ul>
-                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
-                        <ul>
-                            <p>Données Administratives</p>
-                            <li>Lieu de naissance: {{ apprenant.donneesAdministratives.lieuNaissance }}</li>
-                            <li>Email: {{ apprenant.donneesAdministratives.email }}</li>
-                            <li>Pays de naissance: {{ apprenant.donneesAdministratives.paysNaissance }}</li>
-                            <li>Adresse: {{ apprenant.donneesAdministratives.adresse }}</li>
-                            <li>Code Postal: {{ apprenant.donneesAdministratives.codePostal }}</li>
-                            <li>Commune: {{ apprenant.donneesAdministratives.commune }}</li>
-                            <li>Nationalité: {{ apprenant.donneesAdministratives.nationalite }}</li>
-                            <li>Situation Professionnelle: {{ apprenant.donneesAdministratives.situationProfessionnelle }}</li>
-                            <li>Numéro Pôle Emploi: {{ apprenant.donneesAdministratives.numeroPoleEmploi }}</li>
-                            <li>Dernière Classe Suivie: {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</li>
-                            <li>Dernier Diplôme Obtenu: {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</li>
-                        </ul>
-                    {% endif %}
-                    {% if is_granted('ROLE_FORMATEUR') %}
-                        <ul>
-                            <p>Données Pédagogiques</p>
-                            <li>Compte GitHub: {{ apprenant.donneesPedagogiques.compteGithub }}</li>
-                            <li>Compte Discord: {{ apprenant.donneesPedagogiques.compteDiscord }}</li>
-                            <li>Compte LinkedIn: {{ apprenant.donneesPedagogiques.compteLinkedin }}</li>
-                        </ul>
-                    {% endif %}
-                </ul>
+                <li>
+                <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}">{{
+                    apprenant.nom
+                  }} {{
+                    apprenant.prenom
+                  }}
+                  </a
+                  >
+                </li>
                 {% endfor %}
             </ul>
         {% endif %}

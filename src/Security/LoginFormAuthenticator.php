@@ -44,19 +44,21 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-         /** @var \App\Entity\User */
+        /** @var \App\Entity\User */
         $user = $token->getUser();
         $roles = $token->getRoleNames();
 
 
         if (in_array('ROLE_ADMIN', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
-        }elseif (in_array('ROLE_RESPONSABLE_TERRITORIAL', $roles)) {
+        } elseif (in_array('ROLE_RESPONSABLE_TERRITORIAL', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
-        }elseif (in_array('ROLE_FORMATEUR', $roles)) {
+        } elseif (in_array('ROLE_FORMATEUR', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        } elseif (in_array('APPRENANT', $roles)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        }
     }
-}
 
     protected function getLoginUrl(Request $request): string
     {
