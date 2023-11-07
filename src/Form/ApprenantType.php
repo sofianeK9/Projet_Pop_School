@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Apprenant;
-use App\Entity\DonneesPedagogiques;
-use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;

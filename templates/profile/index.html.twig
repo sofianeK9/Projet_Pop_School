@@ -17,12 +17,11 @@
         <tbody>
         {% for user in users %}
             <tr>
-                {%if is_granted('ROLE_ADMIN') or app.user == user%}
+                {% if app.user == user%}
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.password }}</td>
                 <td>
-                    
                     <a href="{{ path('app_profile_show', {'id': user.id}) }}">voir</a>
                     <a href="{{ path('app_profile_edit', {'id': user.id}) }}">éditer</a>
                 
@@ -36,7 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-    {% if is_granted('ROLE_ADMIN')%}
-    <a href="{{ path('app_profile_new') }}">Créér un user</a>
-    {% endif %}
 {% endblock %}

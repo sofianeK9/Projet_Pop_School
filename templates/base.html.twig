@@ -5,131 +5,85 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
-    {# Run `composer require symfony/webpack-encore-bundle` to start using
-    Symfony UX #} {% block stylesheets %}
-    {{
-      encore_entry_link_tags("app")
-    }}
-    {% endblock %}
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"
+    />
+    {# Inclure vos fichiers CSS personnalisés ici s'ils existent #}
   </head>
   <body>
-    {%block header %}
+    {% block header %}
     <div class="container">
       <div class="row">
         <div class="col">
-          <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="{{ path('app_home') }}">Home</a>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  {% if is_granted('ROLE_ADMIN')%}
+          <nav>
+            <div>
+              <a href="{{ path('app_home') }}">Home</a>
+            </div>
+            <div>
+              <ul>
+                {% if is_granted('ROLE_ADMIN') %}
                   <li>
-                    <a
-                      class="nav-link"
-                      href="{{
-                        path('app_admin_responsable_territorial_index')
-                      }}"
-                      >RT</a
-                    >
+                    <a href="{{ path('app_admin_administrateur_index') }}">Administrateur</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_admin_promotion_index') }}"
-                      >Promotions</a
-                    >
+                  <li>
+                    <a href="{{ path('app_admin_responsable_territorial_index') }}">RT</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_admin_formateur_index') }}"
-                      >Formateurs</a
-                    >
+                  <li>
+                    <a href="{{ path('app_admin_promotion_index') }}">Promotions</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_recherche') }}"
-                      >Rechercher un apprenant</a
-                    >
+                  <li>
+                    <a href="{{ path('app_admin_formateur_index') }}">Formateurs</a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_admin_apprenant_index') }}"
-                      >Apprenants</a
-                    >
+                  <li>
+                    <a href="{{ path('app_recherche') }}">Rechercher un apprenant</a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_profile_index') }}"
-                      >profil</a
-                    >
+                  <li>
+                    <a href="{{ path('app_admin_apprenant_index') }}">Apprenants</a>
                   </li>
-                  {%elseif is_granted('ROLE_RESPONSABLE_TERRITORIAL')%}
+                  <li>
+                    <a href="{{ path('app_profile_index') }}">Mon profil</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_responsable_promotion_index') }}"
-                      >Promotions</a
-                    >
+                {% elseif is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
+                  <li>
+                    <a href="{{ path('app_responsable_promotion_index') }}">Promotions</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_responsable_formateur_index') }}"
-                      >Formateurs</a
-                    >
+                  <li>
+                    <a href="{{ path('app_responsable_formateur_index') }}">Formateurs</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_recherche') }}"
-                      >Rechercher un Apprenant</a
-                    >
+                  <li>
+                    <a href="{{ path('app_recherche') }}">Rechercher un Apprenant</a>
                   </li>
-                  {% elseif is_granted('ROLE_FORMATEUR')%}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_recherche') }}"
-                      >Apprenants</a
-                    >
+                  <li>
+                    <a href="{{ path('app_profile_index') }}">profil</a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_home') }}"
-                      >Promotions</a
-                    >
+                {% elseif is_granted('ROLE_FORMATEUR') %}
+                  <li>
+                    <a href="{{ path('app_recherche') }}">Apprenants</a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="{{ path('app_profile_index') }}"
-                      >profil</a
-                    >
+                  <li>
+                    <a href="{{ path('app_home') }}">Promotions</a>
                   </li>
-                  {% endif %}
-                </ul>
-                {% if app.user %}
-                <div class="mb-3">
-                  Bonjour {{ app.user.userIdentifier }},
-                  <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </div>
-                {% else %}
-                <div><a href="{{ path('app_register') }}">Inscription</a></div>
-                <div><a href="{{ path('app_login') }}">Connexion</a></div>
+                  <li>
+                    <a href="{{ path('app_profile_index') }}">profil</a>
+                  </li>
                 {% endif %}
+              </ul>
+            </div>
+            <div>
+              {% if app.user %}
+              <div>
+                Bonjour {{ app.user.userIdentifier }},
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
               </div>
+              {% else %}
+              <div><a href="{{ path('app_register') }}">Inscription</a></div>
+              <div><a href="{{ path('app_login') }}">Connexion</a></div>
+              {% endif %}
             </div>
           </nav>
         </div>
       </div>
     </div>
-    {% endblock%} {% block body %}{% endblock %}
+    {% endblock %}
+    {% block body %}{% endblock %}
   </body>
 </html>

@@ -5,6 +5,8 @@
 {% block body %}
     <h1>Promotion index</h1>
 
+    <a href="{{ path('app_admin_promotion_new') }}">Créér une promotion</a>
+
     <table class="table">
         <thead>
             <tr>
@@ -35,5 +37,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_promotion_new') }}">Créér une promotion</a>
 {% endblock %}
