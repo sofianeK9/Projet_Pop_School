@@ -5,6 +5,7 @@
 {% block body %}
     <h1>Recherche par nom ou prénom :</h1>
 
+    <!-- methode HTTPS utilisé est la méthode POST pour soummettre le formulaire  et utile pour securiser les données -->
     {{ form_start(form, {'method' : 'POST'})}}
     {{ form_row(form.keyword) }}
     {{ form_row(form.search) }}

@@ -22,6 +22,9 @@ class ApprenantRepository extends ServiceEntityRepository
     }
 /**
  * @return Apprenant[] Returns an array of Apprenant objects
+ *  fonction qui effectue une jointure avec les entités DA et DP pour accéder à leurs données
+ * condition : si le mot clé a été fourni et si le nom ou prénom correpond au mot clé, la méthode execute la requete et
+ * enverra le résultat
  */
 public function RechercheApprenant($keyword): array
 {

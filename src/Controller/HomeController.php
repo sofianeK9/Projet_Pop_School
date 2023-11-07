@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Apprenant;
 use App\Entity\Promotion;
-use App\Repository\ApprenantRepository;
 use App\Repository\PromotionRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,7 +24,7 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/promotion/{id}', name: 'app_home_promotion_show')]
-    public function promotionShow(Promotion $promotion, ManagerRegistry $doctrine): Response
+    public function promotionShow(Promotion $promotion): Response
     {
         $formateurs = $promotion->getFormateurs();
         $apprenants = $promotion->getApprenants();

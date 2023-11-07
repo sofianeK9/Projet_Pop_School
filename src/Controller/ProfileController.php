@@ -18,14 +18,8 @@ class ProfileController extends AbstractController
     #[Route('/', name: 'app_profile_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
-        $users = $userRepository->findAll();
+        // $users = $userRepository->findAll();
 
-        // if ($this->isGranted('ROLE_FORMATEUR')) 
-        // { /** @var \App\Entity\User $sessionUser */
-        //     $sessionUser = $this->getUser();
-        //     $formateur = $sessionUser->getFormateur();
-
-        // }
         return $this->render('profile/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
