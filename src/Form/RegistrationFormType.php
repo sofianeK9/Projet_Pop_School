@@ -24,6 +24,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email')
             ->add('plainPassword', PasswordType::class, [
+                // false car j'ai besoin de hasher le mdp manuellement avant de l'associer à l'entité
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -38,6 +39,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('confirmedPassword', PasswordType::class, [
+             // false car j'ai besoin de hasher le mdp manuellement avant de l'associer à l'entité
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'label' => 'Confirmez le mot de passe',

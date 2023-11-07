@@ -58,6 +58,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         } elseif (in_array('APPRENANT', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         }
+        else {
+            return new RedirectResponse($this->urlGenerator->generate('app_r_g_p_d'));
+        }
     }
 
     protected function getLoginUrl(Request $request): string

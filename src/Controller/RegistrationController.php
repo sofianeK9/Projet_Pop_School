@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Apprenant;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
@@ -19,15 +20,26 @@ class RegistrationController extends AbstractController
     #[Route('/inscription', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+        // création d'un user lors de l'inscription et attribution du role apprenant
         $user = new User();
         $user->setRoles(['ROLE_APPRENANT']);
+
+        // création du formualire avec l'objet user et soumission avec la requete http
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        // si mon formulaire est soumis et valide : je récupére le mdp et la confirmation du mdp et la promo
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $form->get('plainPassword')->getData();
             $confirmedPassword = $form->get('confirmedPassword')->getData();
+            $promotion = $form->get('promotion')->getData();
 
+            // j'associe le compte user créé à un apprenant et lui associe la promo
+            $apprenant = new Apprenant();
+            $apprenant->setUser($user);
+            $apprenant->setPromotion($promotion);
+
+            // condition : si les deux mdp sont différents : j'affiche une erreur avec le message
             if ($plainPassword !== $confirmedPassword) {
                 $form->get('confirmedPassword')->addError(new FormError('Le mot de passe doit être identique'));
 
@@ -36,7 +48,7 @@ class RegistrationController extends AbstractController
                 ]);
             }
 
-            // encode the plain password
+            // récupére le mdp et le hashe
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -44,6 +56,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // préparation de la requete et envoit de la requete
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
