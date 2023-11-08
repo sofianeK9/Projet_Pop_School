@@ -45,12 +45,9 @@ class RGPDController extends AbstractController
             // préparation de la requete et envoit de la requete
             $entityManager->persist($apprenant);
             $entityManager->flush();
-
-            // puis redirection vers la page de confirmation d'acceptation 
-            return $this->redirectToRoute('registration/rgpd.html.twig'); 
         }
 
-        return $this->render('rgpd/rgpd.html.twig', [
+        return $this->render('rgpd/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
