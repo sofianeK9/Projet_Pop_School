@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Apprenant;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,12 +14,17 @@ class RGPDType extends AbstractType
     {
         $builder
 
-            ->add('consentement', CheckboxType::class, [
-                'label'=> 'Oui',
+        ->add('consentement', ChoiceType::class, [
+            'choices' => [
+                'Oui' => true,
+                'Non' => false,
+            ],
+            'expanded' => true, 
+                'multiple' => false, 
+                'label' => false, 
                 'required' => true,
-            ])
-          
-        ;
+        ]);
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
