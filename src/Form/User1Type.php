@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -22,7 +24,18 @@ class User1Type extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password')
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'options' => [
+                    'attr' => [
+                        'class' => 'password-field',
+                        'autocomplete' => 'new-password'
+                    ]
+                ],
+                'first_options' => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Répétez le mot de passe'],
+                'required' => true,
+            ])
             ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $user = $event->getData();
                 $plainPassword = $user->getPassword();

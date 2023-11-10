@@ -28,13 +28,14 @@ class FormulaireCommunController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // $apprenant contient déjà les données du formulaire grâce au formulaire lié
             $apprenant->setUser($user);
+            $apprenant->setConsentement(true);
 
             // Persiste l'entité apprenant
             $entityManager->persist($apprenant);
 
             // Envoie les modifications à la base de données
             $entityManager->flush();
-            return $this->redirectToRoute('app_formulaire_commun');
+            return $this->redirectToRoute('app_donnees_administratives');
         }
         
        

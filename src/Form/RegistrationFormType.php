@@ -56,13 +56,6 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            
-
-            ->add('promotion', EntityType::class, [
-                'class' => Promotion::class,
-                'choice_label' => 'nom',
-                'mapped' => false,
-            ])
             ->add('captcha', ReCaptchaType::class);
     }
 

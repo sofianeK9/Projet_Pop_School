@@ -62,7 +62,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'genre' => 'masculin',
                 'dateNaissance' => new \DateTime('2000-01-02'),
                 'telephone' => '0760055894',
-                'consentement' => true,
+                'consentement' => false,
 
                 'email' => 'foo@exemple.com',
                 'password' => '123',
@@ -124,7 +124,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
                 'genre' => 'masculin',
                 'dateNaissance' => new \DateTime('1999-07-03'),
                 'telephone' => '0796315464',
-                'consentement' => true,
+                'consentement' => false,
 
                 'email' => 'baz@exemple.com',
                 'password' => '123',
@@ -214,7 +214,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             $dateNaissance = $this->faker->dateTimeBetween('-40 years', '-20 years');
             $apprenant->setDateNaissance($dateNaissance);
             $apprenant->setTelephone($this->faker->phoneNumber());
-            $apprenant->setConsentement($this->faker->boolean());
+            $apprenant->setConsentement($this->faker->boolean(false));
             $promotion = $this->faker->randomElement($promos);
             $apprenant->setPromotion($promotion);
 

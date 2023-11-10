@@ -29,6 +29,7 @@ class FormulaireCommunType extends AbstractType
             ->add('telephone')
             ->add('promotion')
             
+            
         ;
     }
 

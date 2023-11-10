@@ -20,52 +20,54 @@ class RegistrationController extends AbstractController
     #[Route('/inscription', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
-        // création d'un user lors de l'inscription et attribution du rôle apprenant
+        // création d'un user lors de l'inscription et attribution du role apprenant
         $user = new User();
         $user->setRoles(['ROLE_APPRENANT']);
-    
-        // création du formulaire avec l'objet user et soumission avec la requête HTTP
+
+        // création du formualire avec l'objet user et soumission avec la requete http
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-    
-        // si mon formulaire est soumis et valide : je récupère le mdp, la confirmation du mdp et la promo
+
+        // si mon formulaire est soumis et valide : je récupére le mdp et la confirmation du mdp et la promo
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $form->get('plainPassword')->getData();
-            $promotion = $form->get('promotion')->getData();
-    
-            // Vérifier si l'utilisateur est déjà associé à un Apprenant
-            $apprenant = $user->getApprenant();
-            if (!$apprenant) {
-                // Si non, créer une nouvelle instance d'Apprenant et l'associer à l'utilisateur
-                $apprenant = new Apprenant();
-                $apprenant->setUser($user);
-                $apprenant->setPromotion($promotion);
-                
+            $confirmedPassword = $form->get('confirmedPassword')->getData();
+
+            // j'associe le compte user créé à un apprenant et lui associe la promo
+            $apprenant = new Apprenant();
+            $apprenant->setUser($user);
+            // condition : si les deux mdp sont différents : j'affiche une erreur avec le message
+            if ($plainPassword !== $confirmedPassword) {
+                $form->get('confirmedPassword')->addError(new FormError('Le mot de passe doit être identique'));
+
+                return $this->render('registration/register.html.twig', [
+                    'registrationForm' => $form->createView(),
+                ]);
             }
-    
-            // Récupérer le mot de passe et le hasher
+
+            // récupére le mdp et le hashe
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $plainPassword
+                    $plainPassword 
                 )
             );
-    
-            // préparation de la requête et envoi de la requête
+
+            // préparation de la requete et envoit de la requete
             $entityManager->persist($user);
             $entityManager->flush();
-    
             // do anything else you need here, like send an email
-    
+
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
             );
         }
-    
+
         // ...
-    
+
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
