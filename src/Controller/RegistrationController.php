@@ -32,13 +32,10 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $form->get('plainPassword')->getData();
             $confirmedPassword = $form->get('confirmedPassword')->getData();
-            $promotion = $form->get('promotion')->getData();
 
             // j'associe le compte user créé à un apprenant et lui associe la promo
             $apprenant = new Apprenant();
             $apprenant->setUser($user);
-            $apprenant->setPromotion($promotion);
-
             // condition : si les deux mdp sont différents : j'affiche une erreur avec le message
             if ($plainPassword !== $confirmedPassword) {
                 $form->get('confirmedPassword')->addError(new FormError('Le mot de passe doit être identique'));

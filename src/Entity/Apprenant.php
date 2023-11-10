@@ -39,7 +39,7 @@ class Apprenant
     private ?string $telephone = null;
 
     #[ORM\Column]
-    private ?bool $consentement = null;
+    private ?bool $consentement = false;
 
     #[ORM\OneToOne(inversedBy: 'apprenant', cascade: ['persist', 'remove'])]
     private ?User $user = null;

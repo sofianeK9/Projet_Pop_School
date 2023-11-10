@@ -65,6 +65,13 @@
                   <li>
                     <a href="{{ path('app_profile_index') }}">profil</a>
                   </li>
+                  {% elseif is_granted('ROLE_APPRENANT') %}
+                  <li>
+                    <a href="{{ path('app_profile_index') }}">profil</a>
+                  </li>
+                  <li>
+                    <a href="{{ path('app_donnees_communes_index') }}">mes données</a>
+                  </li>
                 {% endif %}
               </ul>
             </div>

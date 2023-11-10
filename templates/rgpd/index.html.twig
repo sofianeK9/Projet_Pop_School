@@ -34,6 +34,16 @@
 
 <h4>9. Modification des Termes</h4>
 <p>9.1 Nous nous réservons le droit de modifier ces Termes à tout moment. Les modifications seront publiées sur le Service et prendront effet immédiatement.</p>
+<form method="post" action="{{ path('app_formulaire_commun') }}">
+  <div class="form-check">
+    {{ form_errors(form) }}
+    {{ form_widget(form.consentement) }}
+    {{ form_label(form.consentement) }}
+  </div>
+  <button type="submit" class="btn btn-primary">Accepter</button>
+  {{ form_end(form) }}
+</form>
 
-<a href="{{ path('app_formulaire_commun') }}" class="btn btn-primary">Accepter</a>
+
+
 {% endblock %}

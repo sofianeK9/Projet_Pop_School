@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Apprenant index{% endblock %}
+
+{% block body %}
+    <h1>Apprenant index</h1>
+
+    {% if apprenant %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Genre</th>
+                    <th>DateNaissance</th>
+                    <th>Telephone</th>
+                    <th>Consentement</th>
+                    <th>Lieu de naissance </th>
+                    <th>Email</th>
+                    <th>Pays de naissance </th>
+                    <th>Code postal </th>
+                    <th>Commune</th>
+                    <th>Nationalité </th>
+                    <th>Situation professionnelle</th>
+                    <th>Numéro pole emploi</th>
+                    <th>Derniére classe suivie </th>
+                    <th>Dernier diplome obtenu </th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ apprenant.id }}</td>
+                    <td>{{ apprenant.nom }}</td>
+                    <td>{{ apprenant.prenom }}</td>
+                    <td>{{ apprenant.genre }}</td>
+                    <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
+                    <td>{{ apprenant.telephone }}</td>
+                    <td>{{ apprenant.consentement ? 'Yes' : 'No' }}</td>
+                    <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
+                    <td>{{ apprenant.donneesAdministratives.email }}</td>
+                    <td>{{ apprenant.donneesAdministratives.paysNaissance }}</td>
+                    <td>{{ apprenant.donneesAdministratives.adresse }}</td>
+                    <td>{{ apprenant.donneesAdministratives.codePostal }}</td>
+                    <td>{{ apprenant.donneesAdministratives.commune }}</td>
+                    <td>{{ apprenant.donneesAdministratives.nationalite }}</td>
+                    <td>{{ apprenant.donneesAdministratives.situationProfessionnelle }}</td>
+                    <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi }}</td>
+                    <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
+                    <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
+                    <td>
+                        <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">show</a>
+                        <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun apprenant trouvé pour cet utilisateur.</p>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN')%}
+    <a href="{{ path('app_donnees_communes_new') }}">Create new</a>
+    {% endif %}
+{% endblock %}

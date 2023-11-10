@@ -3,33 +3,35 @@
 namespace App\Form;
 
 use App\Entity\Apprenant;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FormulaireCommunType extends AbstractType
+class DonneesCommunesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('genre', ChoiceType::class, [
-                'choices' => [
-                    'Féminin' => 'féminin',
-                    'Masculin' => 'masculin',
-                ],
-                'placeholder' => 'Sélectionnez le genre',
-            ])
-            ->add('dateNaissance', DateType::class, [
-                'widget' => 'single_text'
-            ])
+            ->add('genre')
+            ->add('dateNaissance')
             ->add('telephone')
-            ->add('promotion')
-            
-            
+            ->add('consentement', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+                'label' => 'Consentement',
+            ])
+            ->add('donneesAdministratives', DonneesAdministrativesType::class, [
+                'label_attr' => [
+                    'class' => 'd-none'
+                ]
+            ])
+           
         ;
     }
 
