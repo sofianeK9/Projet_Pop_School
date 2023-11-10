@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/profile')]
@@ -19,6 +20,7 @@ class ProfileController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
        
+
         return $this->render('profile/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
@@ -49,7 +51,7 @@ class ProfileController extends AbstractController
     public function show(User $user): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->filterUser($user);
+            $this->filterSessionUser($user);
         }
         return $this->render('profile/show.html.twig', [
             'user' => $user,
@@ -86,8 +88,14 @@ class ProfileController extends AbstractController
         return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    public function filterUser(User $user)
+    public function filterSessionUser(User $user)
     {
-        throw new AccessDeniedException();
+
+        $sessionUser = $this->getUser();
+
+        if ($sessionUser != $user) {
+            // l'utilisateur connecté essaye de consulter le profil d'un autre utilisateur
+            throw new NotFoundHttpException();
+        }
     }
 }
