@@ -26,6 +26,9 @@
                     <th>Numéro pole emploi</th>
                     <th>Derniére classe suivie </th>
                     <th>Dernier diplome obtenu </th>
+                    <th>Compte Github </th>
+                    <th>Compte Discord </th>
+                    <th>Compte Linkedin </th>
                     <th>actions</th>
                 </tr>
             </thead>
@@ -49,6 +52,9 @@
                     <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi }}</td>
                     <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
                     <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
+                    <td>{{ apprenant.donneesPedagogiques.compteGithub }}</td>
+                    <td>{{ apprenant.donneesPedagogiques.compteDiscord }}</td>
+                    <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
                     <td>
                         <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">show</a>
                         <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">edit</a>

@@ -31,6 +31,11 @@ class DonneesCommunesType extends AbstractType
                     'class' => 'd-none'
                 ]
             ])
+            ->add('donneesPedagogiques', DonneesPedagogiquesFormulairesType::class, [
+                'label_attr' => [
+                    'class' => 'd-none'
+                ]
+            ])
            
         ;
     }

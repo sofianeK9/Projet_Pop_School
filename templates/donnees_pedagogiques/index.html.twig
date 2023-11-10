@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DonneesPedagogiquesController!{% endblock %}
+
+{% block body %}
+{{form_start(form)}}
+{{form_row(form.compteGithub)}}
+{{form_row(form.compteDiscord)}}
+{{form_row(form.compteLinkedin)}}
+<button type="submit">Valider</button>
+{{form_end(form)}}
+{% endblock %}

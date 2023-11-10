@@ -26,10 +26,8 @@ class DonneesAdministrativesType extends AbstractType
                     'RSA' => 'RSA',
                     'ARE' => 'ARE',
                     'Minima sociaux' => 'Minima sociaux',
+                    'Travailleurs handicapés' => 'Travailleurs handicapés'
                 ]
-
-
-
             ])
             ->add('numeroPoleEmploi')
             ->add('derniereClasseSuivie')

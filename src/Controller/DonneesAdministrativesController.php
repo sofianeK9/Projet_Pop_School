@@ -35,7 +35,7 @@ class DonneesAdministrativesController extends AbstractController
             $entityManager->flush();
 
             // je redirige vers une autre page après la soumission réussie
-            return $this->redirectToRoute('nom_de_la_route');
+            return $this->redirectToRoute('app_donnees_pedagogiques');
         }
 
         return $this->render('donnees_administratives/index.html.twig', [

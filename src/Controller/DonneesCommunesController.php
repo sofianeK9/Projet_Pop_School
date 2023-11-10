@@ -43,7 +43,7 @@ class DonneesCommunesController extends AbstractController
             $entityManager->persist($apprenant);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_donnees_communes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_donnees_pedagogiques', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('donnees_communes/new.html.twig', [
