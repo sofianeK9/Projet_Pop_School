@@ -36,7 +36,13 @@ class ApprenantType extends AbstractType
                 'widget' => 'single_text'
             ])
             ->add('telephone')
-            ->add('consentement')
+            ->add('consentement', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+                'label' => 'Consentement',
+            ])
             ->add('user', UserType::class, [
                 'label_attr' => [
                     'class' => 'd-none',

@@ -22,9 +22,12 @@ class FormateurResponsable extends AbstractType
     {
         $this->passwordHasher = $passwordHasher;
     }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
 
     {
+        
+    
         $builder
             ->add('nom')
             ->add('prenom')
@@ -51,6 +54,7 @@ class FormateurResponsable extends AbstractType
                 $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
                 $user->setPassword($hashedPassword);
             });
+           
     }
 
     public function configureOptions(OptionsResolver $resolver): void

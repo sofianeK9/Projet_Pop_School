@@ -28,6 +28,7 @@ class DonneesAdministrativesType extends AbstractType
                     'Minima sociaux' => 'Minima sociaux',
                     'Travailleurs handicapés' => 'Travailleurs handicapés'
                 ]
+
             ])
             ->add('numeroPoleEmploi')
             ->add('derniereClasseSuivie')

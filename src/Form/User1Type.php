@@ -14,14 +14,15 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class User1Type extends AbstractType
 {
-    private $passwordHasher;
+    private $hasher;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        $this->passwordHasher = $passwordHasher;
+        $this->hasher = $passwordHasher;
     }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $hasher = $this->hasher;
         $builder
             ->add('email')
             ->add('password', RepeatedType::class, [
@@ -36,14 +37,26 @@ class User1Type extends AbstractType
                 'second_options' => ['label' => 'Répétez le mot de passe'],
                 'required' => true,
             ])
-            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
-                $user = $event->getData();
-                $plainPassword = $user->getPassword();
+            ->addEventListener(
+                FormEvents::POST_SUBMIT,
+                function (FormEvent $event) use ($hasher) {
+                    $user = $event->getData();
+                    $form = $event->getForm();
 
-                
-                $hashedPassword = $this->passwordHasher->hashPassword($user, $plainPassword);
-                $user->setPassword($hashedPassword);
-            });
+
+                    if (!$user) {
+                        return;
+                    }
+                    // récupérer le password
+                    $password = $user->getPassword();
+                    // hash le password
+                    $password = $hasher->hashPassword($user, $password);
+                    $user->setPassword($password);
+                    // écrase le password clair avec le hash
+        
+                    $event->setData($user);
+                }
+            )
         ;
     }
 

@@ -3,9 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Apprenant;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
+
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +18,10 @@ class DonneesCommunesType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('genre')
-            ->add('dateNaissance')
+            ->add('dateNaissance', DateType::class , [
+                'widget' => 'single_text',
+                'required' => true
+            ])
             ->add('telephone')
             ->add('consentement', ChoiceType::class, [
                 'choices' => [

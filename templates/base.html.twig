@@ -16,7 +16,7 @@
         <div class="col">
           <nav>
             <div>
-              <a href="{{ path('app_home') }}">Home</a>
+              <a href="{{ path('app_home') }}">Acceuil</a>
             </div>
             <div>
               <ul>
@@ -57,7 +57,7 @@
                   </li>
                 {% elseif is_granted('ROLE_FORMATEUR') %}
                   <li>
-                    <a href="{{ path('app_recherche') }}">Apprenants</a>
+                    <a href="{{ path('app_recherche') }}">Rechercher un apprenant</a>
                   </li>
                   <li>
                     <a href="{{ path('app_home') }}">Promotions</a>

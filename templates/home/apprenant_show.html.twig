@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
 <h2>Données communes, administratives et pédagogiques de : {{apprenant.nom}} {{apprenant.prenom}}</h2>
 <p> Nom : {{apprenant.nom}} <p>
 <p> Prenom : {{apprenant.prenom}} <p>
@@ -14,25 +14,6 @@
 <p> consentement au réglement RGPD : {% if apprenant.consentement == 1%}Oui{% else %}non {% endif %} </p>
 
 <p> Lieu de naissance : {{ apprenant.donneesAdministratives.lieuNaissance }}</p>
-<p> Pays de naissance : {{ apprenant.donneesAdministratives.paysNaissance }}</p>
-<p> Adresse : {{ apprenant.donneesAdministratives.adresse }}</p>
-<p> Code postal : {{ apprenant.donneesAdministratives.codePostal }}</p>
-<p> Commune : {{ apprenant.donneesAdministratives.commune }}</p>
-<p> Nationalite : {{ apprenant.donneesAdministratives.nationalite }}</p>
-<p> Situation professionnelle : {{ apprenant.donneesAdministratives.commune }}</p>
-<p> N° Pole Emploi : {{ apprenant.donneesAdministratives.NumeroPoleEmploi }}</p>
-<p> Derniére classe suivie : {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</p>
-<p> Dernier diplôme obtenu : {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</p>
-
-<p> Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
-<p> Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
-<p> Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>
-
-{% elseif  is_granted('ROLE_RESPONSABLE_TERRITORIAL')%}
-<h2>Données administratives et pédagogiques de l'apprenant {{apprenant.nom}} {{apprenant.prenom}}</h2>
-
-<p> Lieu de naissance : {{ apprenant.donneesAdministratives.lieuNaissance }}</p>
-<p> Email : {{apprenant.user.email}}</p>    
 <p> Pays de naissance : {{ apprenant.donneesAdministratives.paysNaissance }}</p>
 <p> Adresse : {{ apprenant.donneesAdministratives.adresse }}</p>
 <p> Code postal : {{ apprenant.donneesAdministratives.codePostal }}</p>

@@ -33,26 +33,62 @@
             </tr>
             <tr>
                 <th>Consentement</th>
-                <td>{{ apprenant.consentement ? 'Yes' : 'No' }}</td>
+                <td>{{ apprenant.consentement ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ apprenant.createdAt ? apprenant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>lieu de naissance</th>
+                <td>{{ apprenant.donneesAdministratives.lieuNaissance}}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
-                <td>{{ apprenant.updatedAt ? apprenant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Email</th>
+                <td>{{ apprenant.donneesAdministratives.email}}</td>
             </tr>
             <tr>
-                <th>DeletedAt</th>
-                <td>{{ apprenant.deletedAt ? apprenant.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Pays de naissance</th>
+                <td>{{ apprenant.donneesAdministratives.paysNaissance}}</td>
+            </tr>
+            <tr>
+                <th>Code de postal</th>
+                <td>{{ apprenant.donneesAdministratives.codePostal}}</td>
+            </tr>
+            <tr>
+                <th>Nationalité</th>
+                <td>{{ apprenant.donneesAdministratives.nationalite}}</td>
+            </tr>
+            <tr>
+                <th>Situation professionnelle</th>
+                <td>{{ apprenant.donneesAdministratives.email}}</td>
+            </tr>
+            <tr>
+                <th>Numéro pole emploi</th>
+                <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi}}</td>
+            </tr>
+            <tr>
+                <th>Derniére classe suivie</th>
+                <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie}}</td>
+            </tr>
+            <tr>
+                <th>Dernier diplome obtenu</th>
+                <td>{{ apprenant.donneesAdministratives.dernierDiplomeobtenu}}</td>
+            </tr>
+            <tr>
+                <th>Compte Github</th>
+                <td>{{ apprenant.donneesPedagogiques.compteGithub}}</td>
+            </tr>
+            <tr>
+                <th>Compte Discord</th>
+                <td>{{ apprenant.donneesPedagogiques.compteDiscord}}</td>
+            </tr>
+            <tr>
+                <th>Compte Linkedin</th>
+                <td>{{apprenant.donneesPedagogiques.compteLinkedin}}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_donnees_communes_index') }}">back to list</a>
+    <a href="{{ path('app_donnees_communes_index') }}">retour à la liste</a>
 
-    <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">edit</a>
+    <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">éditer</a>
 
     {{ include('donnees_communes/_delete_form.html.twig') }}
 {% endblock %}
