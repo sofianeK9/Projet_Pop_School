@@ -6,6 +6,7 @@ use App\Entity\Apprenant;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
+use App\Service\EmailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +19,7 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/inscription', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager, EmailService $emailService): Response
     {
         // création d'un user lors de l'inscription et attribution du role apprenant
         $user = new User();
@@ -52,11 +53,13 @@ class RegistrationController extends AbstractController
                     $plainPassword 
                 )
             );
-
             // préparation de la requete et envoit de la requete
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+
+              // appelle de la fonction email service afin d'envoyer un mail automatique lors de l'inscription
+              $emailService->envois($user->getEmail());
 
             return $userAuthenticator->authenticateUser(
                 $user,
