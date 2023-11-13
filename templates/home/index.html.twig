@@ -1,19 +1,38 @@
-{% extends 'base.html.twig' %} {% block title %}Liste des Promotions{% endblock
-%} {% block body %}
+{% extends 'base.html.twig' %}
 
-{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') or is_granted('ROLE_FORMATEUR')%}
-<h1>Liste des promotions</h1>
-<ul>
-  {% for promotion in promotions %}
-  <li>
-    <a href="{{ path('app_home_promotion_show', { id: promotion.id }) }}">
-      {{ promotion.nom }}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>
- Bienvenue sur le site de Pop Shool !
-</p>
-{% endif %} {% endblock %}
+{% block title %}
+    Liste des Promotions
+{% endblock %}
+
+{% block body %}
+    <div class="main-content">
+        <link rel="stylesheet" href="{{ asset('assets/homePage.css') }}">
+        
+        <div class="content-container">
+            <div class="list-container">
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') or is_granted('ROLE_FORMATEUR') %}
+                    <h1>Liste des promotions</h1>
+                    <ul class="home-page-ul">
+                        {% for promotion in promotions %}
+                            <li class="home-page-li">
+                                <a class="home-page-a" href="{{ path('app_home_promotion_show', { id: promotion.id }) }}">
+                                    {{ promotion.nom }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    
+                    <div class="pagination">
+                        {{ knp_pagination_render(promotions) }}
+                    </div>
+                {% else %}
+                    <p>Bienvenue sur le site de Pop School !</p>
+                {% endif %}
+            </div>
+            <div class="image-container">
+                <img src="{{ asset('images/logo_bleu.png') }}" alt="Image Description">
+            </div>
+        </div>
+    </div>
+{% endblock %}

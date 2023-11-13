@@ -6,7 +6,9 @@ use App\Entity\Apprenant;
 use App\Entity\Promotion;
 use App\Repository\PromotionRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,13 +16,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(PromotionRepository $promotionRepository): Response
+    public function index(Request $request, PromotionRepository $promotionRepository, PaginatorInterface $paginator): Response
     {
         $promotions = $promotionRepository->findAll();
+        $pagination = $paginator->paginate(
+            $promotions,
+            $request->query->getInt('page', 1),
+            10 // Limite d'éléments par page
+        );
+
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'promotions' => $promotions,
+            'promotions' => $pagination,
         ]);
     }
     #[Route('/promotion/{id}', name: 'app_home_promotion_show')]
