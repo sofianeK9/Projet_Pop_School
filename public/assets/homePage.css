@@ -3,6 +3,14 @@
     justify-content: center;
     align-items: center;
 }
+h1 {
+    margin-bottom: 20px;
+}
+
+#title_home {
+    margin-top: 300px;
+    text-align: center;
+}
 
 .content-container {
     display: flex;
@@ -47,17 +55,26 @@
     flex: 1;
     max-width: 50%;
     padding: 20px;
-    margin-left: 20px;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrer horizontalement et verticalement */
 }
 
 .image-container img {
-    max-width: 80%;
-    height: auto;
+    max-width: 70%; /* L'image occupe 100% de la largeur de son conteneur */
+    height: auto; /* Garantit que l'aspect ratio de l'image est préservé */
 }
 
 @media (max-width: 940px) {
+    #title_home {
+        margin-top: 30px;
+    }
     .content-container {
         flex-direction: column;
+        align-items: center;
+    }
+    .pagination {
         align-items: center;
     }
 }

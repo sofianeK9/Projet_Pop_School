@@ -6,6 +6,7 @@ use App\Entity\Apprenant;
 use App\Form\ApprenantType;
 use App\Repository\ApprenantRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApprenantController extends AbstractController
 {
     #[Route('/', name: 'app_admin_apprenant_index', methods: ['GET'])]
-    public function index(ApprenantRepository $apprenantRepository): Response
+    public function index(Request $request, ApprenantRepository $apprenantRepository, PaginatorInterface $pagination ): Response
     {
+        $apprenants = $apprenantRepository->findAll();
+        $pagination = $pagination->paginate(
+            $apprenants,
+            $request->query->getInt('page', 1),
+            20 // Limite d'éléments par page
+        );
         return $this->render('admin/apprenant/index.html.twig', [
-            'apprenants' => $apprenantRepository->findAll(),
+            'apprenants' => $pagination,
         ]);
     }
 

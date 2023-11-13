@@ -11,9 +11,6 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 #[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 #[ORM\Entity(repositoryClass: DonneesAdministrativesRepository::class)]
-#[Assert\Email(
-    message: 'Cet email {{ value }} n\'est pas valide.',
-)]
 class DonneesAdministratives
 {
     use TimestampableEntity;
