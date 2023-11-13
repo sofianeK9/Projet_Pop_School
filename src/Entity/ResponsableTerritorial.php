@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ResponsableTerritorialRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -20,9 +21,13 @@ class ResponsableTerritorial
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $nom = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $prenom = null;
 
@@ -33,7 +38,7 @@ class ResponsableTerritorial
     {
         return $this->id;
     }
-
+    
     public function getNom(): ?string
     {
         return $this->nom;

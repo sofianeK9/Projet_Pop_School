@@ -21,12 +21,18 @@ class DonneesPedagogiques
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $compteGithub = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $compteDiscord = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $compteLinkedin = null;
 

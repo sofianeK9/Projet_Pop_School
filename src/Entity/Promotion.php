@@ -25,12 +25,17 @@ class Promotion
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $nom = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 1000)]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[Assert\GreaterThan(propertyPath: 'created_at')]
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateFin = null;
 

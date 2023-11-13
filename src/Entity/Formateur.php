@@ -24,9 +24,11 @@ class Formateur
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 190)]
     private ?string $nom = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 190)]
     private ?string $prenom = null;
 

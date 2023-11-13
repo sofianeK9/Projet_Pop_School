@@ -23,18 +23,32 @@ class Apprenant
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $nom = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $prenom = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $genre = null;
 
+    #[Assert\Range(
+        min: '01-01-1900',
+        max: 'now',
+        notInRangeMessage: 'You must be between {{ min }}cm and {{ max }}cm tall to enter',
+    )]
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateNaissance = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
+    #[Assert\Regex('/^[0-9]{10}$/')]
     #[ORM\Column(length: 190)]
     private ?string $telephone = null;
 

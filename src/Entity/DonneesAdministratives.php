@@ -4,12 +4,16 @@ namespace App\Entity;
 
 use App\Repository\DonneesAdministrativesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 #[Gedmo\SoftDeleteable(fieldName: "deletedAt", timeAware: false, hardDelete: false)]
 #[ORM\Entity(repositoryClass: DonneesAdministrativesRepository::class)]
+#[Assert\Email(
+    message: 'Cet email {{ value }} n\'est pas valide.',
+)]
 class DonneesAdministratives
 {
     use TimestampableEntity;
@@ -20,36 +24,63 @@ class DonneesAdministratives
     #[ORM\Column]
     private ?int $id = null;
 
+
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $lieuNaissance = null;
 
+
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $email = null;
 
+
+    #[Assert\NotBlank]
     #[ORM\Column(length: 190)]
     private ?string $paysNaissance = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $adresse = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
+    #[Assert\Regex('/^[0-9]{5}$/')]
     #[ORM\Column(length: 190)]
     private ?string $codePostal = null;
 
+
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $commune = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $nationalite = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $situationProfessionnelle = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
+    #[Assert\Regex('/^[a-zA-Z]{1}[0-9]{7}$/')]
     #[ORM\Column(length: 190)]
     private ?string $numeroPoleEmploi = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $derniereClasseSuivie = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 1,  max: 190)]
     #[ORM\Column(length: 190)]
     private ?string $dernierDiplomeObtenu = null;
 
