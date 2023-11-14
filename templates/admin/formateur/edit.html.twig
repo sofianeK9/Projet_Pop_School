@@ -3,6 +3,7 @@
 {% block title %}Editer un Formateur{% endblock %}
 
 {% block body %}
+<main>
     <h1>Editer un Formateur</h1>
 
     {{ include('admin/formateur/_form.html.twig', {'button_label': 'Update'}) }}
@@ -10,4 +11,5 @@
     <a href="{{ path('app_admin_formateur_index') }}">retour à la liste</a>
 
     {{ include('admin/formateur/_delete_form.html.twig') }}
+</main>
 {% endblock %}

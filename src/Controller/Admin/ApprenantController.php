@@ -22,7 +22,7 @@ class ApprenantController extends AbstractController
         $pagination = $pagination->paginate(
             $apprenants,
             $request->query->getInt('page', 1),
-            20 // Limite d'éléments par page
+            30 // Limite d'éléments par page
         );
         return $this->render('admin/apprenant/index.html.twig', [
             'apprenants' => $pagination,

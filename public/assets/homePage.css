@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column; 
 }
+
 h1 {
     margin-bottom: 20px;
 }
@@ -15,6 +17,7 @@ h1 {
 .content-container {
     display: flex;
     width: 100%;
+    flex-wrap: wrap; 
 }
 
 .list-container {
@@ -55,26 +58,31 @@ h1 {
     flex: 1;
     max-width: 50%;
     padding: 20px;
-    margin-left: 40px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrer horizontalement et verticalement */
+    justify-content: center;
 }
 
 .image-container img {
-    max-width: 70%; /* L'image occupe 100% de la largeur de son conteneur */
-    height: auto; /* Garantit que l'aspect ratio de l'image est préservé */
+    max-width: 75%;
+    height: auto;
 }
 
 @media (max-width: 940px) {
+    .list-container,
+    .image-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
     #title_home {
         margin-top: 30px;
     }
-    .content-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .pagination {
-        align-items: center;
+}
+
+@media (max-width: 600px) {
+    #title_home {
+        margin-top: 20px;
     }
 }

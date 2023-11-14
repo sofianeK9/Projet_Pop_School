@@ -3,9 +3,11 @@
 {% block title %}Nouveau Formateur{% endblock %}
 
 {% block body %}
+<main>
     <h1>Créér un Formateur</h1>
 
     {{ include('admin/formateur/_form.html.twig') }}
 
     <a href="{{ path('app_admin_formateur_index') }}">retour à la liste</a>
+</main>
 {% endblock %}

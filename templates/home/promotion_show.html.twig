@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %} {% block title %}Accueil{% endblock %} {% block
 body %}
-
-<h2>Nom de la promotion : {{ promotion.nom }}</h2>
-{% for formateur in formateurs %}
-<p> Formateur : {{ formateur.nom }}  {{ formateur.prenom }}</p>
-
-{% endfor %} {% for apprenant in apprenants %}
-<li>
-  <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}">{{
-    apprenant.nom
-  }} {{
-    apprenant.prenom
-  }}
-  </a
-  >
-</li>
-{% endfor %} {% endblock %}
+<main>
+  <h2>Nom de la promotion : {{ promotion.nom }}</h2>
+  {% for formateur in formateurs %}
+  <p> Formateur : {{ formateur.nom }}  {{ formateur.prenom }}</p>
+  
+  {% endfor %} {% for apprenant in apprenants %}
+  <li>
+    <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}">{{
+      apprenant.nom
+    }} {{
+      apprenant.prenom
+    }}
+    </a
+    >
+  </li>
+  {% endfor %} 
+</main>
+{% endblock %}

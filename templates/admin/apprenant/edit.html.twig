@@ -3,6 +3,7 @@
 {% block title %}Editer un Apprenant{% endblock %}
 
 {% block body %}
+<main>
     <h1>Editer un  Apprenant</h1>
 
     {{ include('admin/apprenant/_form.html.twig', {'button_label': 'Update'}) }}
@@ -10,4 +11,5 @@
     <a href="{{ path('app_admin_apprenant_index') }}">Retour à la liste</a>
 
     {{ include('admin/apprenant/_delete_form.html.twig') }}
+</main>
 {% endblock %}

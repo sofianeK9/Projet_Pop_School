@@ -3,6 +3,7 @@
 {% block title %}Editer un  Responsable Territorial{% endblock %}
 
 {% block body %}
+<main>
     <h1>Editer un ResponsableTerritorial</h1>
 
     {{ include('admin/responsable_territorial/_form.html.twig', {'button_label': 'Update'}) }}
@@ -10,4 +11,5 @@
     <a href="{{ path('app_admin_responsable_territorial_index') }}">retour à la liste</a>
 
     {{ include('admin/responsable_territorial/_delete_form.html.twig') }}
+</main>
 {% endblock %}

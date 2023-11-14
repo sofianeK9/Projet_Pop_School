@@ -22,7 +22,7 @@ class HomeController extends AbstractController
         $pagination = $paginator->paginate(
             $promotions,
             $request->query->getInt('page', 1),
-            8 // Limite d'éléments par page
+            10 // Limite d'éléments par page
         );
 
 

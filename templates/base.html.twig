@@ -6,76 +6,86 @@
   <title>{% block title %}Welcome!{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=Roboto&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-xx8DwQHnx4B04t00DEE0ivdK2BCvDlLc3g0G0H50pb7hoBwAYmpCjcq4g5XMlDF6tr9w1U1B9gA1NIOk0ApEsw==" crossorigin="anonymous" />
   <link rel="stylesheet" href="{{ asset('assets/base.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/homePage.css') }}">
+  <script src="{{ asset('assets/script.js') }}"></script>
 </head>
 
 <header>
     {% block header %}
-    <nav>
+    <div class="header">
+
       <div class="logo">
         <a href="{{ path('app_home') }}">
             <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo">
         </a>
-    </div>
-            <input type="checkbox" id="click">
-        <label for="click" class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <ul>
+      </div>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+     </div>
+     <div class="menu">
             {% if is_granted('ROLE_ADMIN') %}
-                <li><a class="active" href="{{ path('app_home') }}">Accueil</a></li>
-                <li><a href="{{ path('app_admin_administrateur_index') }}">Administrateur</a></li>
-                <li><a href="{{ path('app_admin_responsable_territorial_index') }}">RT</a></li>
-                <li><a href="{{ path('app_admin_promotion_index') }}">Promotions</a></li>
-                <li><a href="{{ path('app_admin_formateur_index') }}">Formateurs</a></li>
-                <li><a href="{{ path('app_recherche') }}">Rechercher un apprenant</a></li>
-                <li><a href="{{ path('app_admin_apprenant_index') }}">Apprenants</a></li>
-                <li><a href="{{ path('app_profile_index') }}">Mon profil</a></li>
+                <a class="active" href="{{ path('app_home') }}">Accueil</a>
+                <a href="{{ path('app_admin_administrateur_index') }}">Administrateur</a>
+                <a href="{{ path('app_admin_responsable_territorial_index') }}">RT</a>
+                <a href="{{ path('app_admin_promotion_index') }}">Promotions</a>
+                <a href="{{ path('app_admin_formateur_index') }}">Formateurs</a>
+                <a href="{{ path('app_recherche') }}">Rechercher un apprenant</a>
+                <a href="{{ path('app_admin_apprenant_index') }}">Apprenants</a>
+                <a href="{{ path('app_profile_index') }}">Mon profil</a></li>
             {% elseif is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
-                <li><a href="{{ path('app_responsable_promotion_index') }}">Promotions</a></li>
-                <li><a href="{{ path('app_responsable_formateur_index') }}">Formateurs</a></li>
-                <li><a href="{{ path('app_recherche') }}">Rechercher un Apprenant</a></li>
-                <li><a href="{{ path('app_profile_index') }}">profil</a></li>
+                <a href="{{ path('app_responsable_promotion_index') }}">Promotions</a>
+                <a href="{{ path('app_responsable_formateur_index') }}">Formateurs</a>
+                <a href="{{ path('app_recherche') }}">Rechercher un Apprenant</a>
+                <a href="{{ path('app_profile_index') }}">profil</a>
             {% elseif is_granted('ROLE_FORMATEUR') %}
-                <li><a href="{{ path('app_recherche') }}">Rechercher un apprenant</a></li>
-                <li><a href="{{ path('app_home') }}">Promotions</a></li>
-                <li><a href="{{ path('app_profile_index') }}">profil</a></li>
+                <a href="{{ path('app_recherche') }}">Rechercher un apprenant</a>
+                <a href="{{ path('app_home') }}">Promotions</a>
+                <a href="{{ path('app_profile_index') }}">profil</a>
             {% elseif is_granted('ROLE_APPRENANT') %}
-                <li><a href="{{ path('app_profile_index') }}">profil</a></li>
-                <li><a href="{{ path('app_donnees_communes_index') }}">mes données</a></li>
+                <a href="{{ path('app_profile_index') }}">profil</a>
+                <a href="{{ path('app_donnees_communes_index') }}">mes données</a>
             {% endif %}
-
+  
             {% if app.user %}
-                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
             {% else %}
-                <li><a href="{{ path('app_register') }}">Inscription</a></li>
-                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                <a href="{{ path('app_register') }}">Inscription</a>
+                <a href="{{ path('app_login') }}">Connexion</a>
             {% endif %}
-        </ul>
-    </nav>
+        </div>
+     
+    </div>
     {% endblock %}
 </header>
 
 <body>
     {% block body %}{% endblock %}
 </body>
-<footer>
-  <div class="footer">
-      <div class="footer-container1">
-          <h4>A propos</h4>
-          <a href="https://popschool.fr/" target="_blank">Site de Pop School</a>
-      </div>
-      <div class="footer-container2">
-          <a href="https://www.linkedin.com/company/pop-school/?originalSubdomain=fr" target="_blank"><i class="ri-linkedin-fill">Linkedin</i></a>
-          <a href="https://www.facebook.com/POPSchoolFr/" target="_blank"><i class="ri-facebook-fill">Facebook</i></a>
-          <a href="https://twitter.com/Plus2POPSchool" target="_blank"><i class="ri-twitter-fill">Twitter</i></a>
-          <a href="https://www.instagram.com/popschoolfr/?hl=fr" target="_blank"><i class="ri-instagram-fill">Instagram</i></a>
-      </div>
-  </div>
+
+<footer class="footer-container">
+    
+    <div class=" contain container1">
+     <h5>A propos</h5>
+    <a href="https://popschool.fr/">Sit de de Pop School</a>
+    </div>
+
+    <div class="contain container3">
+     <h5>Nos réseaux</h5>
+     <div class="reseaux">
+    <a href="https://www.linkedin.com/company/pop-school/?originalSubdomain=fr" target="_blank"><i class="ri-linkedin-fill"></i></a>
+    <a href="https://www.facebook.com/POPSchoolFr/" target="_blank"><i class="ri-facebook-fill"></i></a>
+    <a href="https://twitter.com/Plus2POPSchool" target="_blank"><i class="ri-twitter-fill"></i></a>
+    <a href="https://www.instagram.com/popschoolfr/?hl=fr" target="_blank"><i class="ri-instagram-fill"></i></a>
+    <div>
+    </div> 
 </footer>
 </html>
+
+

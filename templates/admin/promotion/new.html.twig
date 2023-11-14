@@ -3,9 +3,11 @@
 {% block title %}Nouvelle Promotion{% endblock %}
 
 {% block body %}
+<main>
     <h1>Créér une Promotion</h1>
 
     {{ include('admin/promotion/_form.html.twig') }}
 
     <a href="{{ path('app_admin_promotion_index') }}">retour à la liste</a>
+</main>
 {% endblock %}

@@ -3,6 +3,7 @@
 {% block title %}Responsable Territorial{% endblock %}
 
 {% block body %}
+<main>
     <h1>Responsable Territorial</h1>
 
     <table class="table">
@@ -27,4 +28,5 @@
     <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">éditer</a>
 
     {{ include('admin/responsable_territorial/_delete_form.html.twig') }}
+</main>
 {% endblock %}

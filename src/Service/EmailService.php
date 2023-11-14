@@ -17,7 +17,7 @@ class EmailService
 
     public function envois(string $recepteurEmail): void 
     {
-        $email = (new TemplatedEmail())
+        $email = (new Email())
         ->from('popschool@pop.eu.com')
         ->to($recepteurEmail)
         ->subject('Bienvenue chez Pop School')

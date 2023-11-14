@@ -3,9 +3,11 @@
 {% block title %}Nouveau Apprenant{% endblock %}
 
 {% block body %}
+<main>
     <h1>Créér un  apprenant</h1>
 
     {{ include('admin/apprenant/_form.html.twig') }}
 
     <a href="{{ path('app_admin_apprenant_index') }}">retour à la liste</a>
+</main>
 {% endblock %}
