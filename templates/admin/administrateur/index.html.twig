@@ -3,38 +3,39 @@
 {% block title %}Administrateur index{% endblock %}
 
 {% block body %}
-<main>
     <h1>Administrateur index</h1>
 
-    <a href="{{ path('app_admin_administrateur_new') }}">Créér</a>
+    <div class="button-container">
+        <button class="btn"><a href="{{ path('app_admin_administrateur_new') }}">Créer</a></button>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for administrateur in administrateurs %}
-            <tr>
-                <td>{{ administrateur.id }}</td>
-                <td>{{ administrateur.nom }}</td>
-                <td>{{ administrateur.prenom }}</td>
-                <td>
-                    <a href="{{ path('app_admin_administrateur_show', {'id': administrateur.id}) }}">voir</a>
-                    <a href="{{ path('app_admin_administrateur_edit', {'id': administrateur.id}) }}">éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for administrateur in administrateurs %}
+                <tr>
+                    <td>{{ administrateur.id }}</td>
+                    <td>{{ administrateur.nom }}</td>
+                    <td>{{ administrateur.prenom }}</td>
+                    <td>
+                        <div class="button-container"> 
+                            <button class="btn-action" onclick="window.location.href='{{ path('app_admin_administrateur_show', {'id': administrateur.id}) }}'">Voir</button>
+                            <button class="btn-action"><a href="{{ path('app_admin_administrateur_edit', {'id': administrateur.id}) }}">Éditer</a></button>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-
-</main>
 {% endblock %}

@@ -4,29 +4,34 @@
 
 {% block body %}
 <main>
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <div class="contenu">
+        <div class="connexion">
+            <div class="content">
+                <h1>Connexion</h1>
+                <form method="post" class="login-form">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
 
-    <label>
-        <input type="checkbox" name="_remember_me">
-        rester connecté
-    </label>
-    
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        connexion
-    </button>
-</form>
+                    <label>
+                        <input type="checkbox" name="_remember_me">
+                        Rester connecté
+                    </label>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="inputBox">
+                        <input type="submit" value="Connexion" class="btn btn-lg btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}

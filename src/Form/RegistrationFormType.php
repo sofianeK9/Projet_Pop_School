@@ -4,15 +4,12 @@ namespace App\Form;
 
 
 use App\Entity\User;
-use App\Entity\Promotion;
-use Symfony\Component\Validator\Constraints\EqualTo;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use VictorPrdh\RecaptchaBundle\Form\ReCaptchaType;
@@ -34,7 +31,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit faire {{ limit }} charactéres',
                         'max' => 4096,
                     ]),
                 ],
@@ -47,11 +44,11 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Confirmez le mot de passe',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Entrez un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit faire {{ limit }} charactéres',
                         'max' => 4096,
                     ]),
                 ],

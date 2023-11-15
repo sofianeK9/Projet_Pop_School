@@ -26,7 +26,7 @@ class ApprenantRepository extends ServiceEntityRepository
  * condition : si le mot clé a été fourni et si le nom ou prénom correpond au mot clé, la méthode execute la requete et
  * enverra le résultat
  */
-public function RechercheApprenant($keyword): array
+public function recherche($keyword): array
 {
     $query = $this->createQueryBuilder('a')
         ->leftJoin('a.donneesPedagogiques', 'dp')

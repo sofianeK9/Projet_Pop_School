@@ -18,10 +18,6 @@ class PromotionType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('createdAt', DateType::class, [
-                'widget' => 'single_text',
-                'required' => true
-            ])
             ->add('dateFin', DateType::class, [
                 'widget' => 'single_text',
                 'required' => true

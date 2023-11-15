@@ -64,14 +64,14 @@ h1 {
 }
 
 .image-container img {
-    max-width: 75%;
+    max-width: 65%;
     height: auto;
 }
 
 @media (max-width: 940px) {
     .list-container,
     .image-container {
-        max-width: 100%;
+        max-width: 50%;
     }
 }
 

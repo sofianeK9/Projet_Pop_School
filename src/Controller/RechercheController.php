@@ -10,16 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// src/Controller/RechercheController.php
-namespace App\Controller;
-
-use App\Form\RechercheType;
-use App\Entity\Apprenant;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-
 class RechercheController extends AbstractController
 {
     #[Route('/recherche', name: 'app_recherche')]
@@ -38,7 +28,7 @@ class RechercheController extends AbstractController
             $keyword = $form->get('keyword')->getData();
 
             // j'effectue une recherche dans le repo des apprenants pour voir si il y a correspondance
-            $results = $entityManager->getRepository(Apprenant::class)->RechercheApprenant($keyword);
+            $results = $entityManager->getRepository(Apprenant::class)->recherche($keyword);
         }
 
 

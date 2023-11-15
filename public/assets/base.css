@@ -5,12 +5,12 @@
   font-family: 'Poppins', sans-serif;
 }
 main {
-  min-height: 84vh !important;
+  min-height: 80vh !important;
 
 }
 
 .header {
-  height: 8vh;
+  height: 9vh;
   width: 100%;
   background-color: rgb(244, 244, 244);
   display: flex;
@@ -34,6 +34,7 @@ main {
   padding: 8px 10px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  
 }
 
 .menu a:hover,
@@ -59,8 +60,7 @@ h4 {
 }
 .footer-container {
   align-items: center;
- 
-  height: 8vh;
+  height: 11vh;
   background-color: rgb(38, 50, 128);
   color: white;
   display: flex;
@@ -73,6 +73,7 @@ h4 {
   font-size: x-small;
   margin: 3px;
   text-decoration: none;
+  font-size: 18px;
 }
 
 .contain {

@@ -24,9 +24,7 @@ class AdministrateurType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('user', UserType::class, [
-                'label_attr' => [
-                    'class' => 'd-none'
-                ]
+                'label' => false
             ])
             ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $user = $event->getData()->getUser();
