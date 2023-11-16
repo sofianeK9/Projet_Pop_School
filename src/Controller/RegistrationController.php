@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Service\EmailService;
@@ -13,21 +12,28 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class RegistrationController extends AbstractController
 {
     #[Route('/inscription', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, EmailService $emailService): Response
-     {
-        // création d'un user lors de l'inscription et attribution du role apprenant
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager,
+        EmailService $emailService,
+        TokenStorageInterface $tokenStorage
+    ): Response {
+        // création d'un user lors de l'inscription et attribution du rôle apprenant
         $user = new User();
         $user->setRoles(['ROLE_APPRENANT']);
 
-        // création du formualire avec l'objet user et soumission avec la requete http
+        // création du formulaire avec l'objet user et soumission avec la requête http
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        // si mon formulaire est soumis et valide : je récupére le mdp et la confirmation du mdp et la promo
+        // si mon formulaire est soumis et valide : je récupère le mdp et la confirmation du mdp et la promo
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $form->get('plainPassword')->getData();
             $confirmedPassword = $form->get('confirmedPassword')->getData();
@@ -48,13 +54,19 @@ class RegistrationController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                // do anything else you need here, like send an email
-                // appelle de la fonction email service afin d'envoyer un mail automatique lors de l'inscription
+                // initialisation d'une variable token créant un objet qui représente les infos d'idetifications du user :
+                // l'objet user qui s'inscrit, le mdp qui est nul car déjà authentifié, le nom du pare-feu utilisé par symfony
+                // pour l'authentification, et le role
+                $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+                // assignation du token, symfony reconnaitra cet utilisateur comme étant authentifié
+                $tokenStorage->setToken($token);
+
+                // Envoyer un e-mail après l'inscription
                 $emailService->envois($user->getEmail());
-                
+
+                // Rediriger l'utilisateur vers la page de RGPD
                 return $this->redirectToRoute('app_rgpd');
             }
-            
         }
 
         // ...
