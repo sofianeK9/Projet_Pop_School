@@ -69,6 +69,11 @@ h1 {
 }
 
 @media (max-width: 940px) {
+    .main-content {
+        display: flex;
+        flex-wrap: wrap;        
+    }
+    
     .list-container,
     .image-container {
         max-width: 50%;
@@ -78,6 +83,7 @@ h1 {
 @media (max-width: 768px) {
     #title_home {
         margin-top: 30px;
+        margin-bottom: 20px; /* Ajout d'une marge au bas du titre */
     }
 }
 

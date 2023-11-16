@@ -32,7 +32,7 @@ class DonneesPedagogiquesController extends AbstractController
             $entityManager->flush();
         // je redirige vers une autre page après la soumission réussie
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_donnees_communes_index');
          }
 
         return $this->render('donnees_pedagogiques/index.html.twig', [

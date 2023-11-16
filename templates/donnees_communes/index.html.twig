@@ -9,56 +9,109 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Genre</th>
-                    <th>DateNaissance</th>
-                    <th>Telephone</th>
-                    <th>Consentement</th>
-                    <th>Lieu de naissance </th>
-                    <th>Email</th>
-                    <th>Pays de naissance </th>
-                    <th>Code postal </th>
-                    <th>Commune</th>
-                    <th>Nationalité </th>
-                    <th>Situation professionnelle</th>
-                    <th>Numéro pole emploi</th>
-                    <th>Derniére classe suivie </th>
-                    <th>Dernier diplome obtenu </th>
-                    <th>Compte Github </th>
-                    <th>Compte Discord </th>
-                    <th>Compte Linkedin </th>
-                    <th>actions</th>
+                    
+                    
+                    
+                 
+                   
+                    
+                  
+                
+                   
+                   
+                
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ apprenant.id }}</td>
-                    <td>{{ apprenant.nom }}</td>
-                    <td>{{ apprenant.prenom }}</td>
-                    <td>{{ apprenant.genre }}</td>
-                    <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
-                    <td>{{ apprenant.telephone }}</td>
-                    <td>{{ apprenant.consentement ? 'Yes' : 'No' }}</td>
-                    <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
-                    <td>{{ apprenant.donneesAdministratives.email }}</td>
-                    <td>{{ apprenant.donneesAdministratives.paysNaissance }}</td>
-                    <td>{{ apprenant.donneesAdministratives.adresse }}</td>
-                    <td>{{ apprenant.donneesAdministratives.codePostal }}</td>
-                    <td>{{ apprenant.donneesAdministratives.commune }}</td>
-                    <td>{{ apprenant.donneesAdministratives.nationalite }}</td>
-                    <td>{{ apprenant.donneesAdministratives.situationProfessionnelle }}</td>
-                    <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi }}</td>
-                    <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
-                    <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
-                    <td>{{ apprenant.donneesPedagogiques.compteGithub }}</td>
-                    <td>{{ apprenant.donneesPedagogiques.compteDiscord }}</td>
-                    <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
-                    <td>
-                        <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">show</a>
-                        <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">edit</a>
-                    </td>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ apprenant.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ apprenant.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prenom</th>
+                        <td>{{ apprenant.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Genre</th>
+                        <td>{{ apprenant.genre }}</td>
+                    </tr>
+                    <tr>
+                        <th>DateNaissance</th>
+                        <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telephone</th>
+                        <td>{{ apprenant.telephone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Consentement</th>
+                        <td>{{ apprenant.consentement ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lieu de naissance </th>
+                        <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ apprenant.donneesAdministratives.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pays de naissance </th>
+                        <td>{{ apprenant.donneesAdministratives.paysNaissance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ apprenant.donneesAdministratives.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Commune</th>
+                        <td>{{ apprenant.donneesAdministratives.commune }}</td>
+                    </tr>
+                    <tr>
+                        <th>Code postal</th>
+                        <td>{{ apprenant.donneesAdministratives.codePostal }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nationalité</th>
+                        <td>{{ apprenant.donneesAdministratives.nationalite }}</td>
+                    </tr>
+                    <tr>
+                        <th>Situation professionnelle</th>
+                        <td>{{ apprenant.donneesAdministratives.situationProfessionnelle }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numéro pole emploi</th>
+                        <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi }}</td>
+                    </tr>
+                    <tr>
+                        <th>Derniére classe suivie</th>
+                        <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dernier diplome suivi</th>
+                        <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
+                    </tr>
+                    <tr>
+                        <th>Compte Github</th>
+                        <td>{{ apprenant.donneesPedagogiques.compteGithub }}</td>
+                    </tr>
+                    <tr>
+                        <th>Compte Discord</th>
+                        <td>{{ apprenant.donneesPedagogiques.compteDiscord }}</td>
+                    </tr>
+                    <tr>
+                        <th>Compte Linkedin</th>
+                        <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
+                    </tr>
+                    <th>
+                        <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">voir</a>
+                        <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">éditer</a>
+                    </th>
                 </tr>
             </tbody>
         </table>
@@ -66,6 +119,6 @@
         <p>Aucun apprenant trouvé pour cet utilisateur.</p>
     {% endif %}
     {% if is_granted('ROLE_ADMIN')%}
-    <a href="{{ path('app_donnees_communes_new') }}">Create new</a>
+    <a href="{{ path('app_donnees_communes_new') }}">créér</a>
     {% endif %}
 {% endblock %}

@@ -9,16 +9,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                
                 <th>Email</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for user in users %}
             <tr>
+                {% for user in users %}
                 {% if app.user == user%}
-                <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>
                     <a href="{{ path('app_profile_show', {'id': user.id}) }}">voir</a>
@@ -31,7 +30,7 @@
             <tr>
                 <td colspan="8">no records found</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
 </main>

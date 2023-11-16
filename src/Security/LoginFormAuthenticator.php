@@ -61,7 +61,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
                 return new RedirectResponse($this->urlGenerator->generate('app_rgpd'));
                 } else {
                  // c'est un apprenant qui a déjà rempli son profil
-                 return new RedirectResponse($this->urlGenerator->generate('app_home'));
+                 return new RedirectResponse($this->urlGenerator->generate('app_donnees_communes_index'));
                 }
         }
     }
