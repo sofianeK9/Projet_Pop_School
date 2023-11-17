@@ -64,21 +64,35 @@ h1 {
 }
 
 .image-container img {
-    max-width: 65%;
+    max-width: 74%;
     height: auto;
 }
 
-@media (max-width: 940px) {
+/* Ajoutez ces styles à la fin de votre fichier CSS */
+
+@media (max-width: 900px) {
     .main-content {
-        display: flex;
-        flex-wrap: wrap;        
+      flex-direction: column;
+      align-items: center;
+      text-align: center; /* Ajout de centrage pour tout le contenu */
     }
+  
     
-    .list-container,
     .image-container {
-        max-width: 50%;
+      max-width: 100%;
+      margin: 10px 0; /* Ajout de marge entre les éléments */
     }
-}
+  
+    .image-container img {
+      max-width: 80%; /* Ajustez la largeur de l'image comme nécessaire */
+      height: auto;
+    }
+  
+    #title_home {
+      margin-top: 20px; /* Ajustez la marge du titre comme nécessaire */
+    }
+  }
+  
 
 @media (max-width: 768px) {
     #title_home {

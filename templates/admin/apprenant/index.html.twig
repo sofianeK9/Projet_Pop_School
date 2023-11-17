@@ -3,13 +3,14 @@
 {% block title %}Liste des Apprenants{% endblock %}
 
 {% block body %}
-<main>
     <h1>Liste des Apprenants</h1>
-    <a href="{{ path('app_admin_apprenant_new') }}">Créer un apprenant</a>
+    <div class="button-container">
+        <button class="btn"><a href="{{ path('app_admin_apprenant_new') }}">Créer un apprenant</a></button>
+    </div>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+              
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Genre</th>
@@ -22,7 +23,6 @@
         <tbody>
             {% for apprenant in apprenants %}
                 <tr>
-                    <td>{{ apprenant.id }}</td>
                     <td>{{ apprenant.nom }}</td>
                     <td>{{ apprenant.prenom }}</td>
                     <td>{{ apprenant.genre }}</td>
@@ -30,8 +30,10 @@
                     <td>{{ apprenant.telephone }}</td>
                     <td>{{ apprenant.consentement ? 'Oui' : 'Non' }}</td>
                     <td>
-                        <a href="{{ path('app_admin_apprenant_show', {'id': apprenant.id}) }}">Voir</a>
-                        <a href="{{ path('app_admin_apprenant_edit', {'id': apprenant.id}) }}">Éditer</a>
+                        <div class="button-container"> 
+                            <button class="btn-action"><a class="btn-action" href="{{ path('app_admin_apprenant_show', {'id': apprenant.id}) }}">Voir</a></button>
+                            <button class="btn-action"><a href="{{ path('app_admin_apprenant_edit', {'id': apprenant.id}) }}">Éditer</a></button>
+                        </div>
                     </td>
                 </tr>
             {% else %}
@@ -42,6 +44,7 @@
         </tbody>
     </table>
 
-    {{ knp_pagination_render(apprenants) }}
-</main>
+    <div class="pagination">
+        {{ knp_pagination_render(apprenants) }}
+    </div>
 {% endblock %}

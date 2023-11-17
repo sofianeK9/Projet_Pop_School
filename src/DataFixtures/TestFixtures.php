@@ -214,7 +214,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             $dateNaissance = $this->faker->dateTimeBetween('-40 years', '-20 years');
             $apprenant->setDateNaissance($dateNaissance);
             $apprenant->setTelephone($this->faker->phoneNumber());
-            $apprenant->setConsentement($this->faker->boolean(false));
+            $apprenant->setConsentement($this->faker->boolean());
             $promotion = $this->faker->randomElement($promos);
             $apprenant->setPromotion($promotion);
 

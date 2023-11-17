@@ -3,7 +3,6 @@
 {% block title %}Promotion index{% endblock %}
 
 {% block body %}
-<main>
     <h1>Promotion index</h1>
 
     <a href="{{ path('app_admin_promotion_new') }}">Créér une promotion</a>
@@ -35,7 +34,7 @@
                 <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-</main>
+    </tbody>
+</table>
+{{ knp_pagination_render(promotions) }}
 {% endblock %}

@@ -44,19 +44,14 @@ class ApprenantType extends AbstractType
                 'label' => 'Consentement',
             ])
             ->add('user', UserType::class, [
-                'label_attr' => [
-                    'class' => 'd-none',
-                ]
+
+                'label' => false
             ])
             ->add('donneesAdministratives', DonneesAdministrativesType::class, [
-                'label_attr' => [
-                    'class' => 'd-none',
-                ]
+                'label' => false
             ])
             ->add('donneesPedagogiques', DonneesPedagogiquesType::class, [
-                'label_attr' => [
-                    'class' => 'd-none'
-                ]
+                'label' => false
             ])
             ->add('promotion')
             ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {

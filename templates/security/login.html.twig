@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Welcome!{% endblock %}
 
 {% block body %}
-<main>
     <div class="contenu">
         <div class="connexion">
             <div class="content">
@@ -19,7 +18,7 @@
                     <label for="inputPassword">Password</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-                    <label>
+                    <label class="checkbox-label">
                         <input type="checkbox" name="_remember_me">
                         Rester connecté
                     </label>
@@ -33,5 +32,5 @@
             </div>
         </div>
     </div>
-</main>
 {% endblock %}
+

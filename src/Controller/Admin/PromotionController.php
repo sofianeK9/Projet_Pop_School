@@ -10,15 +10,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface; 
 
 #[Route('/admin/promotion')]
 class PromotionController extends AbstractController
 {
     #[Route('/', name: 'app_admin_promotion_index', methods: ['GET'])]
-    public function index(PromotionRepository $promotionRepository): Response
+    public function index(Request $request, PromotionRepository $promotionRepository, PaginatorInterface $pagination ): Response
     {
+        $promotions = $promotionRepository->findAll();
+        $pagination = $pagination->paginate(
+            $promotions, 
+            $request->query->getInt('page', 1),
+            15,
+        );
         return $this->render('admin/promotion/index.html.twig', [
-            'promotions' => $promotionRepository->findAll(),
+            'promotions' => $pagination
         ]);
     }
 

@@ -3,11 +3,9 @@
 {% block title %}Nouveau ResponsableTerritorial{% endblock %}
 
 {% block body %}
-<main>
     <h1>Créér un nouveau Responsable Territorial</h1>
 
     {{ include('admin/responsable_territorial/_form.html.twig') }}
 
     <a href="{{ path('app_admin_responsable_territorial_index') }}">retour à la liste</a>
-</main>
 {% endblock %}
