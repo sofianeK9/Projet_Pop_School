@@ -31,7 +31,7 @@ class ResponsableTerritorialType extends AbstractType
                 'label' => false,
             ])
             ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
-                $user = $event->getData()->getUser(); 
+                $user = $event->getData()->getUser();
                 $password = $user->getPassword();
                 $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
                 $user->setPassword($hashedPassword);

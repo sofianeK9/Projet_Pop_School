@@ -37,7 +37,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('confirmedPassword', PasswordType::class, [
-             // false car j'ai besoin de hasher le mdp manuellement avant de l'associer à l'entité
+                // false car j'ai besoin de hasher le mdp manuellement avant de l'associer à l'entité
                 'mapped' => false,
                 // indique que le champ est destiné à la saisie d'un mdp
                 'attr' => ['autocomplete' => 'new-password'],

@@ -18,10 +18,6 @@ class PromotionResponsable extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('createdAt', DateType::class, [
-                'widget' => 'single_text',
-                'required' => true
-            ])
             ->add('dateFin', DateType::class, [
                 'widget' => 'single_text',
                 'required' => true
@@ -33,9 +29,9 @@ class PromotionResponsable extends AbstractType
                 },
                 'multiple' => true,
                 'expanded' => true,
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('p')
-                    ->orderBy('p.nom','ASC'); 
+                        ->orderBy('p.nom', 'ASC');
                 },
                 'by_reference' => false,
             ]);

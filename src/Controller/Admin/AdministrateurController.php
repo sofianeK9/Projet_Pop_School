@@ -74,7 +74,7 @@ class AdministrateurController extends AbstractController
     #[Route('/{id}', name: 'app_admin_administrateur_delete', methods: ['POST'])]
     public function delete(Request $request, Administrateur $administrateur, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$administrateur->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $administrateur->getId(), $request->request->get('_token'))) {
             $entityManager->remove($administrateur);
             $entityManager->flush();
         }

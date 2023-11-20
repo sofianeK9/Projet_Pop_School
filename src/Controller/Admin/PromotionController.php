@@ -10,17 +10,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface; 
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/admin/promotion')]
 class PromotionController extends AbstractController
 {
     #[Route('/', name: 'app_admin_promotion_index', methods: ['GET'])]
-    public function index(Request $request, PromotionRepository $promotionRepository, PaginatorInterface $pagination ): Response
+    public function index(Request $request, PromotionRepository $promotionRepository, PaginatorInterface $pagination): Response
     {
         $promotions = $promotionRepository->findAll();
         $pagination = $pagination->paginate(
-            $promotions, 
+            $promotions,
             $request->query->getInt('page', 1),
             15,
         );
@@ -78,7 +78,7 @@ class PromotionController extends AbstractController
     #[Route('/{id}', name: 'app_admin_promotion_delete', methods: ['POST'])]
     public function delete(Request $request, Promotion $promotion, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$promotion->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $promotion->getId(), $request->request->get('_token'))) {
             $entityManager->remove($promotion);
             $entityManager->flush();
         }

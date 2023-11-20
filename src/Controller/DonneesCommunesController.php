@@ -21,10 +21,10 @@ class DonneesCommunesController extends AbstractController
     public function index(ApprenantRepository $apprenantRepository): Response
     {
         $user = $this->getUser();
-          /** @var \App\Entity\User $user */
-          if ($user) {
+        /** @var \App\Entity\User $user */
+        if ($user) {
             $apprenant = $user->getApprenant();
-          }
+        }
 
         return $this->render('donnees_communes/index.html.twig', [
             'apprenant' => $apprenant,
@@ -84,7 +84,7 @@ class DonneesCommunesController extends AbstractController
     #[Route('/{id}', name: 'app_donnees_communes_delete', methods: ['POST'])]
     public function delete(Request $request, Apprenant $apprenant, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$apprenant->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $apprenant->getId(), $request->request->get('_token'))) {
             $entityManager->remove($apprenant);
             $entityManager->flush();
         }

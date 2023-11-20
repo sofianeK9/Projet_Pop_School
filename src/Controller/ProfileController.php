@@ -94,7 +94,7 @@ class ProfileController extends AbstractController
         $sessionUser = $this->getUser();
 
         if ($sessionUser != $user) {
-            // l'utilisateur connecté essaye de consulter le profil d'un autre utilisateur
+            // si l'utilisateur connecté essaye de consulter le profil d'un autre utilisateur => erreur
             throw new NotFoundHttpException();
         }
     }

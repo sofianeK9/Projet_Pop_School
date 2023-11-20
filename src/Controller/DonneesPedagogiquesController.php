@@ -16,24 +16,24 @@ class DonneesPedagogiquesController extends AbstractController
     public function donneesPedagogiquesValidation(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-         /** @var \App\Entity\User $user */
-         $apprenant = $user->getApprenant();
+        /** @var \App\Entity\User $user */
+        $apprenant = $user->getApprenant();
 
-         // je créée le formualire avec un objet données pedagogiques
-         $donneesPedagogiques = new DonneesPedagogiques();
-         $form = $this->createForm(DonneesPedagogiquesFormulairesType::class, $donneesPedagogiques);
+        // je créée le formualire avec un objet données pedagogiques
+        $donneesPedagogiques = new DonneesPedagogiques();
+        $form = $this->createForm(DonneesPedagogiquesFormulairesType::class, $donneesPedagogiques);
         // je soumets le formulaire
-         $form->handleRequest($request);
+        $form->handleRequest($request);
         // je metsà jour les données administratives de l'apprenant en lui ajoutant ces données
-         if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $apprenant->setDonneesPedagogiques($donneesPedagogiques);
-             // je persiste les données de l'apprenant
+            // je persiste les données de l'apprenant
             $entityManager->persist($apprenant);
             $entityManager->flush();
-        // je redirige vers une autre page après la soumission réussie
+            // je redirige vers une autre page après la soumission réussie
 
             return $this->redirectToRoute('app_donnees_communes_index');
-         }
+        }
 
         return $this->render('donnees_pedagogiques/index.html.twig', [
             'controller_name' => 'DonneesPedagogiquesController',

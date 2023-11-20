@@ -33,11 +33,11 @@ class PromotionType extends AbstractType
                     'class' => 'form_scrollable-checkboxes',
                 ],
                 'by_reference' => false,
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('p')
-                    ->orderBy('p.nom','ASC'); 
+                        ->orderBy('p.nom', 'ASC');
                 },
-                
+
             ]);
     }
 

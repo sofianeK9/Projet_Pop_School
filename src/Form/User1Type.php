@@ -53,11 +53,10 @@ class User1Type extends AbstractType
                     $password = $hasher->hashPassword($user, $password);
                     $user->setPassword($password);
                     // écrase le password clair avec le hash
-        
+
                     $event->setData($user);
                 }
-            )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

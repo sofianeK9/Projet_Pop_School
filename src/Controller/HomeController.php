@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Apprenant;
 use App\Entity\Promotion;
 use App\Repository\PromotionRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +45,7 @@ class HomeController extends AbstractController
     #[Route('/apprenant/{id}', name: 'app_home_apprenant_show')]
     public function apprenantShow(Apprenant $apprenant): Response
     {
-        
+
 
         return $this->render('home/apprenant_show.html.twig', [
             'apprenant' => $apprenant,

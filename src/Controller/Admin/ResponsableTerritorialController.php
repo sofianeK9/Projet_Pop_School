@@ -74,7 +74,7 @@ class ResponsableTerritorialController extends AbstractController
     #[Route('/{id}', name: 'app_admin_responsable_territorial_delete', methods: ['POST'])]
     public function delete(Request $request, ResponsableTerritorial $responsableTerritorial, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$responsableTerritorial->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $responsableTerritorial->getId(), $request->request->get('_token'))) {
             $entityManager->remove($responsableTerritorial);
             $entityManager->flush();
         }

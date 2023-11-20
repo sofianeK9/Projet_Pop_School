@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApprenantController extends AbstractController
 {
     #[Route('/', name: 'app_admin_apprenant_index', methods: ['GET'])]
-    public function index(Request $request, ApprenantRepository $apprenantRepository, PaginatorInterface $pagination ): Response
+    public function index(Request $request, ApprenantRepository $apprenantRepository, PaginatorInterface $pagination): Response
     {
         $apprenants = $apprenantRepository->findAll();
         $pagination = $pagination->paginate(
@@ -39,7 +39,7 @@ class ApprenantController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $apprenant->getUser();
             $user->setRoles(['ROLE_APPRENANT']);
-            
+
             $entityManager->persist($apprenant);
             $entityManager->flush();
 
@@ -81,7 +81,7 @@ class ApprenantController extends AbstractController
     #[Route('/{id}', name: 'app_admin_apprenant_delete', methods: ['POST'])]
     public function delete(Request $request, Apprenant $apprenant, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$apprenant->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $apprenant->getId(), $request->request->get('_token'))) {
             $entityManager->remove($apprenant);
             $entityManager->flush();
         }

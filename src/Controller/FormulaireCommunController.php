@@ -37,8 +37,8 @@ class FormulaireCommunController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('app_donnees_administratives');
         }
-        
-       
+
+
         return $this->render('formulaire_commun/formulaire_commun.html.twig', [
             'controller_name' => 'FormulaireCommunController',
             'form' => $form->createView(),
