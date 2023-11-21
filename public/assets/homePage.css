@@ -68,31 +68,28 @@ h1 {
     height: auto;
 }
 
-
+/* Ajoutez ces styles à la fin de votre fichier CSS */
 
 @media (max-width: 900px) {
-    .content-container {
-        margin-top: 250px;
-    }
     .main-content {
       flex-direction: column;
       align-items: center;
-      text-align: center; 
+      text-align: center; /* Ajout de centrage pour tout le contenu */
     }
   
     
     .image-container {
       max-width: 100%;
-      margin: 10px 0; 
+      margin: 10px 0; /* Ajout de marge entre les éléments */
     }
   
     .image-container img {
-      max-width: 80%; 
+      max-width: 80%; /* Ajustez la largeur de l'image comme nécessaire */
       height: auto;
     }
   
     #title_home {
-      margin-top: 20px; 
+      margin-top: 20px; /* Ajustez la marge du titre comme nécessaire */
     }
   }
   
@@ -100,7 +97,7 @@ h1 {
 @media (max-width: 768px) {
     #title_home {
         margin-top: 30px;
-        margin-bottom: 20px; 
+        margin-bottom: 20px; /* Ajout d'une marge au bas du titre */
     }
 }
 

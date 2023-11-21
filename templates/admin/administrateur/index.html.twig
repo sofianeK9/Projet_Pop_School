@@ -6,7 +6,7 @@
     <h1>Administrateur index</h1>
 
     <div class="button-container">
-        <button class="btn"><a href="{{ path('app_admin_administrateur_new') }}">Créer</a></button>
+        <a class="btn-action" href="{{ path('app_admin_administrateur_new') }}">Créer</a></button>
     </div>
 
     <table class="table">
@@ -26,8 +26,8 @@
                     <td>{{ administrateur.prenom }}</td>
                     <td>
                         <div class="button-container"> 
-                            <button class="btn-action" onclick="window.location.href='{{ path('app_admin_administrateur_show', {'id': administrateur.id}) }}'">Voir</button>
-                            <button class="btn-action"><a href="{{ path('app_admin_administrateur_edit', {'id': administrateur.id}) }}">Éditer</a></button>
+                            <a class="btn-action" href="{{ path('app_admin_administrateur_show', {'id': administrateur.id}) }}">Voir</a>
+                            <a class="btn-action" href="{{ path('app_admin_administrateur_edit', {'id': administrateur.id}) }}">Éditer</a>
                         </div>
                     </td>
                 </tr>

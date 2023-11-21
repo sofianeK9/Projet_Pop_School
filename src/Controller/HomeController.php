@@ -51,4 +51,15 @@ class HomeController extends AbstractController
             'apprenant' => $apprenant,
         ]);
     }
+    
+    #[Route('/mentions_legales', name: 'app_home_mentions_legales')]
+    public function mentionsLegales(): Response
+    {
+        
+        $mentions = 'Mentions légales de Pop SChool';
+
+        return $this->render('home/mentions_legales.html.twig', [
+            'mentions'=> $mentions,
+        ]);
+    }
 }

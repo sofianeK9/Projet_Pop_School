@@ -1,8 +1,11 @@
-table {
+h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+.table {
     width: 90%;
     border-collapse: collapse;
-    margin: 20px auto; /* Ajoutez des marges en haut et en bas, et centre horizontalement */
-    margin-bottom: 20px;
+    margin: 20px auto;
 }
 
 th, td {
@@ -16,18 +19,27 @@ th {
 }
 
 .button-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
+    gap: 10px; 
 }
-button a {
-    color: white    ;
+
+.button-container button a,
+.button-container .btn-action {
+    color: white;
+    font-size: 14px;
+    font-weight: bold; 
 }
+
 a {
     color: rgb(38, 50, 128);
     text-decoration: none;
 }
 
-.button-container button {
+.button-container button,
+.button-container .btn-action {
+    height: 40px; 
     padding: 12px 24px;
     border: none;
     background-color: rgb(38, 50, 128);
@@ -38,12 +50,21 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.button-container button:hover {
+.button-container button:hover,
+.button-container .btn-action:hover {
     background-color: #0056b3;
 }
 
 .btn-action {
-    margin-right: 8px;
-}  
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #263280;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-
+.btn-action:hover {
+    background-color: #1a237e;
+}

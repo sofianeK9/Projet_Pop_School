@@ -1,4 +1,29 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="container">
+  <div class="form-container">
+    {{ form_start(form) }}
+
+    <div class="form-row">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
+    </div>
+
+    <div class="form-row">
+        {{ form_label(form.prenom) }}
+        {{ form_widget(form.prenom) }}
+    </div>
+
+    <div class="form-row">
+        {{ form_label(form.user.email) }}
+        {{ form_widget(form.user.email) }}
+    </div>
+
+    <div class="form-row">
+      {{ form_widget(form.user.password) }}
+    </div>
+  
+  
+    
+    <button type="submit" class="btn-action">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+  </div>
+</div>

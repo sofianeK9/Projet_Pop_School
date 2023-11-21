@@ -18,13 +18,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class RegistrationController extends AbstractController
 {
     #[Route('/inscription', name: 'app_register')]
-    public function register(
-        Request $request,
-        UserPasswordHasherInterface $userPasswordHasher,
-        EntityManagerInterface $entityManager,
-        EmailService $emailService,
-        TokenStorageInterface $tokenStorage
-    ): Response {
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, EmailService $emailService, TokenStorageInterface $tokenStorage): Response {
         // création d'un user lors de l'inscription et attribution du rôle apprenant
         $user = new User();
         $user->setRoles(['ROLE_APPRENANT']);

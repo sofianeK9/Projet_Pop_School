@@ -4,7 +4,9 @@
 
 {% block body %}
     <h1>Responsable Territorial index</h1>
-    <a href="{{ path('app_admin_responsable_territorial_new') }}">Créér un nouveau Responsable Territorial</a>
+    <div class="button-container"> 
+    <a class="btn-action" href="{{ path('app_admin_responsable_territorial_new') }}">Créér</a>
+    </div>
 
     <table class="table">
         <thead>
@@ -22,8 +24,10 @@
                 <td>{{ responsable_territorial.nom }}</td>
                 <td>{{ responsable_territorial.prenom }}</td>
                 <td>
-                    <a href="{{ path('app_admin_responsable_territorial_show', {'id': responsable_territorial.id}) }}">voir</a>
-                    <a href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">éditer</a>
+                    <div class="button-container"> 
+                    <a class="btn-action" href="{{ path('app_admin_responsable_territorial_show', {'id': responsable_territorial.id}) }}">voir</a>
+                    <a class="btn-action" href="{{ path('app_admin_responsable_territorial_edit', {'id': responsable_territorial.id}) }}">éditer</a>
+                    </div>
                 </td>
             </tr>
         {% else %}

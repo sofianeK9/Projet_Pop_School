@@ -12,6 +12,7 @@
     width: 60%;
     box-sizing: border-box;
     border: 1px solid rgb(38, 50, 128);
+    color: rgb(38, 50, 128);;
     align-items: center; 
 }
 

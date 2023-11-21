@@ -62,20 +62,23 @@ h4 {
 
 .footer-container {
   align-items: center;
-  height: 13vh;
+  font-family: 'Roboto', sans-serif;
+  height: 14vh;
   background-color: rgb(38, 50, 128);
   color: white;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-
+.footer-container h5 {
+  font-size: 18px;
+}
 .footer-container a {
   color: white;
   font-size: x-small;
   margin: 3px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .contain {
@@ -88,6 +91,7 @@ h4 {
 
 .reseaux {
   display: flex;
+ 
 }
 
 .contain-container2 {
@@ -100,6 +104,10 @@ h3 {
 
 .pagination {
   color: rgb(38, 50, 128);
+}
+
+.mentions-legales {
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 1200px) {
