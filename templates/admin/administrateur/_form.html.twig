@@ -19,11 +19,8 @@
 
     <div class="form-row">
       {{ form_widget(form.user.password) }}
-    </div>
-  
-  
-    
-    <button type="submit" class="btn-action">{{ button_label|default('Save') }}</button>
-        {{ form_end(form) }}
+    </div>    
+    <button class="btn-action">{{ button_label|default('enregistrer') }}</button>
+    {{ form_end(form) }}
   </div>
 </div>

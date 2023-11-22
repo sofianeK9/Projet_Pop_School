@@ -108,13 +108,10 @@
                         <th>Compte Linkedin</th>
                         <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
                     </tr>
-                    <th>
-                        <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">voir</a>
-                        <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">éditer</a>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+            <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">voir</a>
+            <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">éditer</a>
     {% else %}
         <p>Aucun apprenant trouvé pour cet utilisateur.</p>
     {% endif %}

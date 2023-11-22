@@ -1,4 +1,5 @@
-<form method="post" action="{{ path('app_donnees_communes_delete', {'id': apprenant.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form method="post" action="{{ path('app_donnees_communes_delete', {'id': apprenant.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer votre profil?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ apprenant.id) }}">
-    <button class="btn">Delete</button>
+    <input type="hidden" name="/" value="{{path('app_home')}}">
+    <button class="btn">supprimer</button>
 </form>

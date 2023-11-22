@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="{{ asset('assets/table.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/registration.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/form.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/recherche.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/donnees.css') }}">
   <script src="{{ asset('assets/script.js') }}"></script>
 </head>
 
@@ -28,8 +30,13 @@
     <div class="header">
 
       <div class="logo">
-       
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL')or is_granted('ROLE_FORMATEUR') %}
         <a class="active" href="{{ path('app_home') }}"> <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo"></a>
+        {% elseif is_granted('ROLE_APPRENANT') %}
+        <a class="active" href="{{ path('app_donnees_communes_index') }}"> <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo"></a>
+        {%else %}
+       <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo">
+        {% endif %}
       </div>
       <div class="burger">
         <div class="line"></div>

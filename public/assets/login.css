@@ -2,47 +2,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .connexion {
     padding: 20px;
     border-radius: 8px;
-    max-width: 350px;
-    width: 60%;
+    max-width: 450px;
+    width: 70%;
     box-sizing: border-box;
-    border: 1px solid rgb(38, 50, 128);
-    color: rgb(38, 50, 128);;
+    color: rgb(38, 50, 128);
     align-items: center; 
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
-    margin: auto; 
+.connexion fieldset,
+.connexion fieldset legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: none;
 }
 
-.label {
-    margin-top: 10px;
-}
-
-.form-control {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px; 
-}
-
-.checkbox-label input {
-    margin-right: 5px;
-    margin-bottom: 10px; /* Ajoutez une marge basse pour créer de l'espace */
-}
 
 .btn-primary {
     background-color: rgb(38, 50, 128);
@@ -51,12 +30,12 @@
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px; /* Ajustez selon vos préférences */
+    margin-top: 10px; 
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
-    margin-top: 10px; /* Ajustez selon vos préférences */
+    margin-top: 10px; 
 }
 
 @media (max-width: 768px) {

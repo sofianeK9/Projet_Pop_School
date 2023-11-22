@@ -53,10 +53,12 @@ class DonneesCommunesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_donnees_communes_show', methods: ['GET'])]
+    #[IsGranted('ROLE_APPRENANT')]
     public function show(Apprenant $apprenant): Response
     {
-        $user = $this->getUser();
-        $this->filterSessionUser($user, $apprenant);
+        // $user = $this->getUser();
+        // $this->filterSessionUser($user, $apprenant);
+        $this->denyAccessUnlessGranted('VIEW', $apprenant);
 
         return $this->render('donnees_communes/show.html.twig', [
             'apprenant' => $apprenant,
@@ -84,12 +86,17 @@ class DonneesCommunesController extends AbstractController
     #[Route('/{id}', name: 'app_donnees_communes_delete', methods: ['POST'])]
     public function delete(Request $request, Apprenant $apprenant, EntityManagerInterface $entityManager): Response
     {
+        $redirectTo = $request->request->get('_redirect');
+
         if ($this->isCsrfTokenValid('delete' . $apprenant->getId(), $request->request->get('_token'))) {
             $entityManager->remove($apprenant);
             $entityManager->flush();
         }
-
-        return $this->redirectToRoute('app_donnees_communes_index', [], Response::HTTP_SEE_OTHER);
+        if ($redirectTo) {
+            return $this->redirectToRoute($redirectTo);
+        } else {
+            return $this->redirectToRoute('app_donnees_communes_index', [], Response::HTTP_SEE_OTHER);
+        }
     }
 
     private function filterSessionUser(User $user, Apprenant $apprenant)

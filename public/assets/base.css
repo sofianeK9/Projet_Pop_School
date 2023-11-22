@@ -6,7 +6,7 @@
 }
 
 main {
-  min-height: 80vh !important;
+  min-height: 78vh !important;
 }
 
 .header {
@@ -63,22 +63,29 @@ h4 {
 .footer-container {
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  height: 14vh;
+  height: 15vh;
   background-color: rgb(38, 50, 128);
   color: white;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
+
 .footer-container h5 {
   font-size: 18px;
 }
+
 .footer-container a {
   color: white;
   font-size: x-small;
   margin: 3px;
   text-decoration: none;
   font-size: 15px;
+
+}
+
+.footer-container a:hover {
+  text-decoration: underline;
 }
 
 .contain {
@@ -91,7 +98,7 @@ h4 {
 
 .reseaux {
   display: flex;
- 
+
 }
 
 .contain-container2 {
@@ -111,12 +118,13 @@ h3 {
 }
 
 @media (max-width: 1200px) {
- 
+
   .footer-container {
     flex-wrap: wrap;
     width: 100%;
-    height: 15vh;
+    height: 17vh;
   }
+
   .contain {
     width: 50%;
   }
@@ -126,6 +134,7 @@ h3 {
   .header {
     min-height: 8vh;
   }
+
   .bloc {
     flex-direction: column;
   }
@@ -174,6 +183,7 @@ h3 {
     flex-wrap: wrap;
     width: 100%;
   }
+
   .contain {
     width: 100%;
   }

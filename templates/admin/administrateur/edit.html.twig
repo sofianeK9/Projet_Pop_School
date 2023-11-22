@@ -1,19 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Editer un Administrateur{%
+endblock %} {% block body %}
 
-{% block title %}Editer un Administrateur{% endblock %}
+<h1>Editer un Administrateur</h1>
 
-{% block body %}
+{{
+  include("admin/administrateur/_form.html.twig", { button_label: "Update" })
+}}
+<div class="button-container">
+  
+    <a class="btn-action" href="{{ path('app_admin_administrateur_index') }}">retour</a>
+  
 
-    <h1>Editer un Administrateur</h1>
-
-    {{ include('admin/administrateur/_form.html.twig', {'button_label': 'Update'}) }}
-    <div class="button-container">
-        
-        
-            <button class="btn-action"><a href="{{ path('app_admin_administrateur_index') }}">retour</a></button>
-        
-
-        {{ include('admin/administrateur/_delete_form.html.twig') }}
-    </div>
+  {{ include("admin/administrateur/_delete_form.html.twig") }}
+</div>
 
 {% endblock %}

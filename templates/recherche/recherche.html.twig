@@ -1,36 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Rechercher un apprenant{%
+endblock %} {% block body %}
+<h1>Recherche par nom ou prénom :</h1>
+<div class="search-container">
+  <!-- methode HTTPS utilisé est la méthode POST pour soummettre le formulaire  et utile pour securiser les données -->
+  {{ form_start(form, { method: "POST" }) }}
+  <div class="form-class">
+    <div class="form-recherche">
+      {{ form_row(form.keyword) }}
+      <div class="button-recherche">
+        {{ form_row(form.search) }}
+      </div>
+    </div>
 
-{% block title %}Recherche par nom ou prénom{% endblock %}
-
-{% block body %}
-<main>
-    <h1>Recherche par nom ou prénom :</h1>
-
-    <!-- methode HTTPS utilisé est la méthode POST pour soummettre le formulaire  et utile pour securiser les données -->
-    {{ form_start(form, {'method' : 'POST'})}}
-    {{ form_row(form.keyword) }}
-    {{ form_row(form.search) }}
     {{ form_end(form) }}
 
     {% if keyword is not empty %}
-        <h3>Résultats de la recherche pour l'apprenant "{{ keyword }}"</h3>
-        {% if results is empty %}
-            <p>Aucun résultat trouvé.</p>
-        {% else %}
-            <ul>
-                {% for apprenant in results %}
-                <li>
-                <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}">{{
-                    apprenant.nom
-                  }} {{
-                    apprenant.prenom
-                  }}
-                  </a
-                  >
-                </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endif %}
-        </main>
-{% endblock %}
+    <h3>Résultats de la recherche pour l'apprenant "{{ keyword }}"</h3>
+    {% if results is empty %}
+    <h5>Aucun résultat trouvé.</h5>
+    {% else %}
+    <ul class="results-list">
+      {% for apprenant in results %}
+      <li>
+        <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}"
+          >{{ apprenant.nom }} {{ apprenant.prenom }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endif %}
+  </div>
+  {% endblock %}
+
