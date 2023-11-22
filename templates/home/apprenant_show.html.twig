@@ -7,6 +7,7 @@
 <div class="contain-donnees">
 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
 <h2>Données de : {{apprenant.nom}} {{apprenant.prenom}}</h2>
+<br>
 <div class="data-category">Données communes :</div>
 <br>
 <p> Nom : {{apprenant.nom}} <p>
