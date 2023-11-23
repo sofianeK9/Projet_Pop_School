@@ -2,14 +2,16 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
+
 .table {
     width: 90%;
     border-collapse: collapse;
     margin: 20px auto;
 }
 
-th, td {
-    padding: 12px;   
+th,
+td {
+    padding: 12px;
     border: 1px solid #ddd;
 }
 
@@ -21,7 +23,7 @@ th {
 .button-container .btn-action {
     color: white;
     font-size: 14px;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 a {
@@ -31,7 +33,7 @@ a {
 
 .button-container button,
 .button-container .btn-action {
-    height: 40px; 
+    height: 40px;
     padding: 12px 24px;
     border: none;
     background-color: rgb(38, 50, 128);

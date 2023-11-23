@@ -6,13 +6,13 @@
 }
 
 .form-container {
-    max-width: 700px; 
+    max-width: 700px;
     width: 100%;
     margin-bottom: 30px;
-    padding: 30px; 
+    padding: 30px;
     border: 1px solid #ddd;
-    border-radius: 8px; 
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .form-row {
@@ -23,7 +23,8 @@
     width: 100%;
     padding: 10px;
     font-size: 14px;
-    color: #263280;;
+    color: #263280;
+    ;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -44,15 +45,17 @@
 .gap {
     margin-bottom: 15px;
 }
+
 .scroller {
     width: 650px;
     height: 200px;
     overflow-y: scroll;
     scrollbar-width: thin;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 
 .wide-input {
     width: 100%;
     height: 50px;
 }
-

@@ -25,7 +25,9 @@
         {{ form_widget(form.promotions) }}
       </div>
     </div>
-    <button class="btn-action">{{ button_label|default('Save') }}</button>
+    <button class="btn-action">
+      {{ button_label|default('enregistrer') }}
+    </button>
     {{ form_end(form) }}
   </div>
 </div>

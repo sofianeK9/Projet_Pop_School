@@ -1,37 +1,33 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Edition du profil{% endblock %}
-
+{% extends 'base.html.twig' %} {% block title %}Edition du profil{% endblock %}
 {% block body %}
 <main>
-    <h1>Edition du profil</h1>
+  <h1>Edition du profil</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                
-                <th>Email</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                {% for user in users %}
-                {% if app.user == user%}
-                <td>{{ user.email }}</td>
-                <td>
-                    <a href="{{ path('app_profile_show', {'id': user.id}) }}">voir</a>
-                    <a href="{{ path('app_profile_edit', {'id': user.id}) }}">éditer</a>
-                
-                </td>
-                {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for user in users %} {% if app.user == user%}
+        <td>{{ user.email }}</td>
+        <td>
+          <div class="button-container">
+            <a class="btn-action" href="{{ path('app_profile_show', { id: user.id }) }}">voir</a>
+            <a class="btn-action" href="{{ path('app_profile_edit', { id: user.id }) }}">éditer</a>
+          </div>
+        </td>
+        {% endif %}
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="8">no records found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </main>
 {% endblock %}

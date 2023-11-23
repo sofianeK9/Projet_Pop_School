@@ -7,7 +7,10 @@
 
     {{ include('admin/apprenant/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_admin_apprenant_index') }}">Retour à la liste</a>
+    <div class="button-container">
 
-    {{ include('admin/apprenant/_delete_form.html.twig') }}
-{% endblock %}
+        <a class="btn-action" href="{{ path('app_admin_apprenant_index') }}">Retour</a>
+    
+        {{ include('admin/apprenant/_delete_form.html.twig') }}
+    </div>
+    {% endblock %}

@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Nouveau Apprenant{% endblock %}
-
+{% extends 'base.html.twig' %} {% block title %}Nouveau Apprenant{% endblock %}
 {% block body %}
-    <h1>Créér un  apprenant</h1>
+<h1>Créer un apprenant</h1>
 
-    {{ include('admin/apprenant/_form.html.twig') }}
+{{ include("admin/apprenant/_form.html.twig") }}
 
-    <a href="{{ path('app_admin_apprenant_index') }}">retour à la liste</a>
+<div class="button-container">
+  <a class="btn-action" href="{{ path('app_admin_apprenant_index') }}"
+    >retour</a
+  >
+</div>
 {% endblock %}
