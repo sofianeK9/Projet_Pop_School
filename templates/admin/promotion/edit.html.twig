@@ -6,8 +6,9 @@
     <h1>Editer une Promotion</h1>
 
     {{ include('admin/promotion/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_promotion_index') }}">retour à la liste</a>
+    <div class="button-container">
+    <a class="btn-action" href="{{ path('app_admin_promotion_index') }}">retour</a>
 
     {{ include('admin/promotion/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

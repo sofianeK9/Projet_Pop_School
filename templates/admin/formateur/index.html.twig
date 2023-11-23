@@ -1,36 +1,45 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Formateur index{% endblock %} {%
+block body %}
+<h1>Formateur index</h1>
+<div class="button-container">
+    <a class="btn-action" href="{{ path('app_admin_formateur_new') }}">Créer</a>
+</div>
 
-{% block title %}Formateur index{% endblock %}
-
-{% block body %}
-    <h1>Formateur index</h1>
-    <a href="{{ path('app_admin_formateur_new') }}">Créér un  formateur</a>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formateur in formateurs %}
-            <tr>
-                <td>{{ formateur.id }}</td>
-                <td>{{ formateur.nom }}</td>
-                <td>{{ formateur.prenom }}</td>
-                <td>
-                    <a href="{{ path('app_admin_formateur_show', {'id': formateur.id}) }}">voir</a>
-                    <a href="{{ path('app_admin_formateur_edit', {'id': formateur.id}) }}">éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for formateur in formateurs %}
+    <tr>
+      <td>{{ formateur.id }}</td>
+      <td>{{ formateur.nom }}</td>
+      <td>{{ formateur.prenom }}</td>
+      <td>
+        <div class="button-container">
+          <a
+            class="btn-action"
+            href="{{ path('app_admin_formateur_show', { id: formateur.id }) }}"
+            >voir</a
+          >
+          <a
+            class="btn-action"
+            href="{{ path('app_admin_formateur_edit', { id: formateur.id }) }}"
+            >éditer</a
+          >
+        </div>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="7">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

@@ -1,40 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Promotion index{% endblock %} {%
+block body %}
+<h1>Promotion index</h1>
 
-{% block title %}Promotion index{% endblock %}
-
-{% block body %}
-    <h1>Promotion index</h1>
-
-    <a href="{{ path('app_admin_promotion_new') }}">Créér une promotion</a>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>DateFin</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for promotion in promotions %}
-            <tr>
-                <td>{{ promotion.id }}</td>
-                <td>{{ promotion.nom }}</td>
-                <td>{{ promotion.description }}</td>
-                <td>{{ promotion.dateFin ? promotion.dateFin|date('d-m-Y') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_promotion_show', {'id': promotion.id}) }}">voir</a>
-                    <a href="{{ path('app_admin_promotion_edit', {'id': promotion.id}) }}">éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-    </tbody>
+<div class="button-container">
+  <a class="btn-action" href="{{ path('app_admin_promotion_new') }}"
+    >Créer</a
+  >
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Date de fin</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for promotion in promotions %}
+    <tr>
+      <td>{{ promotion.id }}</td>
+      <td>{{ promotion.nom }}</td>
+      <td>{{ promotion.description }}</td>
+      <td>{{ promotion.dateFin ? promotion.dateFin|date('d-m-Y') : '' }}</td>
+      <td>
+        <div class="button-container">
+          <a
+            class="btn-action"
+            href="{{ path('app_admin_promotion_show', { id: promotion.id }) }}"
+            >voir</a
+          >
+          <a
+            class="btn-action"
+            href="{{ path('app_admin_promotion_edit', { id: promotion.id }) }}"
+            >éditer</a
+          >
+        </div>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="8">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 {{ knp_pagination_render(promotions) }}
 {% endblock %}

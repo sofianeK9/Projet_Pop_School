@@ -25,7 +25,7 @@ class PromotionType extends AbstractType
             ->add('apprenants', EntityType::class, [
                 'class' => Apprenant::class,
                 'choice_label' => function (apprenant $apprenant) {
-                    return "{$apprenant->getNom()}{$apprenant->getPrenom()}";
+                    return "{$apprenant->getNom()} {$apprenant->getPrenom()}";
                 },
                 'multiple' => true,
                 'expanded' => true,

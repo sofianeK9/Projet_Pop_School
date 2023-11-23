@@ -1,34 +1,38 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Promotion{% endblock %} {% block
+body %}
+<h1>Promotion {{ promotion.nom }}</h1>
 
-{% block title %}Promotion{% endblock %}
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ promotion.id }}</td>
+    </tr>
+    <tr>
+      <th>Nom</th>
+      <td>{{ promotion.nom }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{ promotion.description }}</td>
+    </tr>
+    <tr>
+      <th>Date de fin</th>
+      <td>{{ promotion.dateFin ? promotion.dateFin|date('Y-m-d') : '' }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="button-container">
+  <a class="btn-action" href="{{ path('app_admin_promotion_index') }}"
+    >retour</a
+  >
 
-{% block body %}
-    <h1>Promotion</h1>
+  <a
+    class="btn-action"
+    href="{{ path('app_admin_promotion_edit', { id: promotion.id }) }}"
+    >éditer</a
+  >
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ promotion.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ promotion.nom }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ promotion.description }}</td>
-            </tr>
-            <tr>
-                <th>DateFin</th>
-                <td>{{ promotion.dateFin ? promotion.dateFin|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_promotion_index') }}">retour à la liste</a>
-
-    <a href="{{ path('app_admin_promotion_edit', {'id': promotion.id}) }}">éditer</a>
-
-    {{ include('admin/promotion/_delete_form.html.twig') }}
+  {{ include("admin/promotion/_delete_form.html.twig") }}
+</div>
 {% endblock %}
