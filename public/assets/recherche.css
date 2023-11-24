@@ -54,5 +54,11 @@ h3 {
 @media (max-width: 768px) {
     .search-container {
         margin-bottom: 20px;
+        max-width: 100%;
+    }
+
+    .button-recherche {
+        margin-top: 15px;
+        
     }
 }

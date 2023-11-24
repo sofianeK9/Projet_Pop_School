@@ -3,17 +3,22 @@ body %}
 <div class="promotion-show">
   <link rel="stylesheet" href="{{ asset('assets/homePage.css') }}" />
 
-  
   <div class="list-container">
     <h2>Nom de la promotion : {{ promotion.nom }}</h2>
-    <p>Formateurs :</p>
+
+    <div class="paragraphe">
+      <p>Formateurs :</p>
+    </div>
     {% for formateur in formateurs %}
     <ul class="home-page-ul">
-      <li class= "home-page-li">{{ formateur.nom }} {{ formateur.prenom }}</li>
+      <li class="home-page-li">{{ formateur.nom }} {{ formateur.prenom }}</li>
     </ul>
     {% endfor %}
-    <br>
-    <p>Apprenants :</p>
+    <br />
+    
+    <div class="paragraphe">
+      <p>Apprenants :</p>
+    </div>
     <ul class="home-page-ul">
       {% for apprenant in apprenants %}
       <li class="home-page-li">
@@ -28,7 +33,9 @@ body %}
   </div>
 
   <div class="image-container">
-    <img src="{{ asset('images/logo_bleu.png') }}" alt="Image Description" />
+    <img
+      src="{{ asset('images/logo_bleu_clair.png') }}"
+      alt="Image Description" />
   </div>
 </div>
 {% endblock %}

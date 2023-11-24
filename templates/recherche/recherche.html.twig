@@ -21,6 +21,7 @@ endblock %} {% block body %}
     {% else %}
     <ul class="results-list">
       {% for apprenant in results %}
+
       <li>
         <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}"
           >{{ apprenant.nom }} {{ apprenant.prenom }}
