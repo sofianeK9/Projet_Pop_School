@@ -5,10 +5,18 @@
     flex-direction: column; 
 }
 
+.promotion-show {
+    display: flex;
+}
+
 h1 {
     margin-bottom: 20px;
     margin-left: 0px !important;
     
+}
+ .list-container li{
+    color: #1a237e;
+    font-weight: bold;
 }
 
 #title_home {

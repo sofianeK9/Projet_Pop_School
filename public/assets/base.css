@@ -60,6 +60,18 @@ h4 {
   color: white;
 }
 
+li:hover {
+  background-color: rgb(142, 147, 183);
+  border-radius: 5px;
+}
+
+.results-list li:hover {
+  background-color: rgb(142, 147, 183);
+  border-radius: 5px;
+  width: 13%;
+
+}
+
 .footer-container {
   align-items: center;
   font-family: 'Roboto', sans-serif;

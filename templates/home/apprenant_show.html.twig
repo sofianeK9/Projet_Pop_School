@@ -19,7 +19,8 @@
     <span class="{{ apprenant.consentement == 1 ? 'consentment-yes' : 'consentment-no' }}">
           {% if apprenant.consentement == 1 %}Oui{% else %}Non{% endif %}
     </span>
-</p><div class="data-category">Données administratives :</div>
+</p>
+<div class="data-category">Données administratives :</div>
 <br>
 <p> Lieu de naissance : {{ apprenant.donneesAdministratives.lieuNaissance }}</p>
 <p> Pays de naissance : {{ apprenant.donneesAdministratives.paysNaissance }}</p>
@@ -47,9 +48,12 @@
 <p> Date de naissance : {{apprenant.dateNaissance|date('d-m-Y')}} <p>
 <p> Telephone : {{apprenant.telephone}} <p>
 <div class="data-category">Consentement au règlement RGPD :</div>
-<p> consentement au réglement RGPD : {% if apprenant.consentement == 1%}Oui{% else %}non {% endif %} </p>
-
-
+<p class="consentment">Consentement au règlement RGPD :
+    <span class="{{ apprenant.consentement == 1 ? 'consentment-yes' : 'consentment-no' }}">
+          {% if apprenant.consentement == 1 %}Oui{% else %}Non{% endif %}
+    </span>
+</p>
+<div class="data-category">Données pédagogiques :</div>
 <p> Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
 <p> Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
 <p> Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>

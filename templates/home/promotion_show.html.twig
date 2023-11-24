@@ -1,20 +1,34 @@
 {% extends 'base.html.twig' %} {% block title %}Accueil{% endblock %} {% block
 body %}
-<main>
-  <h2>Nom de la promotion : {{ promotion.nom }}</h2>
-  {% for formateur in formateurs %}
-  <p> Formateur : {{ formateur.nom }}  {{ formateur.prenom }}</p>
+<div class="promotion-show">
+  <link rel="stylesheet" href="{{ asset('assets/homePage.css') }}" />
+
   
-  {% endfor %} {% for apprenant in apprenants %}
-  <li>
-    <a href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}">{{
-      apprenant.nom
-    }} {{
-      apprenant.prenom
-    }}
-    </a
-    >
-  </li>
-  {% endfor %} 
-</main>
+  <div class="list-container">
+    <h2>Nom de la promotion : {{ promotion.nom }}</h2>
+    <p>Formateurs :</p>
+    {% for formateur in formateurs %}
+    <ul class="home-page-ul">
+      <li class= "home-page-li">{{ formateur.nom }} {{ formateur.prenom }}</li>
+    </ul>
+    {% endfor %}
+    <br>
+    <p>Apprenants :</p>
+    <ul class="home-page-ul">
+      {% for apprenant in apprenants %}
+      <li class="home-page-li">
+        <a
+          class="home-page-a"
+          href="{{ path('app_home_apprenant_show', { id: apprenant.id }) }}">
+          {{ apprenant.nom }} {{ apprenant.prenom }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="image-container">
+    <img src="{{ asset('images/logo_bleu.png') }}" alt="Image Description" />
+  </div>
+</div>
 {% endblock %}
