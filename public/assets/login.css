@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 90px;
 }
 
 .connexion {
     padding: 20px;
     border-radius: 8px;
-    max-width: 450px;
-    width: 70%;
+    max-width: 25%;
+    width: 100%;
     box-sizing: border-box;
     color: rgb(38, 50, 128);
     align-items: center; 
@@ -26,6 +26,7 @@
 .btn-primary {
     background-color: rgb(38, 50, 128);
     color: white;
+    width: 100%;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -38,17 +39,4 @@
     margin-top: 10px; 
 }
 
-@media (max-width: 768px) {
-    main {
-        flex-direction: column;
-        align-items: stretch;
-    }
 
-    .connexion {
-        margin-bottom: 20px;
-    }
-
-    .logo {
-        margin-top: 20px;
-    }
-}
