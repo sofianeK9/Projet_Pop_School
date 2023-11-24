@@ -129,6 +129,30 @@ h3 {
   font-family: 'Roboto', sans-serif;
 }
 
+.pagination {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.pagination a {
+  padding: 4px 8px;
+  background-color: rgb(38, 50, 128);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination a:hover {
+  background-color: #0056b3;
+}
+
+.pagination .current {
+  color: rgb(38, 50, 128);
+}
+
 @media (max-width: 1200px) {
 
   .footer-container {
