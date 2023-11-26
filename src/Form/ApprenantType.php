@@ -31,6 +31,9 @@ class ApprenantType extends AbstractType
                     'Masculin' => 'masculin',
                 ],
                 'placeholder' => 'Sélectionnez le genre',
+                'attr' => [
+                    'class' => 'place-holder'
+                ]
             ])
             ->add('dateNaissance', DateType::class, [
                 'widget' => 'single_text'
@@ -42,6 +45,10 @@ class ApprenantType extends AbstractType
                     'Non' => false,
                 ],
                 'label' => 'Consentement',
+                'attr' => [
+                    'class' => 'place-holder'
+                ]
+
             ])
             ->add('user', UserType::class, [
 
@@ -53,7 +60,12 @@ class ApprenantType extends AbstractType
             ->add('donneesPedagogiques', DonneesPedagogiquesType::class, [
                 'label' => false
             ])
-            ->add('promotion')
+            ->add('promotion', null, [
+                'attr' => [
+                    'class' => 'place-holder'
+                ]
+
+            ])
             ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $user = $event->getData()->getUser();
                 $password = $user->getPassword();

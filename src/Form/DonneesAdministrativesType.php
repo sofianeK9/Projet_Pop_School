@@ -22,12 +22,15 @@ class DonneesAdministrativesType extends AbstractType
             ->add('nationalite')
             ->add('situationProfessionnelle', ChoiceType::class, [
                 'choices' =>  [
-                    '' => '',
+                    'Choisir une situation' => 'Choisir une situation',
                     'RSA' => 'RSA',
                     'ARE' => 'ARE',
                     'Minima sociaux' => 'Minima sociaux',
-                    'Travailleurs handicapés' => 'Travailleurs handicapés'
-                ]
+                    'Travailleurs handicapés' => 'Travailleurs handicapés',
+
+                ],
+                'attr' => [ 'class' => 'place-holder'
+                    ]
 
             ])
             ->add('numeroPoleEmploi')

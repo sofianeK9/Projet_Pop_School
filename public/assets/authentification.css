@@ -1,3 +1,51 @@
+/* style du formulaire de connexion */
+
+.contenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+}
+
+.connexion {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
+  color: rgb(38, 50, 128);
+  align-items: center;
+}
+
+.connexion fieldset,
+.connexion fieldset legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+  border: none;
+}
+
+
+.btn-primary {
+  background-color: rgb(38, 50, 128);
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  margin-top: 10px;
+}
+
+
+/* style du formulaire d'inscription */
+
 
 .content-form {
   display: flex;
@@ -19,17 +67,18 @@
   border: 1px solid #e0e0e0;
 }
 
-.content-form h1 {
-  text-align: center;
-  color: rgb(38, 50, 128);
-}
 
 .login-form label,
 .content-form fieldset legend {
   font-size: 1.2em;
   font-weight: bold;
-  color:rgb(38, 50, 128);
+  color: rgb(38, 50, 128);
   margin-bottom: 10px;
+}
+
+.container label {
+  font-weight: bold;
+  color: rgb(38, 50, 128);
 }
 
 .login-form .form-control,
@@ -41,6 +90,7 @@
   margin-bottom: 15px;
   padding: 8px;
   border: 1px solid #ccc;
+  color: rgb(38, 50, 128);
   border-radius: 4px;
 }
 
@@ -70,19 +120,4 @@
 .content-form button:hover {
   background-color: #0056b3;
   margin-top: 10px;
-}
-
-@media (max-width: 768px) {
-  .main {
-      flex-direction: column;
-      align-items: stretch;
-  }
-
-  .content-form {
-      margin-bottom: 20px;
-  }
-
-  .logo {
-      margin-top: 20px;
-  }
 }

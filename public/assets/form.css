@@ -24,7 +24,6 @@
     padding: 10px;
     font-size: 14px;
     color: #263280;
-    ;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -59,4 +58,18 @@
 .wide-input {
     width: 100%;
     height: 50px;
+}
+
+.place-holder {
+    padding: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: black;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+
+}
+
+.place-holder option[disabled] {
+    color: #888;
 }

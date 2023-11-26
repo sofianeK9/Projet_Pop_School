@@ -29,6 +29,8 @@ class DonneesCommunesType extends AbstractType
                     'Non' => false,
                 ],
                 'label' => 'Consentement',
+                'attr' => [ 'class' => 'place-holder'
+                    ]
             ])
             ->add('donneesAdministratives', DonneesAdministrativesType::class, [
                 'label_attr' => [

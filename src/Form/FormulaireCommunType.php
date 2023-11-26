@@ -22,6 +22,8 @@ class FormulaireCommunType extends AbstractType
                     'Masculin' => 'masculin',
                 ],
                 'placeholder' => 'Sélectionnez le genre',
+                'attr' => [ 'class' => 'place-holder'
+                    ]
             ])
             ->add('dateNaissance', DateType::class, [
                 'widget' => 'single_text'

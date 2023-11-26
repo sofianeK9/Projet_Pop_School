@@ -7,7 +7,10 @@
 
     {{ include('donnees_communes/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_donnees_communes_index') }}">retour à la liste</a>
+    <div class="button-container">
 
-    {{ include('donnees_communes/_delete_form.html.twig') }}
+        <a class="btn-action" href="{{ path('app_donnees_communes_index') }}">retour à la liste</a>
+    
+        {{ include('donnees_communes/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

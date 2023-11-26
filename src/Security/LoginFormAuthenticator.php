@@ -48,7 +48,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $user = $token->getUser();
         $roles = $token->getRoleNames();
 
-
+         // tableau  pour définir les redirections en fonction des rôles
         if (in_array('ROLE_ADMIN', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         } elseif (in_array('ROLE_RESPONSABLE_TERRITORIAL', $roles)) {

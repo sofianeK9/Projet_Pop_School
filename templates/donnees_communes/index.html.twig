@@ -1,121 +1,110 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Apprenant index{% endblock %} {%
+block body %}
+<h1>Apprenant index</h1>
 
-{% block title %}Apprenant index{% endblock %}
+{% if apprenant %}
+<table class="table">
+  <div class="button-container">
+    <a class="btn-action" href="{{ path('app_donnees_communes_show', { id: apprenant.id }) }}"
+      >voir</a
+    >
+    <a class="btn-action" href="{{ path('app_donnees_communes_edit', { id: apprenant.id }) }}"
+      >éditer</a
+    >
+  </div>
+  <tbody>
+    <tr></tr>
+    <tr>
+      <th>Nom</th>
+      <td>{{ apprenant.nom }}</td>
+    </tr>
+    <tr>
+      <th>Id</th>
+      <td>{{ apprenant.id }}</td>
+    </tr>
+    <tr>
+      <th>Prenom</th>
+      <td>{{ apprenant.prenom }}</td>
+    </tr>
+    <tr>
+      <th>Genre</th>
+      <td>{{ apprenant.genre }}</td>
+    </tr>
+    <tr>
+      <th>DateNaissance</th>
+      <td>
+        {{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}
+      </td>
+    </tr>
+    <tr>
+      <th>Telephone</th>
+      <td>{{ apprenant.telephone }}</td>
+    </tr>
+    <tr>
+      <th>Consentement</th>
+      <td>{{ apprenant.consentement ? "Oui" : "Non" }}</td>
+    </tr>
+    <tr>
+      <th>Lieu de naissance</th>
+      <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ apprenant.donneesAdministratives.email }}</td>
+    </tr>
+    <tr>
+      <th>Pays de naissance</th>
+      <td>{{ apprenant.donneesAdministratives.paysNaissance }}</td>
+    </tr>
+    <tr>
+      <th>Adresse</th>
+      <td>{{ apprenant.donneesAdministratives.adresse }}</td>
+    </tr>
+    <tr>
+      <th>Commune</th>
+      <td>{{ apprenant.donneesAdministratives.commune }}</td>
+    </tr>
+    <tr>
+      <th>Code postal</th>
+      <td>{{ apprenant.donneesAdministratives.codePostal }}</td>
+    </tr>
+    <tr>
+      <th>Nationalité</th>
+      <td>{{ apprenant.donneesAdministratives.nationalite }}</td>
+    </tr>
+    <tr>
+      <th>Situation professionnelle</th>
+      <td>{{ apprenant.donneesAdministratives.situationProfessionnelle }}</td>
+    </tr>
+    <tr>
+      <th>Numéro pole emploi</th>
+      <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi }}</td>
+    </tr>
+    <tr>
+      <th>Derniére classe suivie</th>
+      <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
+    </tr>
+    <tr>
+      <th>Dernier diplome suivi</th>
+      <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
+    </tr>
+    <tr>
+      <th>Compte Github</th>
+      <td>{{ apprenant.donneesPedagogiques.compteGithub }}</td>
+    </tr>
+    <tr>
+      <th>Compte Discord</th>
+      <td>{{ apprenant.donneesPedagogiques.compteDiscord }}</td>
+    </tr>
+    <tr>
+      <th>Compte Linkedin</th>
+      <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
+    </tr>
+  </tbody>
+</table>
 
-{% block body %}
-    <h1>Apprenant index</h1>
-
-    {% if apprenant %}
-        <table class="table">
-            <thead>
-                <tr>
-                    
-                    
-                    
-                 
-                   
-                    
-                  
-                
-                   
-                   
-                
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <tr>
-                        <th>Nom</th>
-                        <td>{{ apprenant.nom }}</td>
-                    </tr>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ apprenant.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Prenom</th>
-                        <td>{{ apprenant.prenom }}</td>
-                    </tr>
-                    <tr>
-                        <th>Genre</th>
-                        <td>{{ apprenant.genre }}</td>
-                    </tr>
-                    <tr>
-                        <th>DateNaissance</th>
-                        <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Telephone</th>
-                        <td>{{ apprenant.telephone }}</td>
-                    </tr>
-                    <tr>
-                        <th>Consentement</th>
-                        <td>{{ apprenant.consentement ? 'Oui' : 'Non' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Lieu de naissance </th>
-                        <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>{{ apprenant.donneesAdministratives.email }}</td>
-                    </tr>
-                    <tr>
-                        <th>Pays de naissance </th>
-                        <td>{{ apprenant.donneesAdministratives.paysNaissance }}</td>
-                    </tr>
-                    <tr>
-                        <th>Adresse</th>
-                        <td>{{ apprenant.donneesAdministratives.adresse }}</td>
-                    </tr>
-                    <tr>
-                        <th>Commune</th>
-                        <td>{{ apprenant.donneesAdministratives.commune }}</td>
-                    </tr>
-                    <tr>
-                        <th>Code postal</th>
-                        <td>{{ apprenant.donneesAdministratives.codePostal }}</td>
-                    </tr>
-                    <tr>
-                        <th>Nationalité</th>
-                        <td>{{ apprenant.donneesAdministratives.nationalite }}</td>
-                    </tr>
-                    <tr>
-                        <th>Situation professionnelle</th>
-                        <td>{{ apprenant.donneesAdministratives.situationProfessionnelle }}</td>
-                    </tr>
-                    <tr>
-                        <th>Numéro pole emploi</th>
-                        <td>{{ apprenant.donneesAdministratives.numeroPoleEmploi }}</td>
-                    </tr>
-                    <tr>
-                        <th>Derniére classe suivie</th>
-                        <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
-                    </tr>
-                    <tr>
-                        <th>Dernier diplome suivi</th>
-                        <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
-                    </tr>
-                    <tr>
-                        <th>Compte Github</th>
-                        <td>{{ apprenant.donneesPedagogiques.compteGithub }}</td>
-                    </tr>
-                    <tr>
-                        <th>Compte Discord</th>
-                        <td>{{ apprenant.donneesPedagogiques.compteDiscord }}</td>
-                    </tr>
-                    <tr>
-                        <th>Compte Linkedin</th>
-                        <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="{{ path('app_donnees_communes_show', {'id': apprenant.id}) }}">voir</a>
-            <a href="{{ path('app_donnees_communes_edit', {'id': apprenant.id}) }}">éditer</a>
-    {% else %}
-        <p>Aucun apprenant trouvé pour cet utilisateur.</p>
-    {% endif %}
-    {% if is_granted('ROLE_ADMIN')%}
-    <a href="{{ path('app_donnees_communes_new') }}">créér</a>
-    {% endif %}
-{% endblock %}
+{% else %}
+<p>Aucun apprenant trouvé pour cet utilisateur.</p>
+{% endif %} {% if is_granted('ROLE_ADMIN')%}
+<a href="{{ path('app_donnees_communes_new') }}">créér</a>
+{% endif %} {% endblock %}

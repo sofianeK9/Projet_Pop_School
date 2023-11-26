@@ -56,9 +56,9 @@ class DonneesCommunesController extends AbstractController
     #[IsGranted('ROLE_APPRENANT')]
     public function show(Apprenant $apprenant): Response
     {
-        // $user = $this->getUser();
-        // $this->filterSessionUser($user, $apprenant);
-        $this->denyAccessUnlessGranted('VIEW', $apprenant);
+        $user = $this->getUser();
+        $this->filterSessionUser($user, $apprenant);
+        // $this->denyAccessUnlessGranted('VIEW', $apprenant);
 
         return $this->render('donnees_communes/show.html.twig', [
             'apprenant' => $apprenant,
