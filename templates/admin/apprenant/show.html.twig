@@ -1,47 +1,124 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Apprenant{% endblock %} {% block
+body %}
+<h1>Profil de : {{apprenant.nom}} {{apprenant.prenom}}</h1>
+<div class="button-container">
+  <a class="btn-action" href="{{ path('app_admin_apprenant_index') }}"
+    >retour</a
+  >
 
-{% block title %}Apprenant{% endblock %}
+  <a
+    class="btn-action"
+    href="{{ path('app_admin_apprenant_edit', { id: apprenant.id }) }}"
+    >éditer</a
+  >
+  {{ include('admin/apprenant/_delete_form.html.twig') }}
+</div>
 
-{% block body %}
-    <h1>Apprenant</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ apprenant.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ apprenant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ apprenant.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Genre</th>
-                <td>{{ apprenant.genre }}</td>
-            </tr>
-            <tr>
-                <th>DateNaissance</th>
-                <td>{{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ apprenant.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Consentement</th>
-                <td>{{ apprenant.consentement ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_apprenant_index') }}">Retour à la liste</a>
-
-    <a href="{{ path('app_admin_apprenant_edit', {'id': apprenant.id}) }}">éditer</a>
-
-    {{ include('admin/apprenant/_delete_form.html.twig') }}
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ apprenant.id }}</td>
+    </tr>
+    <tr>
+      <th>Nom</th>
+      <td>{{ apprenant.nom }}</td>
+    </tr>
+    <tr>
+      <th>Prenom</th>
+      <td>{{ apprenant.prenom }}</td>
+    </tr>
+    <tr>
+      <th>Genre</th>
+      <td>{{ apprenant.genre }}</td>
+    </tr>
+    <tr>
+      <th>DateNaissance</th>
+      <td>
+        {{ apprenant.dateNaissance ? apprenant.dateNaissance|date('Y-m-d') : '' }}
+      </td>
+    </tr>
+    <tr>
+      <th>Telephone</th>
+      <td>{{ apprenant.telephone }}</td>
+    </tr>
+    <tr>
+      <th>Date de naissance</th>
+      <td>{{ apprenant.dateNaissance|date('d-m-Y')}}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ apprenant.user.email }}</td>
+    </tr>
+    <tr>
+      <th>Consentement</th>
+      <td>{{ apprenant.consentement ? "Oui" : "Non" }}</td>
+    </tr>
+    <tr>
+      <th>Lieu de naissance</th>
+      <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ apprenant.donneesAdministratives.email }}</td>
+    </tr>
+    <tr>
+      <th>Pays de naissance</th>
+      <td>{{ apprenant.donneesAdministratives.paysNaissance }}</td>
+    </tr>
+    <tr>
+      <th>Lieu de naissance</th>
+      <td>{{ apprenant.donneesAdministratives.lieuNaissance }}</td>
+    </tr>
+    <tr>
+      <th>Adresse</th>
+      <td>{{ apprenant.donneesAdministratives.adresse }}</td>
+    </tr>
+    <tr>
+      <th>Code postal</th>
+      <td>{{ apprenant.donneesAdministratives.codePostal }}</td>
+    </tr>
+    <tr>
+      <th>Commune</th>
+      <td>{{ apprenant.donneesAdministratives.commune }}</td>
+    </tr>
+    <tr>
+      <th>Nationalité</th>
+      <td>{{ apprenant.donneesAdministratives.nationalite }}</td>
+    </tr>
+    <tr>
+      <th>Situation professionnelle</th>
+      <td>{{ apprenant.donneesAdministratives.situationProfessionnelle }}</td>
+    </tr>
+    <tr>
+      <th>Numéro pole emploi</th>
+      <td>{{ apprenant.donneesAdministratives.NumeroPoleEmploi }}</td>
+    </tr>
+    <tr>
+      <th>Derniée classe suivie</th>
+      <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
+    </tr>
+    <tr>
+      <th>Dernier diplome obtenu</th>
+      <td>{{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</td>
+    </tr>
+    <tr>
+      <th>Derniére classe suivie</th>
+      <td>{{ apprenant.donneesAdministratives.derniereClasseSuivie }}</td>
+    </tr>
+    <tr>
+      <th>Compte Github</th>
+      <td>{{ apprenant.donneesPedagogiques.compteGithub }}</td>
+    </tr>
+    <tr>
+      <th>Compte Discord</th>
+      <td>{{ apprenant.donneesPedagogiques.compteDiscord }}</td>
+    </tr>
+    <tr>
+      <th>Compte Discord</th>
+      <td>{{ apprenant.donneesPedagogiques.compteLinkedin }}</td>
+    </tr>
+  </tbody>
+</table>
 
 {% endblock %}

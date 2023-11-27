@@ -1,38 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Formateur index{% endblock %} {%
+block body %}
+<h1>Formateur index</h1>
 
-{% block title %}Formateur index{% endblock %}
-
-{% block body %}
-    <h1>Formateur index</h1>
-
-    <a href="{{ path('app_responsable_formateur_new') }}">créér un formateur</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formateur in formateurs %}
-            <tr>
-                <td>{{ formateur.id }}</td>
-                <td>{{ formateur.nom }}</td>
-                <td>{{ formateur.prenom }}</td>
-                <td>
-                    <a href="{{ path('app_responsable_formateur_show', {'id': formateur.id}) }}">voir</a>
-                    <a href="{{ path('app_responsable_formateur_edit', {'id': formateur.id}) }}">éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="button-container">
+  <a class="btn-action" href="{{ path('app_responsable_formateur_new') }}"
+    >créér</a
+  >
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for formateur in formateurs %}
+    <tr>
+      <td>{{ formateur.id }}</td>
+      <td>{{ formateur.nom }}</td>
+      <td>{{ formateur.prenom }}</td>
+      <td>
+        <div class="button-container">
+          <a class="btn-action"
+            href="{{
+              path('app_responsable_formateur_show', { id: formateur.id })
+            }}"
+            >voir</a
+          >
+          <a class="btn-action"
+            href="{{
+              path('app_responsable_formateur_edit', { id: formateur.id })
+            }}"
+            >éditer</a
+          >
+        </div>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="4">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock %}

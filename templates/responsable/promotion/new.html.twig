@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Nouvelle Promotion{% endblock %}
-
+{% extends 'base.html.twig' %} {% block title %}Nouvelle Promotion{% endblock %}
 {% block body %}
-    <h1>Créér une Promotion</h1>
+<h1>Créér une Promotion</h1>
 
-    {{ include('responsable/promotion/_form.html.twig') }}
+{{ include("responsable/promotion/_form.html.twig") }}
 
-    <a href="{{ path('app_responsable_promotion_index') }}">retour à la liste</a>
+<div class="button-container">
+  <a class="btn-action" href="{{ path('app_responsable_promotion_index') }}"
+    >retour</a
+  >
+</div>
 {% endblock %}

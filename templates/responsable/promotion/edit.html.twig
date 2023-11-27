@@ -5,9 +5,12 @@
 {% block body %}
     <h1>Editer une Promotion</h1>
 
-    {{ include('responsable/promotion/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('responsable/promotion/_form.html.twig', {'button_label': 'enregistrer'}) }}
 
-    <a href="{{ path('app_responsable_promotion_index') }}">retour à la liste</a>
+    <div class="button-container">
 
-    {{ include('responsable/promotion/_delete_form.html.twig') }}
+        <a class="btn-action" href="{{ path('app_responsable_promotion_index') }}">retour</a>
+    
+        {{ include('responsable/promotion/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

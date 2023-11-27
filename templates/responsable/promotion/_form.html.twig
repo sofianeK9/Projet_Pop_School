@@ -1,4 +1,36 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="container">
+    <div class="form-container">
+      {{ form_start(form) }}
+      <div class="form-row">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
+      </div>
+  
+      <div class="form-row">
+        <div class="description">
+          {{ form_label(form.description) }}
+          {{ form_widget(form.description, {'attr': {'class': 'wide-input'}}) }}
+        </div>
+      </div>
+  
+      <div class="form-row">
+        {{ form_label(form.dateFin) }}
+        {{ form_widget(form.dateFin) }}
+      </div>
+  
+      <div class="form-row">
+        <div class="gap">
+          {{ form_label(form.apprenants) }}
+        </div>
+  
+        <div class="scroller">
+          {{ form_widget(form.apprenants) }}
+        </div>
+      </div>
+      <button class="btn-action">{{ button_label|default('enregistrer') }}</button>
+      {{ form_end(form) }}
+    </div>
+  </div>
+  
+  
+  
