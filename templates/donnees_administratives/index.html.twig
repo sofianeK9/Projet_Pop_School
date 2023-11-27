@@ -1,23 +1,58 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Formulaire administratof{% endblock %}
-
-{% block body %}
+{% extends 'base.html.twig' %} {% block title %}Formulaire administratif{%
+endblock %} {% block body %}
 <h1>Formulaire administratif</h1>
-{{ form_start(form) }}
 
-{{ form_row(form.lieuNaissance) }}
-{{ form_row(form.email) }}
-{{ form_row(form.paysNaissance) }}
-{{ form_row(form.adresse) }}
-{{ form_row(form.codePostal) }}
-{{ form_row(form.commune) }}
-{{ form_row(form.nationalite) }}
-{{ form_row(form.situationProfessionnelle) }}
-{{ form_row(form.numeroPoleEmploi) }}
-{{ form_row(form.derniereClasseSuivie) }}
-{{ form_row(form.dernierDiplomeObtenu) }}
-<button type="submit">Valider</button>
-{{ form_end(form) }}
-
+<div class="container">
+  <div class="form-container">
+    {{ form_start(form) }}
+    <div class="form-row">
+      {{ form_label(form.lieuNaissance) }}
+      {{ form_widget(form.lieuNaissance) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.email) }}
+      {{ form_widget(form.email) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.paysNaissance) }}
+      {{ form_widget(form.paysNaissance) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.adresse) }}
+      {{ form_widget(form.adresse) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.codePostal) }}
+      {{ form_widget(form.codePostal) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.commune) }}
+      {{ form_widget(form.commune) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.nationalite) }}
+      {{ form_widget(form.nationalite) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.situationProfessionnelle) }}
+      {{ form_widget(form.situationProfessionnelle) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.numeroPoleEmploi) }}
+      {{ form_widget(form.numeroPoleEmploi) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.derniereClasseSuivie) }}
+      {{ form_widget(form.derniereClasseSuivie) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.dernierDiplomeObtenu) }}
+      {{ form_widget(form.dernierDiplomeObtenu) }}
+    </div>
+    <button class="btn-action">
+      {{ button_label|default('enregistrer') }}
+    </button>
+    {{ form_end(form) }}
+  </div>
+</div>
 {% endblock %}

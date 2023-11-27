@@ -1,4 +1,87 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="container">
+  <div class="form-container">
+    {{ form_start(form) }}
+    <div class="form-row">
+      {{ form_label(form.nom) }}
+      {{ form_widget(form.nom) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.prenom) }}
+      {{ form_widget(form.prenom) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.genre) }}
+      {{ form_widget(form.genre) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.dateNaissance) }}
+      {{ form_widget(form.dateNaissance) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.telephone) }}
+      {{ form_widget(form.telephone) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.consentement) }}
+      {{ form_widget(form.consentement) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.lieuNaissance) }}
+      {{ form_widget(form.donneesAdministratives.lieuNaissance) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.email) }}
+      {{ form_widget(form.donneesAdministratives.email) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.paysNaissance) }}
+      {{ form_widget(form.donneesAdministratives.paysNaissance) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.adresse) }}
+      {{ form_widget(form.donneesAdministratives.adresse) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.codePostal) }}
+      {{ form_widget(form.donneesAdministratives.codePostal) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.commune) }}
+      {{ form_widget(form.donneesAdministratives.commune) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.nationalite) }}
+      {{ form_widget(form.donneesAdministratives.nationalite) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.situationProfessionnelle) }}
+      {{ form_widget(form.donneesAdministratives.situationProfessionnelle) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.numeroPoleEmploi) }}
+      {{ form_widget(form.donneesAdministratives.numeroPoleEmploi) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.derniereClasseSuivie) }}
+      {{ form_widget(form.donneesAdministratives.derniereClasseSuivie) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesAdministratives.dernierDiplomeObtenu) }}
+      {{ form_widget(form.donneesAdministratives.dernierDiplomeObtenu) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesPedagogiques.compteGithub) }}
+      {{ form_widget(form.donneesPedagogiques.compteGithub) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesPedagogiques.compteDiscord) }}
+      {{ form_widget(form.donneesPedagogiques.compteDiscord) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.donneesPedagogiques.compteLinkedin) }}
+      {{ form_widget(form.donneesPedagogiques.compteLinkedin) }}
+    </div>
+    <button class="btn-action">{{ button_label|default('enregistrer') }}</button>
+    {{ form_end(form) }}
+  </div>
+</div>

@@ -1,19 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Hello
+FormulaireCommunController!{% endblock %} {% block body %}
+<h1>Formulaire Commun</h1>
 
-{% block title %}Hello FormulaireCommunController!{% endblock %}
-
-{% block body %}
-    <h1>Formulaire Commun</h1>
-
+<div class="container">
+  <div class="form-container">
     {{ form_start(form) }}
-
-    {{ form_row(form.nom) }}
-    {{ form_row(form.prenom) }}
-    {{ form_row(form.genre) }}
-    {{ form_row(form.dateNaissance) }}
-    {{ form_row(form.telephone) }}
-    {{ form_row(form.promotion) }}
-    <button type="submit">Valider</button>
-
+    <div class="form-row">
+      {{ form_label(form.nom) }}
+      {{ form_widget(form.nom) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.prenom) }}
+      {{ form_widget(form.prenom) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.genre) }}
+      {{ form_widget(form.genre) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.dateNaissance) }}
+      {{ form_widget(form.dateNaissance) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.telephone) }}
+      {{ form_widget(form.telephone) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.promotion) }}
+      {{ form_widget(form.promotion) }}
+    </div>
+    <button class="btn-action">{{ button_label|default('Save') }}</button>
     {{ form_end(form) }}
+  </div>
+</div>
+
 {% endblock %}

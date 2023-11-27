@@ -1,12 +1,23 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Formulaire pédagogique{% endblock %}
-{% block body %}
+{% extends 'base.html.twig' %} {% block title %}Formulaire pédagogique{%
+endblock %} {% block body %}
 <h1>Formulaire pédagogique</h1>
-{{form_start(form)}}
-{{form_row(form.compteGithub)}}
-{{form_row(form.compteDiscord)}}
-{{form_row(form.compteLinkedin)}}
-<button type="submit">Valider</button>
-{{form_end(form)}}
+<div class="container">
+  <div class="form-container">
+    {{ form_start(form) }}
+    <div class="form-row">
+      {{ form_label(form.compteGithub) }}
+      {{ form_widget(form.compteGithub) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.compteDiscord) }}
+      {{ form_widget(form.compteDiscord) }}
+    </div>
+    <div class="form-row">
+      {{ form_label(form.compteLinkedin) }}
+      {{ form_widget(form.compteLinkedin) }}
+    </div>
+    <button class="btn-action">{{ button_label|default('enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>
+</div>
 {% endblock %}
