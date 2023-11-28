@@ -17,6 +17,7 @@ class DonneesAdministrativesController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+        // je spécifie que $user est un objet de type User 
         /** @var \App\Entity\User $user */
         $apprenant = $user->getApprenant();
 

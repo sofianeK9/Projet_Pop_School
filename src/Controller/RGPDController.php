@@ -14,18 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RGPDController extends AbstractController
 {
-    // #[Route('/r/g/p/d', name: 'app_rgpd')]
     #[Route('/rgpd', name: 'app_rgpd')]
     public function rgpdValidation(Request $request, EntityManagerInterface $entityManager): Response {
         // Aprés l'inscription, je récupére le user 
-        $apprenant = new Apprenant();
-        $apprenant->setUser($this->getUser());
-        ;
-        $apprenant->setNom('');
-        $apprenant->setPrenom('');
-        $apprenant->setGenre('');
-        $apprenant->setDateNaissance(new \DateTime(''));
-        $apprenant->setTelephone('');
+        $user = $this->getUser();
+        // $apprenant = new Apprenant();
+        // $apprenant->setUser($this->getUser());
+        // ;
+        // $apprenant->setNom('');
+        // $apprenant->setPrenom('');
+        // $apprenant->setGenre('');
+        // $apprenant->setDateNaissance(new \DateTime(''));
+        // $apprenant->setTelephone('');
 
 
         // création du formulaire et soumission
@@ -36,17 +36,17 @@ class RGPDController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) 
              {
                 // préparation de la requête et envoit de la requête
-                $entityManager->persist($apprenant);
-                // $entityManager->persist($user);
+                // $entityManager->persist();
+                $entityManager->persist($user);
                 $entityManager->flush();
 
-                if ($apprenant instanceof Apprenant && $form->get('consentement')->getData() === true) {
-                    echo 'conditon vraie';
-                    $apprenant->setConsentement(true);
+                // if ($apprenant instanceof Apprenant && $form->get('consentement')->getData() === true) {
+                //     echo 'conditon vraie';
+                //     $apprenant->setConsentement(true);
                     
                     return $this->redirectToRoute('app_formulaire_commun');
     
-            }
+            
         }
 
         return $this->render('rgpd/index.html.twig', [

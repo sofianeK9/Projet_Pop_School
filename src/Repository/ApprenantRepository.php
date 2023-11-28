@@ -28,15 +28,19 @@ class ApprenantRepository extends ServiceEntityRepository
  */
 public function recherche($keyword): array
 {
+    // Création d'une requête Doctrine à partir du QueryBuilder associé à l'entité Apprenant
     $query = $this->createQueryBuilder('a')
         ->leftJoin('a.donneesPedagogiques', 'dp')
         ->leftJoin('a.donneesAdministratives', 'da');
 
+    // Vérification s'il y a un mot-clé de recherche
     if ($keyword) {
+        // Si un mot-clé est fourni, on ajoute des conditions à la requête
         $query->andWhere('a.nom LIKE :keyword OR a.prenom LIKE :keyword')
             ->setParameter('keyword', '%' . $keyword . '%');
     }
 
+    // Exécution de la requête et retour des résultats sous forme de tableau
     return $query->getQuery()->getResult();
 }
 
