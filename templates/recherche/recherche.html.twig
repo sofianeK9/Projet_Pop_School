@@ -15,7 +15,7 @@ endblock %} {% block body %}
     {{ form_end(form) }}
 
     {% if keyword is not empty %}
-    <h3>Résultats de la recherche pour l'apprenant "{{ keyword }}"</h3>
+    <h3 id="h3-recherche">Résultats de la recherche pour l'apprenant "{{ keyword }}"</h3>
     {% if results is empty %}
     <h5>Aucun résultat trouvé.</h5>
     {% else %}

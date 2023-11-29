@@ -9,12 +9,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1,
-h3 {
+h1 {
     text-align: center;
+    font-family: 'Roboto', sans-serif;
     color: rgb(38, 50, 128);
 }
-
+#h3-recherche {
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+}
 .form-class {
     margin-bottom: 20px;
 }

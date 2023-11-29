@@ -36,7 +36,6 @@ class RGPDController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) 
              {
                 // préparation de la requête et envoit de la requête
-                // $entityManager->persist();
                 $entityManager->persist($user);
                 $entityManager->flush();
 

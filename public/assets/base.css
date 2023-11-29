@@ -2,11 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 main {
   min-height: 78vh !important;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  color: rgb(38, 50, 128);
 }
 
 .header {
@@ -98,6 +103,10 @@ li:hover {
 
 .footer-container a:hover {
   text-decoration: underline;
+}
+
+.footer-container p {
+  font-size: small ;
 }
 
 .contain {
