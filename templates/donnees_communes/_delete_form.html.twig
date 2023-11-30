@@ -1,13 +1,26 @@
 <form
   method="post"
   action="{{ path('app_donnees_communes_delete', { id: apprenant.id }) }}"
-  onsubmit="return confirm('Voulez-vous vraiment supprimer votre profil?');">
+  onsubmit="return handleDeleteConfirmation(event);"
+>
   <input
     type="hidden"
     name="_token"
-    value="{{ csrf_token('delete' ~ apprenant.id) }}" />
-  <input type="hidden" name="/" value="{{ path('app_home') }}" />
+    value="{{ csrf_token('delete' ~ apprenant.id) }}"
+  />
+  <!-- Ajoutez un champ '_redirect' avec la route de redirection -->
+  <input type="hidden" name="_redirect" value="{{ path('app_login') }}" />
   <div class="button-container">
-    <button class="btn-action">supprimer</button>
+    <button class="btn-action" id="deleteButton">Supprimer</button>
   </div>
 </form>
+
+<script>
+  function handleDeleteConfirmation(event) {
+    if (!confirm('Voulez-vous vraiment supprimer votre profil?')) {
+      event.preventDefault(); // Annule l'événement par défaut si l'utilisateur annule
+    } else {
+      alert('Votre profil a été supprimé avec succès.');
+    }
+  }
+</script>

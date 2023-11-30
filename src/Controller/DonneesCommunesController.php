@@ -70,7 +70,7 @@ class DonneesCommunesController extends AbstractController
     {
         $user = $this->getUser();
         $this->filterSessionUser($user, $apprenant);
-        
+
         $form = $this->createForm(DonneesCommunesType::class, $apprenant);
         $form->handleRequest($request);
 
@@ -95,11 +95,11 @@ class DonneesCommunesController extends AbstractController
             $entityManager->remove($apprenant);
             $entityManager->flush();
         }
-        if ($redirectTo) {
-            return $this->redirectToRoute($redirectTo);
-        } else {
-            return $this->redirectToRoute('app_donnees_communes_index', [], Response::HTTP_SEE_OTHER);
-        }
+        // Ajoutez une alerte pour confirmer la suppression du compte
+        $this->addFlash('success', 'Votre compte a été supprimé avec succès.');
+
+        // Redirige vers la page de connexion
+        return $this->redirectToRoute('app_login');
     }
 
     private function filterSessionUser(User $user, Apprenant $apprenant)
