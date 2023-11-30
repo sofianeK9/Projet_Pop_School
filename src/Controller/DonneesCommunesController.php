@@ -68,6 +68,9 @@ class DonneesCommunesController extends AbstractController
     #[Route('/{id}/edit', name: 'app_donnees_communes_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Apprenant $apprenant, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $this->filterSessionUser($user, $apprenant);
+        
         $form = $this->createForm(DonneesCommunesType::class, $apprenant);
         $form->handleRequest($request);
 
