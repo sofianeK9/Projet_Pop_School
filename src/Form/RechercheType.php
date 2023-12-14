@@ -17,7 +17,7 @@ class RechercheType extends AbstractType
         $builder
             ->add('keyword', TextType::class, [
                 'label' => 'Nom ou Prénom',
-                'required' => false,
+                
             ])
             ->add('search', SubmitType::class, [
                 'label' => 'Rechercher',

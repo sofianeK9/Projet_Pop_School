@@ -30,6 +30,7 @@ public function recherche($keyword): array
 {
     // Création d'une requête Doctrine à partir du QueryBuilder associé à l'entité Apprenant
     $query = $this->createQueryBuilder('a')
+    // si un apprenant n' pas de données pédagogiques il sera inclut quand meme dans la recherche
         ->leftJoin('a.donneesPedagogiques', 'dp')
         ->leftJoin('a.donneesAdministratives', 'da');
 

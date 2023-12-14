@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Rechercher un apprenant{%
 endblock %} {% block body %}
+<div class="recherche-container">
 <h1>Recherche par nom ou prénom :</h1>
 <div class="search-container">
   <!-- methode HTTPS utilisé est la méthode POST pour soummettre le formulaire  et utile pour securiser les données -->
@@ -33,5 +34,6 @@ endblock %} {% block body %}
     </ul>
     {% endif %} {% endif %}
   </div>
+</div>
 </div>
   {% endblock %}

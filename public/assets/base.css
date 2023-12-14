@@ -9,9 +9,11 @@ main {
   min-height: 78vh !important;
 }
 
-h3 {
+h1, h3 {
    font-family: 'Roboto', sans-serif;
     color: rgb(38, 50, 128);
+    font-size: 25px;
+    
 }
 
 .header {
@@ -97,7 +99,7 @@ li:hover {
   font-size: x-small;
   margin: 3px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 13px;
 
 }
 
@@ -106,7 +108,8 @@ li:hover {
 }
 
 .footer-container p {
-  font-size: small ;
+  font-size: 14px ;
+  font-weight: bold;
 }
 
 .contain {
@@ -162,6 +165,21 @@ h3 {
   color: rgb(38, 50, 128);
 }
 
+.mentions-legales {
+  margin: 13px;
+  margin-left: 20px;
+}
+.pied-de-page {
+  margin-bottom: 0;
+}
+
+.button-rgpd {
+  margin-left: 30px;
+}
+
+.rgpd {
+  margin-left: 15px;
+}
 @media (max-width: 1200px) {
 
   .footer-container {

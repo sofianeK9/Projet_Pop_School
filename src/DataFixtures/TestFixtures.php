@@ -152,7 +152,7 @@ class TestFixtures extends Fixture implements FixtureGroupInterface
             ]
         ];
 
-        foreach ($datas as $key => $data) {
+        foreach ($datas as  $data) {
             $apprenant = new Apprenant();
             $apprenant->setNom($data['nom']);
             $apprenant->setPrenom($data['prenom']);

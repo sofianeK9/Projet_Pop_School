@@ -13,7 +13,6 @@ h1 {
     margin-bottom: 20px;
     font-family: 'Roboto', sans-serif;
     margin-left: 0px !important;
-
 }
 
 .list-container li {
@@ -60,7 +59,7 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.home-page-li :hover {
+.home-page-li:hover {
     text-decoration: underline;
 }
 
@@ -88,6 +87,9 @@ h1 {
     height: auto;
 }
 
+.mentions-legales {
+    margin-left: 8px;
+}
 
 @media (max-width: 900px) {
     .main-content {
@@ -95,8 +97,6 @@ h1 {
         align-items: center;
         text-align: center;
     }
-
-
 
     .image-container {
         max-width: 100%;
@@ -112,7 +112,6 @@ h1 {
         margin-top: 20px;
     }
 }
-
 
 @media (max-width: 768px) {
     #title_home {

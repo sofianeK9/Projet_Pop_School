@@ -1,99 +1,65 @@
-{% extends 'base.html.twig' %} {% block title %}Accueil{% endblock %} {% block
-body %}
+{% extends 'base.html.twig' %} 
+{% block title %}Accueil{% endblock %} 
+{% block body %}
 
 <div class="contain-donnees">
-  {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL')
-  %}
-  <h2>Données de : {{ apprenant.nom }} {{ apprenant.prenom }}</h2>
-  <br />
-  <div class="data-category">Données communes :</div>
-  <br />
-  <p>Nom : {{ apprenant.nom }}</p>
-  <p></p>
-  <p>Prenom : {{ apprenant.prenom }}</p>
-  <p></p>
-  <p>Genre : {{ apprenant.genre }}</p>
-  <p></p>
-  <p>Date de naissance : {{apprenant.dateNaissance|date('d-m-Y')}}</p>
-  <p></p>
-  <p>Telephone : {{ apprenant.telephone }}</p>
-  <p></p>
-  <p class="consentment">
-    Consentement au règlement RGPD :
-    <span
-      class="{{
-        apprenant.consentement == 1 ? 'consentment-yes' : 'consentment-no'
-      }}">
-      {% if apprenant.consentement == 1 %}Oui{% else %}Non{% endif %}
-    </span>
-  </p>
-  <div class="data-category">Données administratives :</div>
-  <br />
-  <p>
-    Lieu de naissance : {{ apprenant.donneesAdministratives.lieuNaissance }}
-  </p>
-  <p>
-    Pays de naissance : {{ apprenant.donneesAdministratives.paysNaissance }}
-  </p>
-  <p>Adresse : {{ apprenant.donneesAdministratives.adresse }}</p>
-  <p>Code postal : {{ apprenant.donneesAdministratives.codePostal }}</p>
-  <p>Commune : {{ apprenant.donneesAdministratives.commune }}</p>
-  <p>Nationalite : {{ apprenant.donneesAdministratives.nationalite }}</p>
-  <p>
-    Situation professionnelle : {{ apprenant.donneesAdministratives.commune }}
-  </p>
-  <p>
-    N° Pole Emploi : {{ apprenant.donneesAdministratives.NumeroPoleEmploi }}
-  </p>
-  <p>
-    Derniére classe suivie :
-    {{ apprenant.donneesAdministratives.derniereClasseSuivie }}
-  </p>
-  <p>
-    Dernier diplôme obtenu :
-    {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}
-  </p>
-  <div class="data-category">Données pédagogiques :</div>
-  <br />
-  <p>Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
-  <p>Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
-  <p>Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>
+  {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL') %}
+    <h2>Données de : {{ apprenant.nom }} {{ apprenant.prenom }}</h2>
+    <br />
+    <div class="data-category">Données communes :</div>
+    <br />
+    <p>Nom : {{ apprenant.nom }}</p>
+    <p>Prenom : {{ apprenant.prenom }}</p>
+    <p>Genre : {{ apprenant.genre }}</p>
+    <p>Date de naissance : {{apprenant.dateNaissance|date('d-m-Y')}}</p>
+    <p>Telephone : {{ apprenant.telephone }}</p>
+    <p class="consentment">
+      Consentement au règlement RGPD :
+      <span class="{{ apprenant.consentement == 1 ? 'consentment-yes' : 'consentment-no' }}">
+        {% if apprenant.consentement == 1 %}Oui{% else %}Non{% endif %}
+      </span>
+    </p>
+    <div class="data-category">Données administratives :</div>
+    <br />
+    <p>Lieu de naissance : {{ apprenant.donneesAdministratives.lieuNaissance }}</p>
+    <p>Pays de naissance : {{ apprenant.donneesAdministratives.paysNaissance }}</p>
+    <p>Adresse : {{ apprenant.donneesAdministratives.adresse }}</p>
+    <p>Code postal : {{ apprenant.donneesAdministratives.codePostal }}</p>
+    <p>Commune : {{ apprenant.donneesAdministratives.commune }}</p>
+    <p>Nationalite : {{ apprenant.donneesAdministratives.nationalite }}</p>
+    <p>Situation professionnelle : {{ apprenant.donneesAdministratives.commune }}</p>
+    <p>N° Pole Emploi : {{ apprenant.donneesAdministratives.NumeroPoleEmploi }}</p>
+    <p>Derniére classe suivie : {{ apprenant.donneesAdministratives.derniereClasseSuivie }}</p>
+    <p>Dernier diplôme obtenu : {{ apprenant.donneesAdministratives.dernierDiplomeObtenu }}</p>
+    <div class="data-category">Données pédagogiques :</div>
+    <br />
+    <p>Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
+    <p>Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
+    <p>Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>
 
-  {% elseif is_granted('ROLE_FORMATEUR')%}
-  <h2>
-    Données communes et pédagogiques de l'apprenant {{ apprenant.nom }}
-    {{ apprenant.prenom }}
-  </h2>
-  <br />
-  <div class="data-category">Données administratives :</div>
-  <br />
-  <p>Nom : {{ apprenant.nom }}</p>
-  <p></p>
-  <p>Prenom : {{ apprenant.prenom }}</p>
-  <p></p>
-  <p>Email : {{ apprenant.user.email }}</p>
-  <p></p>
-  <p>Genre : {{ apprenant.genre }}</p>
-  <p></p>
-  <p>Date de naissance : {{apprenant.dateNaissance|date('d-m-Y')}}</p>
-  <p></p>
-  <p>Telephone : {{ apprenant.telephone }}</p>
-  <p></p>
-  <p class="consentment">
-    Consentement au règlement RGPD :
-    <span
-      class="{{
-        apprenant.consentement == 1 ? 'consentment-yes' : 'consentment-no'
-      }}">
-      {% if apprenant.consentement == 1 %}Oui{% else %}Non{% endif %}
-    </span>
-  </p>
-  <div class="data-category">Données pédagogiques :</div>
-  <br />
-  <p>Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
-  <p>Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
-  <p>Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>
-
+  {% elseif is_granted('ROLE_FORMATEUR') %}
+    <h2>Données communes et pédagogiques de l'apprenant {{ apprenant.nom }} {{ apprenant.prenom }}</h2>
+    <br />
+    <div class="data-category">Données communes :</div>
+    <br />
+    <p>Nom : {{ apprenant.nom }}</p>
+    <p>Prenom : {{ apprenant.prenom }}</p>
+    <p>Email : {{ apprenant.user.email }}</p>
+    <p>Genre : {{ apprenant.genre }}</p>
+    <p>Date de naissance : {{apprenant.dateNaissance|date('d-m-Y')}}</p>
+    <p>Telephone : {{ apprenant.telephone }}</p>
+    <p class="consentment">
+      Consentement au règlement RGPD :
+      <span class="{{ apprenant.consentement == 1 ? 'consentment-yes' : 'consentment-no' }}">
+        {% if apprenant.consentement == 1 %}Oui{% else %}Non{% endif %}
+      </span>
+    </p>
+    <div class="data-category">Données pédagogiques :</div>
+    <br />
+    <p>Compte Github : {{ apprenant.donneesPedagogiques.compteGithub }}</p>
+    <p>Compte Discord : {{ apprenant.donneesPedagogiques.compteDiscord }}</p>
+    <p>Compte Linkedin : {{ apprenant.donneesPedagogiques.compteLinkedin }}</p>
   {% endif %}
 </div>
+
 {% endblock %}

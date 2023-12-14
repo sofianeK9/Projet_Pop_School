@@ -36,7 +36,7 @@ DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=15&ch
 
 Pensez à adapter la variable `APP_SECRET` et le mot de passe `123` dans la variable `DATABASE_URL`.
 
-**Atention : `APP_SECRET` doit etre une chaine de caractére de 32 caractéres de valeurs en hexadecimal.**
+**Attention : `APP_SECRET` doit etre une chaine de caractére de 32 caractéres de valeurs en hexadecimal.**
 
 
 ## Migration et fixtures
@@ -66,6 +66,7 @@ Lancer le serveur web de developpement :
 
 ```
 symfony serve
+
 ```
 
 Puis ouvrir la page suivante : [https://local:host:8000](https://local:host:8000)

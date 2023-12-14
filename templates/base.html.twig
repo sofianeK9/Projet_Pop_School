@@ -31,9 +31,9 @@
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_RESPONSABLE_TERRITORIAL')or is_granted('ROLE_FORMATEUR') %}
         <a class="active" href="{{ path('app_home') }}"> <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo"></a>
         {% elseif is_granted('ROLE_APPRENANT') %}
-        <a class="active" href="{{ path('app_donnees_communes_index') }}"> <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo"></a>
+        <a class="active" href="{{ path('app_donnees_communes_index') }}"> <img src="{{ asset('images/pop_school.png') }}" alt="Pop_School_Logo"></a>
         {%else %}
-       <img src="{{ asset('images/pop_school.png') }}" alt="Pop School Logo">
+       <img src="{{ asset('images/pop_school.png') }}" alt="Pop_School_Logo">
         {% endif %}
       </div>
       <div class="burger">
@@ -84,14 +84,14 @@
 <footer class="footer-container">
     
     <div class=" contain container1">
-     <h5>A propos</h5>
+     <p class="pied-de-page">A propos</p>
     <a href="https://popschool.fr/">Site de de Pop School</a>
-    <a href="{{ path('app_home_mentions_legales') }}">mentions légales</a>
+    <a href="{{ path('app_home_mentions_legales') }}">Mentions légales</a>
     <p>© 2015-2023 POP School – Tous droits réservés.</p>
     </div>
 
     <div class="contain container3">
-     <h5>Nos réseaux</h5>
+     <p class="pied-de-page">Nos réseaux</p>
      <div class="reseaux">
     <a href="https://www.linkedin.com/company/pop-school/?originalSubdomain=fr" target="_blank"><i class="ri-linkedin-fill"></i></a>
     <a href="https://www.facebook.com/POPSchoolFr/" target="_blank"><i class="ri-facebook-fill"></i></a>

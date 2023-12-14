@@ -14,10 +14,13 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ApprenantType extends AbstractType
 {
+    // propriété privée
     private $passwordHasher;
 
+    // constructeur afin d'initialiser la propriété de hashage de mdp
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
+        // initialisation de la proproété $passwordHasher avec l'interface UserPasswordHasherInterface
         $this->passwordHasher = $passwordHasher;
     }
     public function buildForm(FormBuilderInterface $builder, array $options): void

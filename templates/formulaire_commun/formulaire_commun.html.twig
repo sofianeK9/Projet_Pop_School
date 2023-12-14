@@ -1,5 +1,5 @@
-{% extends 'base.html.twig' %} {% block title %}Hello
-FormulaireCommunController!{% endblock %} {% block body %}
+{% extends 'base.html.twig' %} {% block title %}
+Formulaire commun{% endblock %} {% block body %}
 <h1>Formulaire Commun</h1>
 
 <div class="container">
@@ -29,7 +29,7 @@ FormulaireCommunController!{% endblock %} {% block body %}
       {{ form_label(form.promotion) }}
       {{ form_widget(form.promotion) }}
     </div>
-    <button class="btn-action">{{ button_label|default('Save') }}</button>
+    <button class="btn-action">{{ button_label|default('enregistrer') }}</button>
     {{ form_end(form) }}
   </div>
 </div>

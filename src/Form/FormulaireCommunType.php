@@ -29,8 +29,12 @@ class FormulaireCommunType extends AbstractType
                 'widget' => 'single_text'
             ])
             ->add('telephone')
-            ->add('promotion')
-            
+            ->add('promotion', null, [
+                'attr' => [
+                    'class' => 'place-holder'
+                ]
+
+            ])
             
         ;
     }

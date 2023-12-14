@@ -1,60 +1,111 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Réglement RGPD{% endblock %} {%
+block body %}
+<div class="rgpd">
+  <h1>Réglement RGPD de Pop School</h1>
 
-{% block title %}Hello RGPDController!{% endblock %}
-
-{% block body %}
-<h1>Réglement RGPD de Pop School</h1>
-
-<p>Date d'entrée en vigueur :  19/10/2023</p>
-<br>
-<p>Bienvenue à Pop School !</p>
-<br>  
-<p>Veuillez lire attentivement ces Termes et Conditions d'Utilisation (ci-après dénommés "les Termes") avant d'utiliser le Service.</p>
-<br>
-<h3>1. Acceptation des Conditions</h3>
-<br>
-<p>1.1 En utilisant le Service, vous acceptez d'être lié par ces Termes. Si vous n'acceptez pas ces Termes, veuillez ne pas utiliser le Service.</p>
-<br>
-<h3>2. Utilisation du Service</h3>
-<br>
-<p>2.1 Vous acceptez d'utiliser le Service conformément à toutes les lois et réglementations applicables.</p>
-<p>2.2 Vous êtes responsable de la confidentialité de votre compte utilisateur et de votre mot de passe. Vous êtes seul responsable de toute activité sur votre compte.</p>
-<p>2.3 Vous acceptez de ne pas utiliser le Service à des fins illégales, abusives, diffamatoires, obscènes ou en violation des droits de tiers.</p>
-<br>
-<h3>3. Modification du Service</h3>
-<br>
-<p>4.1 Nous collectons, stockons et utilisons vos données personnelles conformément à notre Politique de Confidentialité, disponible sur<a
-  href="http://popschool.fr/wp-content/uploads/2021/03/Politique-RGPD-POP-School.pdf" target="_blank"
-  > [Lien vers la Politique de Confidentialité].</a> En utilisant le Service, vous consentez à la collecte et à l'utilisation de vos données personnelles conformément à notre Politique de Confidentialité.</p>
-<br>
-<h3>5. Comptes Utilisateur</h3>
-<br>
-<p>5.1 Vous devez créer un compte utilisateur pour accéder à certaines fonctionnalités du Service. Vous êtes responsable de fournir des informations exactes et à jour lors de la création de votre compte.</p>
-<p>5.2 Vous êtes responsable de maintenir la confidentialité de votre compte utilisateur et de votre mot de passe. Vous êtes seul responsable de toute activité sur votre compte.</p>
-<br>
-<h3>6. Responsabilité et Garanties</h3>
-<br>
-<p>6.1 Le Service est fourni "tel quel" et "tel que disponible". Nous ne garantissons pas que le Service sera exempt d'erreurs ou de pannes.</p>
-<p>6.2 Nous ne sommes pas responsables des dommages directs, indirects, spéciaux, consécutifs ou punitifs résultant de l'utilisation du Service ou de tout contenu publié ou partagé sur le Service.</p>
-<br>
-<h3>7. Droits de Propriété Intellectuelle</h3>
-<br>
-<p>7.1 Le contenu, les logos, les marques et les éléments du Service sont protégés par des droits de propriété intellectuelle. Vous n'avez pas l'autorisation de les utiliser sans notre consentement écrit.</p>
-<br>
-<h3>8. Loi Applicable et Règlement des Litiges</h3>
-<br>
-<p>8.1 Ces Termes sont régis par les lois de [Votre Juridiction]. Tout litige découlant de ces Termes sera soumis à la juridiction exclusive des tribunaux de [Votre Juridiction].</p>
-<br>
-<h3>9. Modification des Termes</h3>
-<br>
-<p>9.1 Nous nous réservons le droit de modifier ces Termes à tout moment. Les modifications seront publiées sur le Service et prendront effet immédiatement.</p>
-<br>
-<form method="post" action="{{ path('app_formulaire_commun') }}">
-    {{ form_errors(form) }} 
+  <p>Date d'entrée en vigueur : 19/10/2023</p>
+  <br />
+  <p>Bienvenue à Pop School !</p>
+  <br />
+  <p>
+    Veuillez lire attentivement ces Termes et Conditions d'Utilisation (ci-après
+    dénommés "les Termes") avant d'utiliser le Service.
+  </p>
+  <br />
+  <h3>1. Acceptation des Conditions</h3>
+  <br />
+  <p>
+    1.1 En utilisant le Service, vous acceptez d'être lié par ces Termes. Si
+    vous n'acceptez pas ces Termes, veuillez ne pas utiliser le Service.
+  </p>
+  <br />
+  <h3>2. Utilisation du Service</h3>
+  <br />
+  <p>
+    2.1 Vous acceptez d'utiliser le Service conformément à toutes les lois et
+    réglementations applicables.
+  </p>
+  <p>
+    2.2 Vous êtes responsable de la confidentialité de votre compte utilisateur
+    et de votre mot de passe. Vous êtes seul responsable de toute activité sur
+    votre compte.
+  </p>
+  <p>
+    2.3 Vous acceptez de ne pas utiliser le Service à des fins illégales,
+    abusives, diffamatoires, obscènes ou en violation des droits de tiers.
+  </p>
+  <br />
+  <h3>3. Modification du Service</h3>
+  <br />
+  <p>
+    4.1 Nous collectons, stockons et utilisons vos données personnelles
+    conformément à notre Politique de Confidentialité, disponible sur<a
+      href="http://popschool.fr/wp-content/uploads/2021/03/Politique-RGPD-POP-School.pdf"
+      target="_blank">
+      [Lien vers la Politique de Confidentialité].</a
+    >
+    En utilisant le Service, vous consentez à la collecte et à l'utilisation de
+    vos données personnelles conformément à notre Politique de Confidentialité.
+  </p>
+  <br />
+  <h3>5. Comptes Utilisateur</h3>
+  <br />
+  <p>
+    5.1 Vous devez créer un compte utilisateur pour accéder à certaines
+    fonctionnalités du Service. Vous êtes responsable de fournir des
+    informations exactes et à jour lors de la création de votre compte.
+  </p>
+  <p>
+    5.2 Vous êtes responsable de maintenir la confidentialité de votre compte
+    utilisateur et de votre mot de passe. Vous êtes seul responsable de toute
+    activité sur votre compte.
+  </p>
+  <br />
+  <h3>6. Responsabilité et Garanties</h3>
+  <br />
+  <p>
+    6.1 Le Service est fourni "tel quel" et "tel que disponible". Nous ne
+    garantissons pas que le Service sera exempt d'erreurs ou de pannes.
+  </p>
+  <p>
+    6.2 Nous ne sommes pas responsables des dommages directs, indirects,
+    spéciaux, consécutifs ou punitifs résultant de l'utilisation du Service ou
+    de tout contenu publié ou partagé sur le Service.
+  </p>
+  <br />
+  <h3>7. Droits de Propriété Intellectuelle</h3>
+  <br />
+  <p>
+    7.1 Le contenu, les logos, les marques et les éléments du Service sont
+    protégés par des droits de propriété intellectuelle. Vous n'avez pas
+    l'autorisation de les utiliser sans notre consentement écrit.
+  </p>
+  <br />
+  <h3>8. Loi Applicable et Règlement des Litiges</h3>
+  <br />
+  <p>
+    8.1 Ces Termes sont régis par les lois de [Votre Juridiction]. Tout litige
+    découlant de ces Termes sera soumis à la juridiction exclusive des tribunaux
+    de [Votre Juridiction].
+  </p>
+  <br />
+  <h3>9. Modification des Termes</h3>
+  <br />
+  <p>
+    9.1 Nous nous réservons le droit de modifier ces Termes à tout moment. Les
+    modifications seront publiées sur le Service et prendront effet
+    immédiatement.
+  </p>
+  <br />
+  <form method="post" action="{{ path('app_formulaire_commun') }}">
+    {{ form_errors(form) }}
     {{ form_row(form.consentement) }}
-    <br>
-  <button type="submit" class="btn-action">Accepter</button>
-  {{ form_end(form) }}
-</form>
-<br>
+    <br />
+    <div class="button-rgpd">
+      <button type="submit" class="btn-action">Accepter</button>
+    </div>
+    {{ form_end(form) }}
+  </form>
+  <br />
+</div>
 {% endblock %}
